@@ -12,7 +12,7 @@ const ProfileHeader=()=>{
     const fetchProfiles = async () => {
 		try {
 			const data=await searchProfile();
-            //console.log(data)
+            console.log(data)
             let thisProfile=data.find(profile=>profile._id===myId)
 			setHeaderData(thisProfile);
             //console.log(headerData)
@@ -70,7 +70,10 @@ const ProfileHeader=()=>{
                         Message
                     </Button>
                     <Button variant="light" className="mx-1 mt-2 mb-2 rounded rounded-pill">
-                        Altro
+                        Other
+                    </Button>
+                    <Button variant="light" id="edit-btn" className="mx-1 mt-2 mb-2 rounded">
+                        <span>Pencil Icon</span>
                     </Button>
                 </Container>
 
