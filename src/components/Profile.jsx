@@ -9,7 +9,7 @@ const Profile=()=>{
 
     return(
         <Container>
-            <Row>
+            <Row style={{marginTop:50}}>
                 <Col md={8} style={{backgroundColor:"red",minHeight:1000}}>
                     <ProfileHeader/>
                     <ProfileCenter/>
