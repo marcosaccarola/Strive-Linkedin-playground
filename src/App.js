@@ -10,7 +10,7 @@ import CustomFooter from './components/CustomFooter';
 function App() {
   return (
     <div className="App">
-      <header className="" style={{backgroundColor:"lightGrey"}}>
+      <header>
         <Router>
           <Route>
             <NavbarLinkedin />

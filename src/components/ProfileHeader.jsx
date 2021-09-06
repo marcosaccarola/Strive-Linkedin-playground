@@ -15,7 +15,7 @@ const ProfileHeader=({profilesData})=>{
     const fetchProfiles = async () => {
 		try {
 			const data=await searchProfile();
-            //console.log(data)
+            console.log(data)
             let thisProfile=data.find(profile=>profile._id===myId)
 			setHeaderData(thisProfile);
             //console.log(headerData)
