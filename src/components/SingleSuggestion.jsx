@@ -17,7 +17,7 @@ const SingleSuggestion=({suggestions})=>{
                 <Row>
                     <Col md={2}>
                         <div style={{maxHeight:20,maxWidth:20,display:"inline-block"}}>
-                        <img src={suggestion.image}/>
+                        <img src={suggestion.image} style={{maxHeight:46}}/>
                         </div>
                     </Col>
                     <Col md={10}>
