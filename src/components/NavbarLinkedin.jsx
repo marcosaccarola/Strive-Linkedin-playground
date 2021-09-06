@@ -18,7 +18,7 @@ import "./NavbarLinkedin.css";
 const NavbarLinkedin = () => {
   return (
     <div>
-      <Navbar expand="lg" className="navbar justify-content-center">
+      <Navbar expand="lg" className="navbar d-flex justify-content-center">
      
         <svg
 
@@ -51,7 +51,7 @@ const NavbarLinkedin = () => {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
-            className="mr-auto my-2 my-lg-0"
+            className=" my-2 my-lg-0"
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
@@ -83,6 +83,23 @@ const NavbarLinkedin = () => {
               <img src={user} alt="user" />
               <NavDropdown
                 title="Me"
+                id="navbarScrollingDropdown"
+                className="userDropdowne"
+              >
+                <NavDropdown.Item href="#action4">
+                  Another action
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action5">
+                  Something else here
+                </NavDropdown.Item>
+              </NavDropdown>
+            </div>
+
+            <div className="userDropdown">
+              <img src={user} alt="work" />
+              <NavDropdown
+                title="Work"
                 id="navbarScrollingDropdown"
                 className="userDropdowne"
               >
