@@ -74,7 +74,10 @@ const ProfileHeader=({profilesData})=>{
                         Message
                     </Button>
                     <Button variant="light" className="mx-1 mt-2 mb-2 rounded rounded-pill">
-                        Altro
+                        Other
+                    </Button>
+                    <Button variant="light" id="edit-btn" className="mx-1 mt-2 mb-2 rounded">
+                        <span>Pencil Icon</span>
                     </Button>
                 </Container>
 
