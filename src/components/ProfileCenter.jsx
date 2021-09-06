@@ -1,11 +1,13 @@
 import React,{useState,useEffect} from 'react'
 import {Container} from 'react-bootstrap'
 
-const ProfileCenter=()=>{
-    const[suggestions,setSuggestions]=useState([])
+const ProfileCenter=({profilesData})=>{
+    //const[suggestions,setSuggestions]=useState([])
 
     let myId='61360d537be6c10015f9dbac'
+    let thisProfile=profilesData.find(profile=>profile._id===myId)
 
+    /*
     useEffect(()=>{
         async function getSuggestions(){
             try {
@@ -27,18 +29,17 @@ const ProfileCenter=()=>{
             }
         }getSuggestions()
     },[])
+    */
 
     return(
         <Container className="rounded mt-5" style={{backgroundColor:"yellow",height:300,width:"100%"}}>
-        {
-            suggestions.map(suggestion=>(
+        
+
 
                 <div>
-                    {suggestion.bio}
+                    {thisProfile.bio}
                 </div>
-            )
-            )
-        }
+
         </Container>
     )
 }

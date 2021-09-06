@@ -4,11 +4,14 @@ import img from '../assets/img.jpg'
 import { useState,useEffect } from 'react'
 import {searchProfile}from '../utils/profiles'
 
-const ProfileHeader=()=>{
-    const[headerData,setHeaderData]=useState([])
+const ProfileHeader=({profilesData})=>{
+    //const[headerData,setHeaderData]=useState([])
 
     let myId='61360d537be6c10015f9dbac'
+    let thisProfile=profilesData.find(profile=>profile._id===myId)
+    console.log(thisProfile)
 
+    /*
     const fetchProfiles = async () => {
 		try {
 			const data=await searchProfile();
@@ -24,6 +27,7 @@ const ProfileHeader=()=>{
     useEffect(()=>{
         fetchProfiles()
     },[])
+    */
 
     /*
     useEffect(()=>{
@@ -58,9 +62,9 @@ const ProfileHeader=()=>{
                     <Row>
                         <Col className="d-flex d-column">
                             <ListGroup variant="flush">
-                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:26,fontWeight:"700"}}>{headerData.name} {headerData.surname} </ListGroup.Item>
-                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:16,fontWeight:"400"}}> {headerData.title}</ListGroup.Item>
-                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:12,fontWeight:"200",color:"grey"}}>{headerData.area}</ListGroup.Item>
+                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:26,fontWeight:"700"}}>{thisProfile.name} {thisProfile.surname} </ListGroup.Item>
+                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:16,fontWeight:"400"}}> {thisProfile.title}</ListGroup.Item>
+                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:12,fontWeight:"200",color:"grey"}}>{thisProfile.area}</ListGroup.Item>
                             </ListGroup>
                         </Col>
                     </Row>
