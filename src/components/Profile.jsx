@@ -9,7 +9,22 @@ import {searchProfile}from '../utils/profiles'
 
 const Profile=()=>{
 
-    const[profilesData,setProfilesData]=useState([])
+    const[profilesData,setProfilesData]=useState([
+        {
+            "_id": "61360d537be6c10015f9dbac",
+            "name": "Marco",
+            "surname": "Saccarola",
+            "email": "marco.sacca.ads@gmail.com",
+            "username": "marcosaccarola",
+            "title": "Strive School student",
+            "bio": "nothing to declare",
+            "area": "Venezia",
+            "image": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
+            "createdAt": "2021-09-06T12:45:07.983Z",
+            "updatedAt": "2021-09-06T22:45:17.877Z",
+            "__v": 0
+        }
+    ])
     const[id,setId]=useState('61360d537be6c10015f9dbac')
 
     const fetchProfiles = async () => {

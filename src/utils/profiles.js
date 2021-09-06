@@ -1,5 +1,6 @@
 const PROFILES_URL = "https://striveschool-api.herokuapp.com/api/profile/";
 
+//TO GET
 export const searchProfile = async () => {
   try {
     const response = await fetch(`${PROFILES_URL}`, {
@@ -19,3 +20,5 @@ export const searchProfile = async () => {
     throw error;
   }
 };
+
+
