@@ -3,19 +3,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import NavbarLinkedin from "./components/NavbarLinkedin";
+import Directory from './components/Directory';
+import CustomFooter from './components/CustomFooter';
 import Profile from "./components/Profile";
-import CustomFooter from "./components/CustomFooter";
 
 function App() {
   return (
     <div className="App">
-      <header className="" style={{ backgroundColor: "lightGrey" }}>
+      <header>
         <Router>
           <Route>
             <NavbarLinkedin />
 
             <Profile />
 
+            <Directory />
             <CustomFooter />
           </Route>
         </Router>
