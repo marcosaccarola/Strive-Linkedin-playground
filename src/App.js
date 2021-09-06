@@ -3,8 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import NavbarLinkedin from "./components/NavbarLinkedin";
-import Directory from './components/Directory';
-import CustomFooter from './components/CustomFooter';
+import Directory from "./components/Directory";
+import CustomFooter from "./components/CustomFooter";
 import Profile from "./components/Profile";
 
 function App() {
@@ -12,14 +12,12 @@ function App() {
     <div className="App">
       <header>
         <Router>
+          <NavbarLinkedin />
           <Route>
-            <NavbarLinkedin />
-
             <Profile />
-
-            <Directory />
-            <CustomFooter />
           </Route>
+          <Directory />
+          <CustomFooter />
         </Router>
       </header>
     </div>
