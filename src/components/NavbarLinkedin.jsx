@@ -13,15 +13,15 @@ import mynetwork from "../assets/mynetwork.jpeg";
 import bag from "../assets/bag.jpg";
 import messages from "../assets/messages.jpg";
 import bell from "../assets/bell.jpg";
+import square from "../assets/square.jpg";
 import "./NavbarLinkedin.css";
 
 const NavbarLinkedin = () => {
   return (
     <div>
-      <Navbar expand="lg" className="navbar d-flex justify-content-center">
+      <Navbar expand="lg" className="navbar">
      
         <svg
-
           height="31"
           width="30"
           xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ const NavbarLinkedin = () => {
             style={{ height: 30 }}
             type="search"
             placeholder="Search"
-            className="mx-2"
+            className="ml-2 mr-5"
             aria-label="Search"
           />
         </Form>
@@ -55,31 +55,31 @@ const NavbarLinkedin = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-             <div className="iconsWrapper">
+             <div className="iconsWrapper mx-2">
               <img src={house} alt="user" />
             <Nav.Link href="#action1" className="navlink">Home</Nav.Link>
             </div> 
 
-            <div className="iconsWrapper">
+            <div className="iconsWrapper mx-2">
               <img src={mynetwork} alt="user" />
             <Nav.Link href="#action1" className="navlink">My Network</Nav.Link>
             </div> 
 
-            <div className="iconsWrapper">
+            <div className="iconsWrapper mx-2">
               <img src={bag} alt="user" />
             <Nav.Link href="#action1" className="navlink">Jobs</Nav.Link>
             </div> 
-            <div className="iconsWrapper">
+            <div className="iconsWrapper mx-2">
               <img src={messages} alt="user" />
             <Nav.Link href="#action1" className="navlink">Messaging</Nav.Link>
             </div> 
-            <div className="iconsWrapper">
+            <div className="iconsWrapper mx-2">
               <img src={bell} alt="user" />
             <Nav.Link href="#action1" className="navlink">Notifications</Nav.Link>
             </div> 
           
 
-            <div className="userDropdown">
+            <div className="userDropdown mx-2">
               <img src={user} alt="user" />
               <NavDropdown
                 title="Me"
@@ -96,8 +96,8 @@ const NavbarLinkedin = () => {
               </NavDropdown>
             </div>
 
-            <div className="userDropdown">
-              <img src={user} alt="work" />
+            <div className="userDropdown mx-2">
+              <img src={square} alt="work" />
               <NavDropdown
                 title="Work"
                 id="navbarScrollingDropdown"
@@ -113,9 +113,23 @@ const NavbarLinkedin = () => {
               </NavDropdown>
             </div>
 
-            <Nav.Link href="#" disabled>
-              Lavoro
-            </Nav.Link>
+            <div className="userDropdown mx-2">
+              <img src={square} alt="work" />
+              <NavDropdown
+                title="Post a job"
+                id="navbarScrollingDropdown"
+                className="userDropdowne"
+              >
+                <NavDropdown.Item href="#action4">
+                  Another action
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action5">
+                  Something else here
+                </NavDropdown.Item>
+              </NavDropdown>
+            </div>
+
           </Nav>
         </Navbar.Collapse>
        

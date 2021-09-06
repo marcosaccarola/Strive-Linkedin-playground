@@ -8,6 +8,9 @@
     width: 100vw;
     z-index: 100;
 }
+.navbar svg {
+    margin-left: 350px;
+}
 
 .userDropdown {
     display: flex;
