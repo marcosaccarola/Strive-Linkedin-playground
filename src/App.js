@@ -1,8 +1,10 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import Profile from './components/Profile'
+
 import NavbarLinkedin from "./components/NavbarLinkedin";
+import Profile from './components/Profile'
+import CustomFooter from './components/CustomFooter';
 
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
           <Route>
             <NavbarLinkedin />
             <Profile />
+            <CustomFooter />
           </Route>
         </Router>
       </header>
