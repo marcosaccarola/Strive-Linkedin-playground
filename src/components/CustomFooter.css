@@ -1,0 +1,55 @@
+/* .logo {
+    width: 150px;
+} */
+
+.directory--grey {
+    background-color: rgb(250, 249, 247);
+    /* text-align: start; */
+    color: rgba(73, 73, 73, 0.938);
+}
+
+.directory--grey h6 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(0,0,0,0.9)
+}
+
+.directory--grey ul, 
+.footer--info ul {
+    list-style: none;
+    font-size: .9rem;
+    padding-left: 0;
+}
+
+.directory--grey ul {
+    font-weight: 600;
+}
+
+/* .footer--info ul {
+    font-size: .8rem;
+    flex-wrap: wrap;
+} */
+
+.directory--grey ul li {
+    padding-bottom: .9rem;
+}
+
+
+.directory--grey ul li a,
+.footer--info ul li a {
+    color: rgba(73, 73, 73, 0.938);
+    text-align: start;
+}
+
+.directory--grey ul li a:hover,
+.footer--info ul li a:hover {
+    color: rgb(33, 102, 196);
+}
+
+.footer--info .logoGrey {
+    width: 80px;
+}
+
+.footer--info .logoGrey img {
+    width: 100%;
+}
