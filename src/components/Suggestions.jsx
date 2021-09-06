@@ -9,9 +9,9 @@ const Suggestions=()=>{
     const fetchProfiles = async () => {
 		try {
 			const data=await searchProfile();
-            console.log(data)
+            //console.log(data)
 			setRightSideProfiles(data);
-            console.log(rightSideProfiles)
+            //console.log(rightSideProfiles)
 		} catch (error) {
 			console.log(error);
 		}

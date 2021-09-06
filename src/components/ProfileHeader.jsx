@@ -5,10 +5,27 @@ import { useState,useEffect } from 'react'
 import {searchProfile}from '../utils/profiles'
 
 const ProfileHeader=()=>{
-    const[suggestions,setSuggestions]=useState([])
+    const[headerData,setHeaderData]=useState([])
 
     let myId='61360d537be6c10015f9dbac'
 
+    const fetchProfiles = async () => {
+		try {
+			const data=await searchProfile();
+            console.log(data)
+            let thisProfile=data.find(profile=>profile._id===myId)
+			setHeaderData(thisProfile);
+            //console.log(headerData)
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+    useEffect(()=>{
+        fetchProfiles()
+    },[])
+
+    /*
     useEffect(()=>{
         async function getSuggestions(){
             try {
@@ -29,6 +46,7 @@ const ProfileHeader=()=>{
             }
         }getSuggestions()
     },[])
+    */
 
     return(
         <Jumbotron fluid className="rounded mt-5" style={{paddingTop:0, paddingBottom:0}}>
@@ -40,9 +58,9 @@ const ProfileHeader=()=>{
                     <Row>
                         <Col className="d-flex d-column">
                             <ListGroup variant="flush">
-                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:26,fontWeight:"700"}}>{suggestions.name} {suggestions.surname} </ListGroup.Item>
-                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:16,fontWeight:"400"}}> {suggestions.title}</ListGroup.Item>
-                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:12,fontWeight:"200",color:"grey"}}>{suggestions.area}</ListGroup.Item>
+                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:26,fontWeight:"700"}}>{headerData.name} {headerData.surname} </ListGroup.Item>
+                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:16,fontWeight:"400"}}> {headerData.title}</ListGroup.Item>
+                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:12,fontWeight:"200",color:"grey"}}>{headerData.area}</ListGroup.Item>
                             </ListGroup>
                         </Col>
                     </Row>
