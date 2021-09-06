@@ -1,56 +1,10 @@
 import React from 'react'
 import {Jumbotron, Container,Row,Col,ListGroup,Button} from 'react-bootstrap'
 import img from '../assets/img.jpg'
-import { useState,useEffect } from 'react'
-import {searchProfile}from '../utils/profiles'
 
 const ProfileHeader=({profilesData,id})=>{
-    //const[headerData,setHeaderData]=useState([])
-
 
     let thisProfile=profilesData.find(profile=>profile._id===id)
-    //console.log(thisProfile)
-
-    /*
-    const fetchProfiles = async () => {
-		try {
-			const data=await searchProfile();
-            //console.log(data)
-            let thisProfile=data.find(profile=>profile._id===myId)
-			setHeaderData(thisProfile);
-            //console.log(headerData)
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
-    useEffect(()=>{
-        fetchProfiles()
-    },[])
-    */
-
-    /*
-    useEffect(()=>{
-        async function getSuggestions(){
-            try {
-                let response=await fetch('https://striveschool-api.herokuapp.com/api/profile/'+myId,{
-                    headers:{
-                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo'
-                    }
-                })
-                //console.log(response)
-                if(response.ok){
-                    let suggestions=await response.json()
-                    //console.log(suggestions)
-                    setSuggestions(suggestions)
-                }
-
-            } catch (error) {
-                
-            }
-        }getSuggestions()
-    },[])
-    */
 
     return(
         <Jumbotron fluid className="rounded mt-5" style={{paddingTop:0, paddingBottom:0}}>

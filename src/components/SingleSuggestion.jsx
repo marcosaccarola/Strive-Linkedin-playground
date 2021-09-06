@@ -1,16 +1,11 @@
 import React from "react";
 import {ListGroup,Row,Col} from 'react-bootstrap'
-import {useState}from 'react'
 
 const SingleSuggestion=({profilesData,setId})=>{
-    const[selectedId,setSelectedId]=useState('')
-    
-
 
     return(
     <ListGroup>
         {
-            
             profilesData.slice(0,8).map(suggestion=>(
     
                     <ListGroup.Item key={suggestion._id} className="text-left" onClick={(e)=>setId(suggestion._id)}>
@@ -26,6 +21,7 @@ const SingleSuggestion=({profilesData,setId})=>{
                     </Col>
                 </Row>
                 </ListGroup.Item>
+                
             )
             )
         }

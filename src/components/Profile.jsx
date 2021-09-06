@@ -3,9 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import ProfileHeader from "./ProfileHeader";
 import ProfileCenter from "./ProfileCenter";
 import ProfileRightSide from "./ProfileRightSide";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import {searchProfile}from '../utils/profiles'
-
 
 const Profile=()=>{
 

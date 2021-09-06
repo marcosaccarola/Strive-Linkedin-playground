@@ -1,6 +1,5 @@
 import React from 'react'
 import {Container} from 'react-bootstrap'
-//import Suggestions from './Suggestions'
 import SingleSuggestion from './SingleSuggestion'
 
 const ProfileRightSide=({profilesData,setId})=>{
