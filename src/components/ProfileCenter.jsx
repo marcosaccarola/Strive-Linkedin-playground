@@ -14,10 +14,10 @@ const ProfileCenter=()=>{
                         Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo'
                     }
                 })
-                console.log('RESPONSE',response)
+                //console.log('RESPONSE',response)
                 if(response.ok){
                     let suggestions=await response.json()
-                    console.log('SUGGESTION',suggestions)
+                    //console.log('SUGGESTION',suggestions)
                     let profile=[suggestions]
                     setSuggestions(profile)
                 }
