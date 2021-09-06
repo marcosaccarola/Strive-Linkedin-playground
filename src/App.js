@@ -1,15 +1,12 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import NavbarLinkedin from "./components/NavbarLinkedin";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Router>
-
-        </Router>
-      </header>
+    <div>
+      <NavbarLinkedin />
     </div>
   );
 }
