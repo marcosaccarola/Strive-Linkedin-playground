@@ -2,7 +2,7 @@ import React from "react";
 import {ListGroup,Row,Col} from 'react-bootstrap'
 import {useState}from 'react'
 
-const SingleSuggestion=({suggestions})=>{
+const SingleSuggestion=({rightSideProfiles})=>{
     const[selectedId,setSelectedId]=useState('')
     
 
@@ -11,7 +11,7 @@ const SingleSuggestion=({suggestions})=>{
     <ListGroup>
         {
             
-            suggestions.slice(0,8).map(suggestion=>(
+            rightSideProfiles.slice(0,8).map(suggestion=>(
     
                     <ListGroup.Item className="text-left" onClick={()=>setSelectedId(suggestion._id)}>
                 <Row>

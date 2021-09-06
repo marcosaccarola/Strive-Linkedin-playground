@@ -1,10 +1,27 @@
 import React, { useState,useEffect } from 'react'
 import {ListGroup}from'react-bootstrap'
 import SingleSuggestion from './SingleSuggestion'
+import {searchProfile}from '../utils/profiles'
 
 const Suggestions=()=>{
-    const[suggestions,setSuggestions]=useState([])
+    const[rightSideProfiles,setRightSideProfiles]=useState([])
 
+    const fetchProfiles = async () => {
+		try {
+			const data=await searchProfile();
+            console.log(data)
+			setRightSideProfiles(data);
+            console.log(rightSideProfiles)
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+    useEffect(()=>{
+        fetchProfiles()
+    },[])
+
+    /*
     useEffect(()=>{
         async function getSuggestions(){
             try {
@@ -25,14 +42,16 @@ const Suggestions=()=>{
             }
         }getSuggestions()
     },[])
+    */
 
     return(
         <>
             <ListGroup>
-                <SingleSuggestion suggestions={suggestions}/>
+                <SingleSuggestion rightSideProfiles={rightSideProfiles}/>
             </ListGroup>
 
         </>
     )
+    
 }
 export default Suggestions

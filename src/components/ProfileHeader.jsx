@@ -2,6 +2,7 @@ import React from 'react'
 import {Jumbotron, Container,Row,Col,ListGroup,Button} from 'react-bootstrap'
 import img from '../assets/img.jpg'
 import { useState,useEffect } from 'react'
+import {searchProfile}from '../utils/profiles'
 
 const ProfileHeader=()=>{
     const[suggestions,setSuggestions]=useState([])
@@ -16,10 +17,10 @@ const ProfileHeader=()=>{
                         Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo'
                     }
                 })
-                console.log(response)
+                //console.log(response)
                 if(response.ok){
                     let suggestions=await response.json()
-                    console.log(suggestions)
+                    //console.log(suggestions)
                     setSuggestions(suggestions)
                 }
 
