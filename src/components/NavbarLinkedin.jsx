@@ -9,12 +9,16 @@ import {
 } from "react-bootstrap";
 import user from "../assets/user.jpeg";
 import house from "../assets/house.jpg";
+import mynetwork from "../assets/mynetwork.jpeg";
+import bag from "../assets/bag.jpg";
+import messages from "../assets/messages.jpg";
+import bell from "../assets/bell.jpg";
 import "./NavbarLinkedin.css";
 
 const NavbarLinkedin = () => {
   return (
     <div>
-      <Navbar expand="lg" className="navbar">
+      <Navbar expand="lg" className="navbar justify-content-center">
      
         <svg
 
@@ -57,20 +61,20 @@ const NavbarLinkedin = () => {
             </div> 
 
             <div className="iconsWrapper">
-              <img src={house} alt="user" />
+              <img src={mynetwork} alt="user" />
             <Nav.Link href="#action1" className="navlink">My Network</Nav.Link>
             </div> 
 
             <div className="iconsWrapper">
-              <img src={house} alt="user" />
+              <img src={bag} alt="user" />
             <Nav.Link href="#action1" className="navlink">Jobs</Nav.Link>
             </div> 
             <div className="iconsWrapper">
-              <img src={house} alt="user" />
+              <img src={messages} alt="user" />
             <Nav.Link href="#action1" className="navlink">Messaging</Nav.Link>
             </div> 
             <div className="iconsWrapper">
-              <img src={house} alt="user" />
+              <img src={bell} alt="user" />
             <Nav.Link href="#action1" className="navlink">Notifications</Nav.Link>
             </div> 
           
