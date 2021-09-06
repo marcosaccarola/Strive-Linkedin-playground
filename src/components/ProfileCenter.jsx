@@ -1,11 +1,10 @@
 import React,{useState,useEffect} from 'react'
 import {Container} from 'react-bootstrap'
 
-const ProfileCenter=({profilesData})=>{
+const ProfileCenter=({profilesData,id})=>{
     //const[suggestions,setSuggestions]=useState([])
 
-    let myId='61360d537be6c10015f9dbac'
-    let thisProfile=profilesData.find(profile=>profile._id===myId)
+    let thisProfile=profilesData.find(profile=>profile._id===id)
 
     /*
     useEffect(()=>{

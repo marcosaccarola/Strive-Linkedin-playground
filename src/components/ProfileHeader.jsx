@@ -4,18 +4,18 @@ import img from '../assets/img.jpg'
 import { useState,useEffect } from 'react'
 import {searchProfile}from '../utils/profiles'
 
-const ProfileHeader=({profilesData})=>{
+const ProfileHeader=({profilesData,id})=>{
     //const[headerData,setHeaderData]=useState([])
 
-    let myId='61360d537be6c10015f9dbac'
-    let thisProfile=profilesData.find(profile=>profile._id===myId)
-    console.log(thisProfile)
+
+    let thisProfile=profilesData.find(profile=>profile._id===id)
+    //console.log(thisProfile)
 
     /*
     const fetchProfiles = async () => {
 		try {
 			const data=await searchProfile();
-            console.log(data)
+            //console.log(data)
             let thisProfile=data.find(profile=>profile._id===myId)
 			setHeaderData(thisProfile);
             //console.log(headerData)

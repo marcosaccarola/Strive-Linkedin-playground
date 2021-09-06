@@ -10,7 +10,7 @@ import {searchProfile}from '../utils/profiles'
 const Profile=()=>{
 
     const[profilesData,setProfilesData]=useState([])
-
+    const[id,setId]=useState('61360d537be6c10015f9dbac')
 
     const fetchProfiles = async () => {
 		try {
@@ -32,11 +32,11 @@ const Profile=()=>{
         <Container>
             <Row style={{marginTop:50}}>
                 <Col md={8} style={{backgroundColor:"red",minHeight:1000}}>
-                    <ProfileHeader profilesData={profilesData} />
-                    <ProfileCenter profilesData={profilesData} />
+                    <ProfileHeader profilesData={profilesData} id={id}/>
+                    <ProfileCenter profilesData={profilesData} id={id} />
                 </Col>
                 <Col md={4} style={{backgroundColor:"blue",minHeight:1000}}>
-                    <ProfileRightSide profilesData={profilesData} />
+                    <ProfileRightSide profilesData={profilesData} setId={setId} />
                 </Col>
             </Row>
         </Container>
