@@ -1,5 +1,6 @@
 import React from 'react'
 import {Jumbotron, Container,Row,Col,ListGroup,Button} from 'react-bootstrap'
+import img from '../assets/img.jpg'
 
 const ProfileHeader=()=>{
 
@@ -7,6 +8,7 @@ const ProfileHeader=()=>{
         <Jumbotron fluid className="rounded mt-5" style={{paddingTop:0, paddingBottom:0}}>
             <Container style={{paddingLeft:0,paddingRight:0}}>
                 <div className="rounded-top" style={{backgroundColor:"darkGrey", height:160, width:"100%"}}>
+                    <img src={img} className="rounded-top" style={{backgroundColor:"darkGrey", maxHeight:"100%", width:"100%"}}/>
                 </div>
                 <Container style={{}}>
                     <Row>
