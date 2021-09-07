@@ -1,11 +1,11 @@
 
-import "./ProfileStyle.css"
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProfileHeader from "./ProfileHeader";
 import ProfileCenter from "./ProfileCenter";
 import ProfileRightSide from "./ProfileRightSide";
 import {searchProfile}from '../utils/profiles'
+import "./ProfileStyle.css"
 
 const Profile = () => {
 
@@ -44,7 +44,7 @@ const Profile = () => {
 
     
     return(
-      
+
       <Container>
           <Row style={{marginTop:50}}>
               <Col md={8} className="col">
@@ -53,10 +53,11 @@ const Profile = () => {
               </Col>
               <Col md={4} className="col">
                   <ProfileRightSide profilesData={profilesData} setId={setId} />
+                  
               </Col>
           </Row>
       </Container>
-     
+
     )
 }
 
