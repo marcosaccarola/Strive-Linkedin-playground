@@ -17,7 +17,7 @@ const ExperienceModal = () => {
           <Modal.Title>Add New Experience</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <AddExpForm />
+          <AddExpForm handleClose={handleClose}/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

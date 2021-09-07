@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 
-const AddExpForm = ({id}) => {
+const AddExpForm = ({id, handleClose}) => {
+  // post fx
     const PROFILES_URL = "https://striveschool-api.herokuapp.com/api/profile/";
-
-    
-    // post fx
-    const addNewExp = async (e) => {
+    const postNewExp = async (e) => {
       e.preventDefault()
       try {
         const response = await fetch(`${PROFILES_URL}${id}/experiences`, {
@@ -41,7 +39,7 @@ const AddExpForm = ({id}) => {
     }
 
     return (
-      <Form onSubmit={addNewExp}>
+      <Form onSubmit={postNewExp}>
         <Form.Group className="mb-3" id="role" controlId="role">
           <Form.Label>Role</Form.Label>
           <Form.Control value={newExp.role} onChange={(e)=>handleInput(e)} type="text" placeholder="Your role" />
@@ -72,7 +70,7 @@ const AddExpForm = ({id}) => {
           <Form.Control value={newExp.endDate} onChange={(e)=>handleInput(e)} type="number" />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" onClick={handleClose}>
             POST
         </Button>
       </Form>
