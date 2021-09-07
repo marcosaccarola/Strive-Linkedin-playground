@@ -4,10 +4,12 @@ import "./SingleSuggestionStyle.css";
 
 const SingleSuggestion = ({ profilesData, setId }) => {
     const teamArr=[]
+    if(profilesData!==undefined){
     teamArr.push(profilesData.find(profile=>profile.surname==='Saccarola'))
-    //teamArr.push(profilesData.find(profile=>profile.surname==='Maccapani'))
+    teamArr.push(profilesData.find(profile=>profile.surname==='Maccapani'))
     //teamArr.push(profilesData.find(profile=>profile.surname==='Tumaite'))
     console.log(teamArr)
+    }
   return (
     <ListGroup>
       {teamArr.map((suggestion)=>(
@@ -23,7 +25,8 @@ const SingleSuggestion = ({ profilesData, setId }) => {
             </div>
           </ListGroup.Item>
       ))}
-      {profilesData.slice(0, 5).map((suggestion) => (
+      {profilesData!==undefined && (
+      profilesData.slice(0, 5).map((suggestion) => (
         <ListGroup.Item
           key={suggestion._id}
           className="groupitem"
@@ -35,7 +38,8 @@ const SingleSuggestion = ({ profilesData, setId }) => {
               <p className="title">{suggestion.title}</p>
           </div>
         </ListGroup.Item>
-      ))}
+      )))
+    }
     </ListGroup>
   );
 };
