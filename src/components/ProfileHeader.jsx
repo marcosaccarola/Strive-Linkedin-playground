@@ -26,9 +26,17 @@ const ProfileHeader=({profilesData,id})=>{
     const thisObj={name, surname, email, username, title, area, bio}
     console.log(thisObj)
 
-    const sendProfileData=(e)=>{
+    const sendProfileData=async(e)=>{
         e.preventDefault()
         putIntoProfile({thisObj,id})
+        setBio(thisObj.name)
+        setBio(thisObj.surname)
+        setBio(thisObj.email)
+        setBio(thisObj.username)
+        setBio(thisObj.title)
+        setBio(thisObj.area)
+        setBio(thisObj.bio)
+
     }
 
 
