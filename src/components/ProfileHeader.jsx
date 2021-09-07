@@ -3,7 +3,9 @@ import {Jumbotron, Container,Row,Col,ListGroup,Button} from 'react-bootstrap'
 import img from '../assets/img.jpg'
 import "./ProfileHeaderStyle.css"
 
-const ProfileHeader=()=>{
+const ProfileHeader=({profilesData,id})=>{
+
+    let thisProfile=profilesData.find(profile=>profile._id===id)
 
     return(
         <Jumbotron fluid className="rounded mt-5" style={{paddingTop:0, paddingBottom:0}}>
@@ -15,9 +17,9 @@ const ProfileHeader=()=>{
                     <Row>
                         <Col className="d-flex d-column">
                             <ListGroup variant="flush">
-                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:26,fontWeight:"700"}}>NAME</ListGroup.Item>
-                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:16,fontWeight:"400"}}>Summary</ListGroup.Item>
-                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:12,fontWeight:"200",color:"grey"}}>Country/Place</ListGroup.Item>
+                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:26,fontWeight:"700"}}>{thisProfile.name} {thisProfile.surname} </ListGroup.Item>
+                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:16,fontWeight:"400"}}> {thisProfile.title}</ListGroup.Item>
+                                <ListGroup.Item className="text-left" style={{backgroundColor:"#E9ECEF",fontSize:12,fontWeight:"200",color:"grey"}}>{thisProfile.area}</ListGroup.Item>
                             </ListGroup>
                         </Col>
                     </Row>
@@ -27,7 +29,10 @@ const ProfileHeader=()=>{
                         Message
                     </Button>
                     <Button variant="light" className="mx-1 mt-2 mb-2 rounded rounded-pill">
-                        Altro
+                        Other
+                    </Button>
+                    <Button variant="light" id="edit-btn" className="mx-1 mt-2 mb-2 rounded">
+                        <span>Pencil Icon</span>
                     </Button>
                 </Container>
 
