@@ -8,12 +8,13 @@ import {
   Button,
 } from "react-bootstrap";
 import user from "../assets/user.jpeg";
-import house from "../assets/house.jpg";
-import mynetwork from "../assets/mynetwork.jpeg";
+import home from "../assets/home.svg";
+import users from "../assets/users.png";
 import bag from "../assets/bag.jpg";
 import messages from "../assets/messages.jpg";
 import bell from "../assets/bell.jpg";
 import square from "../assets/square.jpg";
+import post from "../assets/post.png";
 import "./NavbarLinkedin.css";
 
 const NavbarLinkedin = () => {
@@ -56,12 +57,12 @@ const NavbarLinkedin = () => {
             navbarScroll
           >
              <div className="iconsWrapper mx-2">
-              <img src={house} alt="user" />
+              <img src={home} alt="user" />
             <Nav.Link href="#action1" className="navlink">Home</Nav.Link>
             </div> 
 
             <div className="iconsWrapper mx-2">
-              <img src={mynetwork} alt="user" />
+              <img src={users} alt="user" />
             <Nav.Link href="#action1" className="navlink">My Network</Nav.Link>
             </div> 
 
@@ -79,8 +80,8 @@ const NavbarLinkedin = () => {
             </div> 
           
 
-            <div className="userDropdown mx-2">
-              <img src={user} alt="user" />
+            <div className="userDropdown">
+              <img src={user} className="userImg" alt="user" />
               <NavDropdown
                 title="Me"
                 id="navbarScrollingDropdown"
@@ -96,8 +97,8 @@ const NavbarLinkedin = () => {
               </NavDropdown>
             </div>
 
-            <div className="userDropdown mx-2">
-              <img src={square} alt="work" />
+            <div className="userDropdown ">
+              <img src={square} className="dropIcon" alt="work" />
               <NavDropdown
                 title="Work"
                 id="navbarScrollingDropdown"
@@ -113,8 +114,8 @@ const NavbarLinkedin = () => {
               </NavDropdown>
             </div>
 
-            <div className="userDropdown mx-2">
-              <img src={square} alt="work" />
+            <div className="userDropdown ">
+              <img src={post} className="dropIcon" alt="post" />
               <NavDropdown
                 title="Post a job"
                 id="navbarScrollingDropdown"

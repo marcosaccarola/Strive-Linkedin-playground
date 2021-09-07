@@ -1,0 +1,33 @@
+.groupitem{
+   display: flex;
+   justify-content: flex-start;
+}
+.groupitem img {
+    max-height:50px;
+    max-width:50px;
+    display:inline-block;
+    margin-right: 10px;
+    border-radius: 25px;
+}
+.name {
+    font-size:12px;
+    font-weight:bold;
+    display: block;
+}
+.title {
+    font-size:10px;
+    color:rgba(0, 0, 0, 0.739);
+    display: block;
+    margin-top: -10px;
+}
+.infosuggestions{
+    margin-right: 0px;
+}
+.name:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.title:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}

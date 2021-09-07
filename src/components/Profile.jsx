@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProfileHeader from "./ProfileHeader";
@@ -29,9 +30,9 @@ const Profile = () => {
     const fetchProfiles = async () => {
 		try {
 			const data=await searchProfile();
-            //console.log(data)
+            // console.log(data)
 			setProfilesData(data);
-            //console.log(profilesData)
+            console.log(profilesData)
 		} catch (error) {
 			console.log(error);
 		}
@@ -43,18 +44,20 @@ const Profile = () => {
 
     
     return(
+
       <Container>
           <Row style={{marginTop:50}}>
-              <Col md={8} style={{backgroundColor:"red",minHeight:1000}}>
+              <Col md={8} className="col">
                   <ProfileHeader profilesData={profilesData} id={id}/>
                   <ProfileCenter profilesData={profilesData} id={id} />
               </Col>
-              <Col md={4} style={{backgroundColor:"blue",minHeight:1000}}>
+              <Col md={4} className="col">
                   <ProfileRightSide profilesData={profilesData} setId={setId} />
                   
               </Col>
           </Row>
       </Container>
+
     )
 }
 
