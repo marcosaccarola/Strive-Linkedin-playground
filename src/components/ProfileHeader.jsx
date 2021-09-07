@@ -8,6 +8,10 @@ const ProfileHeader=({profilesData,id})=>{
     const[showModal,setShowModal]=useState(false)
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
+    const sendAndClose=(e)=>{
+        sendProfileData(e)
+        handleClose()
+    }
 
     let thisProfile=profilesData.find(profile=>profile._id===id)
 
@@ -131,7 +135,7 @@ const ProfileHeader=({profilesData,id})=>{
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={sendProfileData}>
+                    <Button variant="primary" onClick={sendAndClose}>
                         Save Changes
                     </Button>
                     </Modal.Footer>
