@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import {Jumbotron, Container,Row,Col,ListGroup,Button,Modal,Form} from 'react-bootstrap'
 import img from '../assets/img.jpg'
+import {putIntoProfile}from '../utils/profilePut'
 
 const ProfileHeader=({profilesData,id})=>{
     const[showModal,setShowModal]=useState(false)
@@ -19,6 +20,11 @@ const ProfileHeader=({profilesData,id})=>{
 
     const thisObj={name, surname, email, username, title, area, bio}
     console.log(thisObj)
+
+    const sendProfileData=(e)=>{
+        e.preventDefault()
+        putIntoProfile({thisObj,id})
+    }
 
 
     return(
@@ -124,7 +130,7 @@ const ProfileHeader=({profilesData,id})=>{
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={sendProfileData}>
                         Save Changes
                     </Button>
                     </Modal.Footer>
