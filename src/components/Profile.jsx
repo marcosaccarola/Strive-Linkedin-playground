@@ -1,6 +1,6 @@
 import React from "react";
 import "./ProfileStyle.css"
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProfileHeader from "./ProfileHeader";
 import ProfileCenter from "./ProfileCenter";
