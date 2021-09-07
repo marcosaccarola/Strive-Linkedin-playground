@@ -9,6 +9,15 @@ const ProfileHeader=({profilesData,id})=>{
 
     let thisProfile=profilesData.find(profile=>profile._id===id)
 
+    const[name,setName]=useState('')
+    const[surname,setSurname]=useState('')
+    const[email,setEmail]=useState('')
+    const[username,setUsername]=useState('')
+    const[title,setTitle]=useState('')
+    const[area,setArea]=useState('')
+    const[bio,setBio]=useState('')
+
+
     return(
         <Jumbotron fluid className="rounded mt-5" style={{paddingTop:0, paddingBottom:0}}>
             <Container style={{paddingLeft:0,paddingRight:0}}>
@@ -53,6 +62,7 @@ const ProfileHeader=({profilesData,id})=>{
                                 type="text" 
                                 placeholder="insert your name" 
                                 value={thisProfile.name} 
+                                onChange={(e)=>setName(e.target.value)}
                                 />
                                 
                                 <Form.Label>surname</Form.Label>
@@ -60,6 +70,7 @@ const ProfileHeader=({profilesData,id})=>{
                                 type="text" 
                                 placeholder="insert your surname"
                                 value={thisProfile.surname}  
+                                onChange={(e)=>setSurname(e.target.value)}
                                 />
 
                                 <Form.Label>email</Form.Label>
@@ -67,6 +78,7 @@ const ProfileHeader=({profilesData,id})=>{
                                 type="email" 
                                 placeholder="insert your email"
                                 value={thisProfile.email} 
+                                onChange={(e)=>setEmail(e.target.value)}
                                 />
 
                                 <Form.Label>username</Form.Label>
@@ -74,6 +86,7 @@ const ProfileHeader=({profilesData,id})=>{
                                 type="text" 
                                 placeholder="insert your username" 
                                 value={thisProfile.username}
+                                onChange={(e)=>setUsername(e.target.value)}
                                 />
 
                                 <Form.Label>title</Form.Label>
@@ -81,6 +94,7 @@ const ProfileHeader=({profilesData,id})=>{
                                 type="text" 
                                 placeholder="insert your title" 
                                 value={thisProfile.title}
+                                onChange={(e)=>setTitle(e.target.value)}
                                 />
 
                                 <Form.Label>area</Form.Label>
@@ -88,6 +102,7 @@ const ProfileHeader=({profilesData,id})=>{
                                 type="text" 
                                 placeholder="insert your area" 
                                 value={thisProfile.area}
+                                onChange={(e)=>setArea(e.target.value)}
                                 />
 
                             </Form.Group>
@@ -97,6 +112,7 @@ const ProfileHeader=({profilesData,id})=>{
                                 as="textarea" 
                                 rows={3} 
                                 value={thisProfile.bio}
+                                onChange={(e)=>setBio(e.target.value)}
                                 />
                             </Form.Group>
                         </Form>
