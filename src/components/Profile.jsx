@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import ProfileHeader from "./ProfileHeader";
 import ProfileCenter from "./ProfileCenter";
 import ProfileRightSide from "./ProfileRightSide";
+import Experience from './Experience';
 import {searchProfile}from '../utils/profiles'
 
 const Profile = () => {
@@ -47,6 +48,7 @@ const Profile = () => {
               <Col md={8} style={{backgroundColor:"red",minHeight:1000}}>
                   <ProfileHeader profilesData={profilesData} id={id}/>
                   <ProfileCenter profilesData={profilesData} id={id} />
+                  <Experience profilesData={profilesData} id={id}/>
               </Col>
               <Col md={4} style={{backgroundColor:"blue",minHeight:1000}}>
                   <ProfileRightSide profilesData={profilesData} setId={setId} />
