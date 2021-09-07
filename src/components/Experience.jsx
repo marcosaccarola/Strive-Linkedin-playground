@@ -1,6 +1,6 @@
 import { Container } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
-// import fetchExp from '../utils/profiles';
+import fetchExp from '../utils/profiles';
 
 const Experience = ({profilesData, id}) => {
     let thisProfile = profilesData.filter(profile => profile.user===id)
@@ -8,31 +8,13 @@ const Experience = ({profilesData, id}) => {
 
     const [experiences, setExperiences] = useState([])
 
-    const PROFILES_URL = "https://striveschool-api.herokuapp.com/api/profile/";
-    const fetchExp = async (query) => {
-        try {
-          const response = await fetch(`${PROFILES_URL}${query}/experiences`, {
-            headers: {
-                Authorization:
-                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo",
-            }
-          })
-          if(response.ok){
-            const data = await response.json()
-            // console.log(data)
-            setExperiences(data)
-            // console.log(experiences)
-
-          } else {
-            throw new Error
-          }
-        } catch (error) {
-          throw error
-        }
+    const getExp = async () => {
+        const expData = await fetchExp(id)
+        setExperiences(expData)
     }
 
     useEffect(() => {
-        fetchExp(id)
+        getExp(id)
     }, [id])
 
     return (
