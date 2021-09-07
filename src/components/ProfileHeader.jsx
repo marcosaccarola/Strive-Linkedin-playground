@@ -9,13 +9,16 @@ const ProfileHeader=({profilesData,id})=>{
 
     let thisProfile=profilesData.find(profile=>profile._id===id)
 
-    const[name,setName]=useState('')
-    const[surname,setSurname]=useState('')
-    const[email,setEmail]=useState('')
-    const[username,setUsername]=useState('')
-    const[title,setTitle]=useState('')
-    const[area,setArea]=useState('')
-    const[bio,setBio]=useState('')
+    const[name,setName]=useState(thisProfile.name)
+    const[surname,setSurname]=useState(thisProfile.surname)
+    const[email,setEmail]=useState(thisProfile.email)
+    const[username,setUsername]=useState(thisProfile.username)
+    const[title,setTitle]=useState(thisProfile.title)
+    const[area,setArea]=useState(thisProfile.area)
+    const[bio,setBio]=useState(thisProfile.bio)
+
+    const thisObj={name, surname, email, username, title, area, bio}
+    console.log(thisObj)
 
 
     return(
@@ -61,7 +64,7 @@ const ProfileHeader=({profilesData,id})=>{
                                 <Form.Control 
                                 type="text" 
                                 placeholder="insert your name" 
-                                value={thisProfile.name} 
+                                value={name} 
                                 onChange={(e)=>setName(e.target.value)}
                                 />
                                 
@@ -69,7 +72,7 @@ const ProfileHeader=({profilesData,id})=>{
                                 <Form.Control 
                                 type="text" 
                                 placeholder="insert your surname"
-                                value={thisProfile.surname}  
+                                value={surname}  
                                 onChange={(e)=>setSurname(e.target.value)}
                                 />
 
@@ -77,7 +80,7 @@ const ProfileHeader=({profilesData,id})=>{
                                 <Form.Control 
                                 type="email" 
                                 placeholder="insert your email"
-                                value={thisProfile.email} 
+                                value={email} 
                                 onChange={(e)=>setEmail(e.target.value)}
                                 />
 
@@ -85,7 +88,7 @@ const ProfileHeader=({profilesData,id})=>{
                                 <Form.Control 
                                 type="text" 
                                 placeholder="insert your username" 
-                                value={thisProfile.username}
+                                value={username}
                                 onChange={(e)=>setUsername(e.target.value)}
                                 />
 
@@ -93,7 +96,7 @@ const ProfileHeader=({profilesData,id})=>{
                                 <Form.Control 
                                 type="text" 
                                 placeholder="insert your title" 
-                                value={thisProfile.title}
+                                value={title}
                                 onChange={(e)=>setTitle(e.target.value)}
                                 />
 
@@ -101,7 +104,7 @@ const ProfileHeader=({profilesData,id})=>{
                                 <Form.Control 
                                 type="text" 
                                 placeholder="insert your area" 
-                                value={thisProfile.area}
+                                value={area}
                                 onChange={(e)=>setArea(e.target.value)}
                                 />
 
@@ -111,7 +114,7 @@ const ProfileHeader=({profilesData,id})=>{
                                 <Form.Control 
                                 as="textarea" 
                                 rows={3} 
-                                value={thisProfile.bio}
+                                value={bio}
                                 onChange={(e)=>setBio(e.target.value)}
                                 />
                             </Form.Group>
