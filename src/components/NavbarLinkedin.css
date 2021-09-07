@@ -1,12 +1,14 @@
 
 .navbar {
     background-color: rgb(251, 251, 251);
-    align-items: center;
-    height: 55px;
+    display: flex !important;
+    align-items: center !important;
+    height: 40px;
     position: fixed;
     top:0;
     width: 100vw;
     z-index: 100;
+    justify-content: center !important;
 }
 /* .navbar svg {
     margin-left: 650px;
@@ -17,14 +19,21 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
+    font-size: 12px;
+    margin-top: 9px;
 }
-.navbar img {
-    height:26px;
-    width:26px; 
+
+.userDropdown .dropIcon{
+    height: 15px;
+    width: 15px;
+}
+.navbar .userDropdown .userImg{
+    height:20px;
+    width:20px; 
     border-radius:20px;
 }
 .userDropdown .userDropdowne {
-    margin-top: -12px;
+    margin-top: -8px;
 }
 .iconsWrapper {
     display: flex;
@@ -35,9 +44,17 @@
 }
 .iconsWrapper .navlink {
     margin-top: -9px;
+    font-size: 10px;
 }
 
 .iconsWrapper img {
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
+}
+
+a::after{
+   visibility: hidden;
+}
+.navbar-light .navbar-nav .userDropdown .nav-link{
+    font-size: 10px;
 }

@@ -25,7 +25,9 @@
 }
 .name:hover{
     text-decoration: underline;
+    cursor: pointer;
 }
 .title:hover{
     text-decoration: underline;
+    cursor: pointer;
 }
