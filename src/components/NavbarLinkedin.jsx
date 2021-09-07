@@ -15,6 +15,7 @@ import messages from "../assets/messages.jpg";
 import bell from "../assets/bell.jpg";
 import square from "../assets/square.jpg";
 import post from "../assets/post.png";
+import search from "../assets/search.png";
 import "./NavbarLinkedin.css";
 
 const NavbarLinkedin = () => {
@@ -39,12 +40,12 @@ const NavbarLinkedin = () => {
             />
           </g>
         </svg>
-        <Form className="d-flex">
+        <Form className="d-flex searchForm">
+          <img src={search} class/>
           <FormControl
-            style={{ height: 30 }}
             type="search"
             placeholder="Search"
-            className="ml-2 mr-5"
+            className="ml-2 mr-5 searchBar"
             aria-label="Search"
           />
         </Form>
@@ -52,8 +53,7 @@ const NavbarLinkedin = () => {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
-            className=" my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
+            className="my-lg-0"
             navbarScroll
           >
              <div className="iconsWrapper mx-2">
