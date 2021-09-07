@@ -49,7 +49,7 @@ const ProfileHeader=({profilesData,id})=>{
                         Other
                     </Button>
 
-                    <Button variant="primary" id="edit-btn" className="mx-1 mt-2 mb-2 ">
+                    <Button variant="primary" id="edit-btn" className="mx-1 mt-2 mb-2 "
 
                     onClick={()=>setShowModal(!showModal)}
                     >
@@ -137,8 +137,7 @@ const ProfileHeader=({profilesData,id})=>{
                     </Modal.Footer>
                 </Modal>
 
-            </Container>
-
+      
         </Jumbotron>
     )
 }
