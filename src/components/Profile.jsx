@@ -4,6 +4,7 @@ import ProfileHeader from "./ProfileHeader";
 import ProfileCenter from "./ProfileCenter";
 import ProfileRightSide from "./ProfileRightSide";
 import {searchProfile}from '../utils/profiles'
+import "./ProfileStyle.css"
 
 const Profile = () => {
 

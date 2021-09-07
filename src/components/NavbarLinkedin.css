@@ -8,9 +8,9 @@
     width: 100vw;
     z-index: 100;
 }
-.navbar svg {
-    margin-left: 350px;
-}
+/* .navbar svg {
+    margin-left: 650px;
+} */
 
 .userDropdown {
     display: flex;
@@ -35,4 +35,9 @@
 }
 .iconsWrapper .navlink {
     margin-top: -9px;
+}
+
+.iconsWrapper img {
+    height: 20px;
+    width: 20px;
 }

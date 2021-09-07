@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import {Jumbotron, Container,Row,Col,ListGroup,Button,Modal,Form} from 'react-bootstrap'
 import img from '../assets/img.jpg'
 import {putIntoProfile}from '../utils/profilePut'
+import "./ProfileHeaderStyle.css"
 
 const ProfileHeader=({profilesData,id})=>{
     const[showModal,setShowModal]=useState(false)
