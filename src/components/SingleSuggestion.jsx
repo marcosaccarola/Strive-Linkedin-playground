@@ -1,5 +1,5 @@
 import React from "react";
-import { ListGroup, Row, Col } from "react-bootstrap";
+import { ListGroup } from "react-bootstrap";
 import "./SingleSuggestionStyle.css";
 
 const SingleSuggestion = ({ profilesData, setId }) => {
