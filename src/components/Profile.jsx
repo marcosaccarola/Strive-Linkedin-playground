@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProfileHeader from "./ProfileHeader";
@@ -46,9 +45,6 @@ const Profile = () => {
         fetchProfiles()
     },[])
 
-
-
-    
     return(
 
       <Container>
@@ -58,8 +54,7 @@ const Profile = () => {
                     <ProfileCenter profilesData={profilesData} id={id} />  
               </Col>
               <Col md={4} className="col">
-                    <ProfileRightSide profilesData={profilesData} setId={setId} />
-                  
+                    <ProfileRightSide profilesData={profilesData} setId={setId} />                 
               </Col>
           </Row>
       </Container>

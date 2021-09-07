@@ -8,20 +8,17 @@ const ProfileCenter=({profilesData,id})=>{
         thisProfile.push(profilesData.find(profile=>profile._id===id))
         }
 
-
-
-
     return(
         <Container className="rounded my-3" >
                 {
-                //thisProfile.lenght>0 &&(
+                profilesData!==undefined && (
                     thisProfile.map(profile=>(
                     <div>
                         <h5>About</h5>
                         {profile.bio}
                     </div>
                     ))
-                //)
+                )
                 }
         </Container>
     )

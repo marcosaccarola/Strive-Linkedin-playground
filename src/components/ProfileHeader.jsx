@@ -1,5 +1,5 @@
-import React,{useState,useEffect} from 'react'
-import {Jumbotron, Container,Row,Col,ListGroup,Button,Modal,Form} from 'react-bootstrap'
+import React,{useState} from 'react'
+import {Jumbotron,ListGroup,Button,Modal,Form} from 'react-bootstrap'
 import img from '../assets/img.jpg'
 import {putIntoProfile}from '../utils/profilePut'
 import "./ProfileHeaderStyle.css"
@@ -8,8 +8,8 @@ import {searchProfile}from '../utils/profiles'
 const ProfileHeader=({profilesData,id,setProfilesData})=>{
 
     const[showModal,setShowModal]=useState(false)
-    const handleClose = () => setShowModal(false);
-    const handleShow = () => setShowModal(true);
+    const handleClose=()=>setShowModal(false);
+    const handleShow=()=>setShowModal(true);
     const[name,setName]=useState()
     const[surname,setSurname]=useState()
     const[email,setEmail]=useState()
@@ -21,45 +21,22 @@ const ProfileHeader=({profilesData,id,setProfilesData})=>{
     let sendAndClose=''
     let thisProfile={}
     if(profilesData!==undefined){
-        //thisProfile.push(profilesData.find(profile=>profile._id===id))
         thisProfile=profilesData.find(profile=>profile._id===id)
-        console.log(thisProfile)
-        console.log(thisProfile.name)
-        
-        //setName(thisProfile.name)
-/*
-            setSurname(thisProfile.surname),
-            setEmail(thisProfile.email),
-            setUsername(thisProfile.username),
-            setTitle(thisProfile.title),
-            setArea(thisProfile.area),
-            setBio(thisProfile.bio)
-*/
+        //console.log(thisProfile)
+        //console.log(thisProfile.name)
             
         const thisObj={name, surname, email, username, title, area, bio}
-        //console.log(thisObj)
-        
         
         sendAndClose=(e)=>{
             sendProfileData(e)
             handleClose()
             fetchProfiles()
-        }
-        
+        }        
         const sendProfileData=async(e)=>{
             e.preventDefault()
             putIntoProfile({thisObj,id})
-            /*
-            setName(thisObj.name)
-            setSurname(thisObj.surname)
-            setEmail(thisObj.email)
-            setUsername(thisObj.username)
-            setTitle(thisObj.title)
-            setArea(thisObj.area)
-            setBio(thisObj.bio)
-            */
-        }
-        const fetchProfiles = async () => {
+        }     
+        const fetchProfiles=async()=>{
             try {
                 const data=await searchProfile();
                 // console.log(data)
@@ -68,17 +45,9 @@ const ProfileHeader=({profilesData,id,setProfilesData})=>{
             } catch (error) {
                 //console.log(error);
             }
-        };
-
-    
-        
+        };  
     }
     
-        
-
-
-
-
     return(profilesData!==undefined && (
         <Jumbotron fluid className="mt-5 jumbocontainer">
            
@@ -104,11 +73,9 @@ const ProfileHeader=({profilesData,id,setProfilesData})=>{
 
                     onClick={()=>setShowModal(!showModal)}
                     >
-
                         <span>Pencil Icon</span>
                     </Button>
                 </div>
-
 
                 <Modal show={showModal} onHide={handleShow}>
                     <Modal.Header closeButton>
@@ -187,13 +154,10 @@ const ProfileHeader=({profilesData,id,setProfilesData})=>{
                         Save Changes
                     </Button>
                     </Modal.Footer>
-                </Modal>
-
-            
+                </Modal>            
 
         </Jumbotron>
     ))
-
 }
 
 export default ProfileHeader
