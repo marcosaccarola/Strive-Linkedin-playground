@@ -20,31 +20,33 @@ const ProfileHeader=({profilesData,id})=>{
     const[bio,setBio]=useState()
     
     let sendAndClose=''
-    const thisProfile=[]
+    let thisProfile={}
     if(profilesData!==undefined){
-        thisProfile.push(profilesData.find(profile=>profile._id===id))
+        //thisProfile.push(profilesData.find(profile=>profile._id===id))
+        thisProfile=profilesData.find(profile=>profile._id===id)
         console.log(thisProfile)
-        /*
-        thisProfile.map((profile)=>{(
-
-            setName(profile.name),
-            setSurname(profile.surname),
-            setEmail(profile.email),
-            setUsername(profile.username),
-            setTitle(profile.title),
-            setArea(profile.area),
-            setBio(profile.bio),
-        )
-        }
-            )*/
+        console.log(thisProfile.name)
+        
+        //setName(thisProfile.name)
+/*
+            setSurname(thisProfile.surname),
+            setEmail(thisProfile.email),
+            setUsername(thisProfile.username),
+            setTitle(thisProfile.title),
+            setArea(thisProfile.area),
+            setBio(thisProfile.bio)
+*/
             
         const thisObj={name, surname, email, username, title, area, bio}
         //console.log(thisObj)
+
         
         sendAndClose=(e)=>{
             sendProfileData(e)
             handleClose()
         }
+        
+
         
         const sendProfileData=async(e)=>{
             e.preventDefault()
@@ -57,6 +59,7 @@ const ProfileHeader=({profilesData,id})=>{
             setArea(thisObj.area)
             setBio(thisObj.bio)
         }
+        
     }
     
         
@@ -72,9 +75,9 @@ const ProfileHeader=({profilesData,id})=>{
                 </div>
               
                             <ListGroup className="listgroup">
-                                <p className="text-left">{name} {surname} </p>
-                                <p className="text-left"> {title}</p>
-                                <p className="text-left">{area}</p>
+                                <p className="text-left">{thisProfile.name} {thisProfile.surname} </p>
+                                <p className="text-left"> {thisProfile.title}</p>
+                                <p className="text-left">{thisProfile.area}</p>
                             </ListGroup>
                    
                 <div className="d-flex">
