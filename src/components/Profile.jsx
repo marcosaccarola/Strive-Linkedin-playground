@@ -1,4 +1,3 @@
-import React from "react";
 import "./ProfileStyle.css"
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
@@ -44,22 +43,6 @@ const Profile = () => {
 
     
     return(
-       <div>
-            <Container className="profileBody">
-            <Row>
-                <Col md={8}
-                className="mt-5 col"
-                >
-                    <ProfileHeader/>
-                    <ProfileCenter/>
-                </Col>
-                <Col md={4}
-                 className="mt-5 col"
-                >
-                    <ProfileRightSide />
-                </Col>
-            </Row>
-        </Container>
       <Container>
           <Row style={{marginTop:50}}>
               <Col md={8} style={{backgroundColor:"red",minHeight:1000}}>
@@ -68,10 +51,10 @@ const Profile = () => {
               </Col>
               <Col md={4} style={{backgroundColor:"blue",minHeight:1000}}>
                   <ProfileRightSide profilesData={profilesData} setId={setId} />
+                  
               </Col>
           </Row>
       </Container>
-       </div>
     )
 }
 
