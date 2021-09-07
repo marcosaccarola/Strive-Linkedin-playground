@@ -5,6 +5,9 @@ import {putIntoProfile}from '../utils/profilePut'
 import "./ProfileHeaderStyle.css"
 
 const ProfileHeader=({profilesData,id})=>{
+
+    
+
     const[showModal,setShowModal]=useState(false)
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
@@ -13,31 +16,32 @@ const ProfileHeader=({profilesData,id})=>{
         handleClose()
     }
 
-    let thisProfile=profilesData.find(profile=>profile._id===id)
+        let thisProfile=profilesData.find(profile=>profile._id===id)
+        const[name,setName]=useState(thisProfile.name)
+        const[surname,setSurname]=useState(thisProfile.surname)
+        const[email,setEmail]=useState(thisProfile.email)
+        const[username,setUsername]=useState(thisProfile.username)
+        const[title,setTitle]=useState(thisProfile.title)
+        const[area,setArea]=useState(thisProfile.area)
+        const[bio,setBio]=useState(thisProfile.bio)
+        const thisObj={name, surname, email, username, title, area, bio}
+        console.log(thisObj)
+    
+        const sendProfileData=async(e)=>{
+            e.preventDefault()
+            putIntoProfile({thisObj,id})
+            setBio(thisObj.name)
+            setBio(thisObj.surname)
+            setBio(thisObj.email)
+            setBio(thisObj.username)
+            setBio(thisObj.title)
+            setBio(thisObj.area)
+            setBio(thisObj.bio)
+    
+        }
+        
 
-    const[name,setName]=useState(thisProfile.name)
-    const[surname,setSurname]=useState(thisProfile.surname)
-    const[email,setEmail]=useState(thisProfile.email)
-    const[username,setUsername]=useState(thisProfile.username)
-    const[title,setTitle]=useState(thisProfile.title)
-    const[area,setArea]=useState(thisProfile.area)
-    const[bio,setBio]=useState(thisProfile.bio)
 
-    const thisObj={name, surname, email, username, title, area, bio}
-    console.log(thisObj)
-
-    const sendProfileData=async(e)=>{
-        e.preventDefault()
-        putIntoProfile({thisObj,id})
-        setBio(thisObj.name)
-        setBio(thisObj.surname)
-        setBio(thisObj.email)
-        setBio(thisObj.username)
-        setBio(thisObj.title)
-        setBio(thisObj.area)
-        setBio(thisObj.bio)
-
-    }
 
 
     return(
@@ -153,6 +157,7 @@ const ProfileHeader=({profilesData,id})=>{
 
         </Jumbotron>
     )
+
 }
 
 export default ProfileHeader

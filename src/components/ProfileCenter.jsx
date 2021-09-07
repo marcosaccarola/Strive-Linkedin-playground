@@ -4,7 +4,12 @@ import "./ProfileCenterStyle.css"
 const ProfileCenter=({profilesData,id})=>{
     
     let thisProfile=[]
-    thisProfile.push(profilesData.find(profile=>profile._id===id))
+    if(profilesData!==undefined){
+        thisProfile.push(profilesData.find(profile=>profile._id===id))
+        }
+
+
+
 
     return(
         <Container className="rounded my-3" >
@@ -20,5 +25,6 @@ const ProfileCenter=({profilesData,id})=>{
                 }
         </Container>
     )
+
 }
 export default ProfileCenter
