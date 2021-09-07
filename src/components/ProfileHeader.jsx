@@ -7,44 +7,64 @@ import "./ProfileHeaderStyle.css"
 const ProfileHeader=({profilesData,id})=>{
 
     
-
+    
     const[showModal,setShowModal]=useState(false)
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
-    const sendAndClose=(e)=>{
-        sendProfileData(e)
-        handleClose()
-    }
-
-        let thisProfile=profilesData.find(profile=>profile._id===id)
-        const[name,setName]=useState(thisProfile.name)
-        const[surname,setSurname]=useState(thisProfile.surname)
-        const[email,setEmail]=useState(thisProfile.email)
-        const[username,setUsername]=useState(thisProfile.username)
-        const[title,setTitle]=useState(thisProfile.title)
-        const[area,setArea]=useState(thisProfile.area)
-        const[bio,setBio]=useState(thisProfile.bio)
-        const thisObj={name, surname, email, username, title, area, bio}
-        console.log(thisObj)
+    const[name,setName]=useState()
+    const[surname,setSurname]=useState()
+    const[email,setEmail]=useState()
+    const[username,setUsername]=useState()
+    const[title,setTitle]=useState()
+    const[area,setArea]=useState()
+    const[bio,setBio]=useState()
     
+    let sendAndClose=''
+    const thisProfile=[]
+    if(profilesData!==undefined){
+        thisProfile.push(profilesData.find(profile=>profile._id===id))
+        console.log(thisProfile)
+        /*
+        thisProfile.map((profile)=>{(
+
+            setName(profile.name),
+            setSurname(profile.surname),
+            setEmail(profile.email),
+            setUsername(profile.username),
+            setTitle(profile.title),
+            setArea(profile.area),
+            setBio(profile.bio),
+        )
+        }
+            )*/
+            
+        const thisObj={name, surname, email, username, title, area, bio}
+        //console.log(thisObj)
+        
+        sendAndClose=(e)=>{
+            sendProfileData(e)
+            handleClose()
+        }
+        
         const sendProfileData=async(e)=>{
             e.preventDefault()
             putIntoProfile({thisObj,id})
-            setBio(thisObj.name)
-            setBio(thisObj.surname)
-            setBio(thisObj.email)
-            setBio(thisObj.username)
-            setBio(thisObj.title)
-            setBio(thisObj.area)
+            setName(thisObj.name)
+            setSurname(thisObj.surname)
+            setEmail(thisObj.email)
+            setUsername(thisObj.username)
+            setTitle(thisObj.title)
+            setArea(thisObj.area)
             setBio(thisObj.bio)
-    
         }
+    }
+    
         
 
 
 
 
-    return(
+    return(profilesData!==undefined && (
         <Jumbotron fluid className="mt-5 jumbocontainer">
            
                 <div className="backgroundImg">
@@ -52,9 +72,9 @@ const ProfileHeader=({profilesData,id})=>{
                 </div>
               
                             <ListGroup className="listgroup">
-                                <p className="text-left">{thisProfile.name} {thisProfile.surname} </p>
-                                <p className="text-left"> {thisProfile.title}</p>
-                                <p className="text-left">{thisProfile.area}</p>
+                                <p className="text-left">{name} {surname} </p>
+                                <p className="text-left"> {title}</p>
+                                <p className="text-left">{area}</p>
                             </ListGroup>
                    
                 <div className="d-flex">
@@ -156,7 +176,7 @@ const ProfileHeader=({profilesData,id})=>{
             
 
         </Jumbotron>
-    )
+    ))
 
 }
 

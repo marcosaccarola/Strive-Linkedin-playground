@@ -54,7 +54,7 @@ const Profile = () => {
       <Container>
           <Row style={{marginTop:50}}>
               <Col md={8} className="col">
-                    {/* <ProfileHeader profilesData={profilesData} id={id}/> */}
+                    <ProfileHeader profilesData={profilesData} id={id}/>
                     <ProfileCenter profilesData={profilesData} id={id} />  
               </Col>
               <Col md={4} className="col">

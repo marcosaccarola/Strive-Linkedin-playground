@@ -8,7 +8,7 @@ const SingleSuggestion = ({ profilesData, setId }) => {
     teamArr.push(profilesData.find(profile=>profile.surname==='Saccarola'))
     teamArr.push(profilesData.find(profile=>profile.surname==='Maccapani'))
     //teamArr.push(profilesData.find(profile=>profile.surname==='Tumaite'))
-    console.log(teamArr)
+    //console.log(teamArr)
     }
   return (
     <ListGroup>
