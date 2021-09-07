@@ -47,22 +47,57 @@ const ProfileHeader=({profilesData,id})=>{
                     <Modal.Body>
                         <Form>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+
                                 <Form.Label>name</Form.Label>
-                                <Form.Control type="text" placeholder="insert your name" />
+                                <Form.Control 
+                                type="text" 
+                                placeholder="insert your name" 
+                                value={thisProfile.name} 
+                                />
+                                
                                 <Form.Label>surname</Form.Label>
-                                <Form.Control type="text" placeholder="insert your surname" />
+                                <Form.Control 
+                                type="text" 
+                                placeholder="insert your surname"
+                                value={thisProfile.surname}  
+                                />
+
                                 <Form.Label>email</Form.Label>
-                                <Form.Control type="email" placeholder="insert your email" />
+                                <Form.Control 
+                                type="email" 
+                                placeholder="insert your email"
+                                value={thisProfile.email} 
+                                />
+
                                 <Form.Label>username</Form.Label>
-                                <Form.Control type="text" placeholder="insert your username" />
+                                <Form.Control 
+                                type="text" 
+                                placeholder="insert your username" 
+                                value={thisProfile.username}
+                                />
+
                                 <Form.Label>title</Form.Label>
-                                <Form.Control type="text" placeholder="insert your title" />
+                                <Form.Control 
+                                type="text" 
+                                placeholder="insert your title" 
+                                value={thisProfile.title}
+                                />
+
                                 <Form.Label>area</Form.Label>
-                                <Form.Control type="text" placeholder="insert your area" />
+                                <Form.Control 
+                                type="text" 
+                                placeholder="insert your area" 
+                                value={thisProfile.area}
+                                />
+
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                 <Form.Label>bio</Form.Label>
-                                <Form.Control as="textarea" rows={3} />
+                                <Form.Control 
+                                as="textarea" 
+                                rows={3} 
+                                value={thisProfile.bio}
+                                />
                             </Form.Group>
                         </Form>
                     </Modal.Body>
