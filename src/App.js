@@ -3,9 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import NavbarLinkedin from "./components/NavbarLinkedin";
-import Profile from './components/Profile'
+import Directory from './components/Directory';
 import CustomFooter from './components/CustomFooter';
-
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -14,14 +14,16 @@ function App() {
         <Router>
           <Route>
             <NavbarLinkedin />
+
             <Profile />
+
+            <Directory />
             <CustomFooter />
           </Route>
         </Router>
       </header>
-     </div>
-  )
+    </div>
+  );
 }
 
 export default App;
-
