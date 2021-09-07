@@ -2,7 +2,7 @@
 .navbar {
     background-color: rgb(251, 251, 251);
     align-items: center;
-    height: 70px;
+    height: 55px;
     position: fixed;
     top:0;
     width: 100vw;
@@ -24,7 +24,7 @@
     border-radius:20px;
 }
 .userDropdown .userDropdowne {
-    margin-top: -9px;
+    margin-top: -12px;
 }
 .iconsWrapper {
     display: flex;
