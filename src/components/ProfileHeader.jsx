@@ -1,6 +1,7 @@
 import React from 'react'
 import {Jumbotron, Container,Row,Col,ListGroup,Button} from 'react-bootstrap'
 import img from '../assets/img.jpg'
+import "./ProfileHeaderStyle.css"
 
 const ProfileHeader=()=>{
 

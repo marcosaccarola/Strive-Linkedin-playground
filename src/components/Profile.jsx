@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./ProfileStyle.css"
 import { Container, Row, Col } from "react-bootstrap";
 import ProfileHeader from "./ProfileHeader";
 import ProfileCenter from "./ProfileCenter";
@@ -11,14 +11,14 @@ const Profile=()=>{
     return(
         <Container className="profileBody">
             <Row>
-                <Col md={8} style={{backgroundColor:"white",minHeight:1000}}
-                className="mt-5"
+                <Col md={8}
+                className="mt-5 col"
                 >
                     <ProfileHeader/>
                     <ProfileCenter/>
                 </Col>
-                <Col md={4} style={{backgroundColor:"white",minHeight:1000}}
-                 className="mt-5"
+                <Col md={4}
+                 className="mt-5 col"
                 >
                     <ProfileRightSide />
                 </Col>
