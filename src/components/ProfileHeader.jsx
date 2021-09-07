@@ -1,10 +1,9 @@
-import React from 'react'
-import {Jumbotron, Container,Row,Col,ListGroup,Button} from 'react-bootstrap'
+import { Jumbotron, Container, Row, Col, ListGroup, Button } from 'react-bootstrap'
 import img from '../assets/img.jpg'
 
-const ProfileHeader=({profilesData,id})=>{
+const ProfileHeader = ({profilesData,id})=>{
 
-    let thisProfile=profilesData.find(profile=>profile._id===id)
+    let thisProfile = profilesData.find(profile=>profile._id===id)
 
     return(
         <Jumbotron fluid className="rounded mt-5" style={{paddingTop:0, paddingBottom:0}}>
@@ -34,7 +33,6 @@ const ProfileHeader=({profilesData,id})=>{
                         <span>Pencil Icon</span>
                     </Button>
                 </Container>
-
             </Container>
         </Jumbotron>
     )
