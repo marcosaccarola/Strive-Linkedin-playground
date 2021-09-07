@@ -68,6 +68,7 @@ const Profile = () => {
               </Col>
               <Col md={4} style={{backgroundColor:"blue",minHeight:1000}}>
                   <ProfileRightSide profilesData={profilesData} setId={setId} />
+                  
               </Col>
           </Row>
       </Container>
