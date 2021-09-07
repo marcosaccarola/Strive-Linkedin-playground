@@ -1,0 +1,32 @@
+.footer-links ul {
+    list-style: none;
+    font-size: .9rem;
+    padding-left: 0;
+}
+
+.footer-links ul li {
+    padding-right: 1rem;
+}
+
+.footer-links a {
+    color: rgba(73, 73, 73, 0.938);
+}
+
+.footer-links ul li a:hover {
+    color: rgb(33, 102, 196);
+}
+
+.footer-links .copyright--container img {
+    width: 40%;
+}
+
+
+/* .copyright--container span {
+    vertical-align: baseline;
+} */
+
+@media (max-width: 769px) {
+    .footer-links ul {
+        flex-direction: column;
+    }
+}
