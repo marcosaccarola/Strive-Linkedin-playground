@@ -1,10 +1,10 @@
-import "./ProfileStyle.css"
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProfileHeader from "./ProfileHeader";
 import ProfileCenter from "./ProfileCenter";
 import ProfileRightSide from "./ProfileRightSide";
 import {searchProfile}from '../utils/profiles'
+import "./ProfileStyle.css"
 
 const Profile = () => {
 
