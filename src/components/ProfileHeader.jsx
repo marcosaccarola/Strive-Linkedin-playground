@@ -1,9 +1,11 @@
 import React,{useState} from 'react'
-import {Jumbotron, Container,Row,Col,ListGroup,Button} from 'react-bootstrap'
+import {Jumbotron, Container,Row,Col,ListGroup,Button,Modal} from 'react-bootstrap'
 import img from '../assets/img.jpg'
 
 const ProfileHeader=({profilesData,id})=>{
     const[showModal,setShowModal]=useState(false)
+    const handleClose = () => setShowModal(false);
+    const handleShow = () => setShowModal(true);
 
     let thisProfile=profilesData.find(profile=>profile._id===id)
 
@@ -32,11 +34,26 @@ const ProfileHeader=({profilesData,id})=>{
                         Other
                     </Button>
                     <Button variant="light" id="edit-btn" className="mx-1 mt-2 mb-2 rounded"
-                    onClick={(e)=>setShowModal(!showModal)}
+                    onClick={()=>setShowModal(!showModal)}
                     >
                         <span>Pencil Icon</span>
                     </Button>
                 </Container>
+
+                <Modal show={showModal} onHide={handleShow}>
+                    <Modal.Header closeButton>
+                    <Modal.Title>Modal heading</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                    <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={handleClose}>
+                        Save Changes
+                    </Button>
+                    </Modal.Footer>
+                </Modal>
 
             </Container>
         </Jumbotron>
