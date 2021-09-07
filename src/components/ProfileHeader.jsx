@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {Jumbotron, Container,Row,Col,ListGroup,Button,Modal} from 'react-bootstrap'
+import {Jumbotron, Container,Row,Col,ListGroup,Button,Modal,Form} from 'react-bootstrap'
 import img from '../assets/img.jpg'
 
 const ProfileHeader=({profilesData,id})=>{
@@ -42,9 +42,30 @@ const ProfileHeader=({profilesData,id})=>{
 
                 <Modal show={showModal} onHide={handleShow}>
                     <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Change Introduction</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                    <Modal.Body>
+                        <Form>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                <Form.Label>name</Form.Label>
+                                <Form.Control type="text" placeholder="insert your name" />
+                                <Form.Label>surname</Form.Label>
+                                <Form.Control type="text" placeholder="insert your surname" />
+                                <Form.Label>email</Form.Label>
+                                <Form.Control type="email" placeholder="insert your email" />
+                                <Form.Label>username</Form.Label>
+                                <Form.Control type="text" placeholder="insert your username" />
+                                <Form.Label>title</Form.Label>
+                                <Form.Control type="text" placeholder="insert your title" />
+                                <Form.Label>area</Form.Label>
+                                <Form.Control type="text" placeholder="insert your area" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                                <Form.Label>bio</Form.Label>
+                                <Form.Control as="textarea" rows={3} />
+                            </Form.Group>
+                        </Form>
+                    </Modal.Body>
                     <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
