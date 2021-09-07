@@ -12,10 +12,11 @@ const ExperiencesList = ({ profilesData, id }) => {
   const getExp = async () => {
     const experiencesData = await fetchExp(id);
     setExperiences(experiencesData);
+    // console.log(experiencesData)
   };
 
   useEffect(() => {
-    getExp(id);
+    getExp();
   }, [id]);
 
   return (
@@ -26,6 +27,7 @@ const ExperiencesList = ({ profilesData, id }) => {
       >
         <div>
           {experiences.map((exp) => (
+            // console.log(exp)
             <Container className="d-flex justify-content-between">
               <SingleExperience
                 role={exp.role}
@@ -33,13 +35,15 @@ const ExperiencesList = ({ profilesData, id }) => {
                 description={exp.description}
                 startDate={exp.startDate}
                 endDate={exp.endDate}
-                userId={id}
+                userId={exp.user}
+                expId={exp._id}
+                key={exp._id}
               />
             </Container>
           ))}
         </div>
         {/* hard coded Marco's id, refactor needed */}
-        {id === "61360d537be6c10015f9dbac" && <ExperienceModal />}
+        {id === "61360d537be6c10015f9dbac" && <ExperienceModal id={id}/>}
       </Container>
     </>
   );
