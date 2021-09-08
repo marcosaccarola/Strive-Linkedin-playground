@@ -92,11 +92,11 @@ const NavbarLinkedin = () => {
               >
            
                 <NavDropdown.Item href="#action4">
-                  Another action
+                  Go to Profile Page
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action5">
-                  Something else here
+                  Go to Profile Page
                 </NavDropdown.Item>
               </NavDropdown>
             </div>   </Link>
