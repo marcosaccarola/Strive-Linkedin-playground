@@ -33,18 +33,14 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
         const thisObj={name, surname, email, username, title, area, image, bio}
         
         
-        sendAndClose=(e)=>{
+        sendAndClose=async(e)=>{
             e.preventDefault()
-            const form=e.currentTarget
-            if(!form.checkValidity()){
-                e.preventDefault()
-                e.stopPropagation()
-            }
-            sendProfileData(e)
+            const firstWaiter=await sendProfileData(e)
             handleClose()
-            fetchProfiles()
+            const secondWaiter=await fetchProfiles()
+
         }     
-        const sendProfileData=async(e)=>{
+        const sendProfileData=(e)=>{
             e.preventDefault()
             try {
                 putIntoProfile({thisObj,id})
