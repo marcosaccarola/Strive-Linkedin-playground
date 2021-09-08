@@ -32,17 +32,20 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
             
         const thisObj={name, surname, email, username, title, area, image, bio}
         
+        
         sendAndClose=(e)=>{
-            sendProfileData(e)
-            handleClose()
-            fetchProfiles()
-        }        
-        const sendProfileData=async(e)=>{
+            e.preventDefault()
             const form=e.currentTarget
-            if(form.checkValidity()===false){
+            if(!form.checkValidity()){
                 e.preventDefault()
                 e.stopPropagation()
             }
+            sendProfileData(e)
+            handleClose()
+            fetchProfiles()
+        }     
+        const sendProfileData=async(e)=>{
+            e.preventDefault()
             try {
                 putIntoProfile({thisObj,id})
             } catch (error) {
@@ -64,7 +67,7 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
             }
         };  
     }
-
+    
     const [validated, setValidated] = useState(false)
     
     return(profilesData!==undefined && (
@@ -102,6 +105,7 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
                     <Modal.Title>Change Introduction</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+
                         <Form noValidate validated={validated}>
                             <Form.Group className="mb-3"  controlId="validationCustom01">
 
@@ -113,10 +117,14 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
                                 defaultValue={thisProfile.name} 
                                 onChange={(e)=>setName(e.target.value)}
                                 />
+                                    <Form.Control.Feedback>Well done!</Form.Control.Feedback>
+                                    <Form.Control.Feedback type="invalid">
+                                        Please choose a name!
+                                    </Form.Control.Feedback>
                                 
                                 <Form.Label>surname</Form.Label>
                                 <Form.Control 
-                                required
+                                
                                 type="text" 
                                 defaultValue={thisProfile.surname}
                                 //value={surname}  
@@ -125,7 +133,7 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
 
                                 <Form.Label>email</Form.Label>
                                 <Form.Control 
-                                required
+                                
                                 type="email" 
                                 defaultValue={thisProfile.email}
                                 //value={email} 
@@ -134,7 +142,7 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
 
                                 <Form.Label>username</Form.Label>
                                 <Form.Control 
-                                required
+                                
                                 type="text" 
                                 defaultValue={thisProfile.username} 
                                 //value={username}
@@ -143,7 +151,7 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
 
                                 <Form.Label>title</Form.Label>
                                 <Form.Control 
-                                required
+                                
                                 type="text" 
                                 defaultValue={thisProfile.title} 
                                 //value={title}
@@ -152,7 +160,7 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
 
                                 <Form.Label>area</Form.Label>
                                 <Form.Control 
-                                required
+                                
                                 type="text" 
                                 defaultValue={thisProfile.area}
                                 //value={area}
@@ -161,7 +169,7 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
 
                                 <Form.Label>image</Form.Label>
                                 <Form.Control 
-                                required
+                                
                                 type="text" 
                                 defaultValue={thisProfile.image}
                                 //value={image}
@@ -172,7 +180,7 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
                             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                 <Form.Label>bio</Form.Label>
                                 <Form.Control 
-                                required
+                                
                                 as="textarea"
                                 defaultValue={thisProfile.bio} 
                                 rows={3} 
