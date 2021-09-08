@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProfileHeader from "./ProfileHeader";
@@ -9,8 +8,10 @@ import {searchProfile}from '../utils/profiles'
 import "./ProfileStyle.css"
 
 const Profile = () => {
-
-    const[profilesData,setProfilesData]=useState([
+    
+    const[profilesData,setProfilesData]=useState(
+        /*
+        [
         {
             "_id": "61360d537be6c10015f9dbac",
             "name": "Marco",
@@ -24,8 +25,10 @@ const Profile = () => {
             "createdAt": "2021-09-06T12:45:07.983Z",
             "updatedAt": "2021-09-06T22:45:17.877Z",
             "__v": 0
-        }
-    ])
+        }    
+    ]
+    */
+    )
     const[id,setId] = useState('61360d537be6c10015f9dbac')
 
     const fetchProfiles = async () => {
@@ -33,9 +36,9 @@ const Profile = () => {
 			const data=await searchProfile();
             // console.log(data)
 			setProfilesData(data);
-            console.log(profilesData)
+            //console.log(profilesData)
 		} catch (error) {
-			console.log(error);
+			//console.log(error);
 		}
 	};
 
@@ -43,19 +46,19 @@ const Profile = () => {
         fetchProfiles()
     },[])
 
-    
     return(
 
       <Container>
           <Row style={{marginTop:50}}>
               <Col md={8} className="col">
-                  <ProfileHeader profilesData={profilesData} id={id}/>
+
+                  <ProfileHeader profilesData={profilesData} id={id} setProfilesData={setProfilesData}/>               
                   <ProfileCenter profilesData={profilesData} id={id} />
                   <ExperiencesList profilesData={profilesData} id={id}/>
+
               </Col>
               <Col md={4} className="col">
-                  <ProfileRightSide profilesData={profilesData} setId={setId} />
-                  
+                    <ProfileRightSide profilesData={profilesData} setId={setId} />                 
               </Col>
           </Row>
       </Container>

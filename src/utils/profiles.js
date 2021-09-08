@@ -13,6 +13,7 @@ export const searchProfile = async () => {
     });
 
     if (response.ok) {
+      console.log(response)
       const result = await response.json();
       return result;
     } else {
