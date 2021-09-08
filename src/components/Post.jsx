@@ -11,8 +11,8 @@ const Post = ({ postData }) => {
   const handleClose=()=>setShowModal(false);
   const handleShow=()=>setShowModal(true);
 
-  const[text, setText]=useState()
-  const[thisNewPost, setThisNewPost]=useState([])
+  const[text, setText]=useState("")
+   const[thisNewPost, setThisNewPost]=useState([])
  
 
   const sendAndClose=(e)=>{
@@ -25,6 +25,7 @@ const sendProfileData=async(e)=>{
      putIntoPost({thisNewPost})
      console.log("nuovo post",thisNewPost)
 } 
+
   return (
     <div>
       <Button
@@ -54,8 +55,7 @@ const sendProfileData=async(e)=>{
                                 value={text}
                                  onChange={(e)=>setText(e.target.value)}
                                 />
-                                
-
+                    
                     </Form.Group>
                         </Form>
                     </Modal.Body>
