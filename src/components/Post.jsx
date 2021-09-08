@@ -1,6 +1,8 @@
 import { Row, Card, Col, ListGroup, ListGroupItem, Modal, Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import {putIntoPost}from '../utils/PostPut'
+import { getPosts } from "../utils/Post";
+import NewPost from "./NewPost";
 
 const Post = ({ postData }) => {
   console.log("this is postdata", postData);
@@ -9,16 +11,19 @@ const Post = ({ postData }) => {
   const handleClose=()=>setShowModal(false);
   const handleShow=()=>setShowModal(true);
 
-  const[text,setText]=useState()
-  const thisNewPost = {text}
+  const[text, setText]=useState()
+  const[thisNewPost, setThisNewPost]=useState([])
+ 
 
   const sendAndClose=(e)=>{
     sendProfileData(e)
     handleClose()
+    getPosts()
 }
 const sendProfileData=async(e)=>{
     e.preventDefault()
      putIntoPost({thisNewPost})
+     console.log("nuovo post",thisNewPost)
 } 
   return (
     <div>
@@ -30,6 +35,9 @@ const sendProfileData=async(e)=>{
       >
         <span>New Post</span>
       </Button>
+
+  <NewPost setThisNewPost= {thisNewPost} />
+
 
       <Modal show={showModal} onHide={handleShow}>
                     <Modal.Header closeButton>
