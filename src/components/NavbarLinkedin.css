@@ -10,9 +10,9 @@
     z-index: 100;
     justify-content: center !important;
 }
-/* .navbar svg {
-    margin-left: 650px;
-} */
+.navbar svg {
+    margin-top: -2px;
+}
 
 .userDropdown {
     display: flex;
@@ -23,7 +23,7 @@
     margin-top: 9px;
 }
 
-.userDropdown .dropIcon{
+.userDropdown .dropIcon{ /* last two icons*/
     height: 15px;
     width: 15px;
 }
@@ -32,19 +32,24 @@
     width:20px; 
     border-radius:20px;
 }
-.userDropdown .userDropdowne {
+.userDropdown .userDropdowne { /* last three buttons */
     margin-top: -8px;
+    margin-left: 8px;
 }
-.iconsWrapper {
+.iconsWrapper { /* first fife buttons */
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
     margin-top: 6px;
 }
-.iconsWrapper .navlink {
+.iconsWrapper:hover {
+    text-decoration: underline;
+}
+.iconsWrapper .navlink { /* first fife labels */
     margin-top: -9px;
-    font-size: 10px;
+    font-size: 9px;
+    margin-bottom: -6px;
 }
 
 .iconsWrapper img {
@@ -58,3 +63,42 @@ a::after{
 .navbar-light .navbar-nav .userDropdown .nav-link{
     font-size: 10px;
 }
+
+.searchBar {
+    max-height: 100px;
+    height: 25px;
+    border:transparent;
+    background-color: #EEF3F8;
+    margin-top: -2px;
+    text-align:left;
+}
+.collapsed{
+    height: 30px;
+    width: 30px;
+    margin-top: -6px;
+}
+.collapsed .navbar-toggler-icon {
+    height: 30px;
+    width: 30px;
+    margin-top: -6px;
+    margin-left: -13px;
+}
+.searchBar::placeholder{
+    color: #5f6163de;
+    font-size: 14px;
+    padding: 0 8px 0 40px;
+}
+.searchBar:focus{
+   width: 280px;
+   border-color: rgb(161, 160, 160);
+}
+.searchForm img{
+    position: absolute;
+    left: 63px;
+    top: 9px;
+}
+.searchForm{
+    left: 63px;
+    top: 4px;
+}
+
