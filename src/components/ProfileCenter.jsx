@@ -2,9 +2,7 @@ import {Container} from 'react-bootstrap'
 import "./ProfileCenterStyle.css"
 
 const ProfileCenter=({profilesData,id})=>{
-    
-    let thisProfile=[]
-    thisProfile.push(profilesData.find(profile=>profile._id===id))
+    let thisProfile = profilesData.find(profile => profile._id === id)
 
     return(
         <Container className="rounded my-3" >

@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {Jumbotron, Container,Row,Col,ListGroup,Button,Modal,Form} from 'react-bootstrap'
+import {Jumbotron, Container, Row, Col, ListGroup, Button, Modal, Form} from 'react-bootstrap'
 import img from '../assets/img.jpg'
 import {putIntoProfile}from '../utils/profilePut'
 import "./ProfileHeaderStyle.css"
@@ -9,7 +9,7 @@ const ProfileHeader=({profilesData,id})=>{
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
 
-    let thisProfile=profilesData.find(profile=>profile._id===id)
+    let thisProfile = profilesData.find(profile=>profile._id===id)
 
     const[name,setName]=useState(thisProfile.name)
     const[surname,setSurname]=useState(thisProfile.surname)
@@ -56,6 +56,7 @@ const ProfileHeader=({profilesData,id})=>{
 
                         <span>Pencil Icon</span>
                     </Button>
+
                 </div>
 
 
@@ -136,9 +137,6 @@ const ProfileHeader=({profilesData,id})=>{
                     </Button>
                     </Modal.Footer>
                 </Modal>
-
-            
-
         </Jumbotron>
     )
 }

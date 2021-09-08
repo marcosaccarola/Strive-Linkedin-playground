@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import ProfileHeader from "./ProfileHeader";
 import ProfileCenter from "./ProfileCenter";
 import ProfileRightSide from "./ProfileRightSide";
+import ExperiencesList from './ExperiencesList';
 import {searchProfile}from '../utils/profiles'
 import "./ProfileStyle.css"
 
@@ -50,6 +51,7 @@ const Profile = () => {
               <Col md={8} className="col">
                   <ProfileHeader profilesData={profilesData} id={id}/>
                   <ProfileCenter profilesData={profilesData} id={id} />
+                  <ExperiencesList profilesData={profilesData} id={id}/>
               </Col>
               <Col md={4} className="col">
                   <ProfileRightSide profilesData={profilesData} setId={setId} />
