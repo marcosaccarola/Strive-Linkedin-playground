@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Alert } from "react-bootstrap";
 import ProfileHeader from "./ProfileHeader";
 import ProfileCenter from "./ProfileCenter";
 import ProfileRightSide from "./ProfileRightSide";
@@ -31,6 +31,7 @@ const Profile = () => {
     )
     const[id,setId] = useState('61360d537be6c10015f9dbac')
 
+    const[errMess,setErrMess]=useState()
     const fetchProfiles = async () => {
 		try {
 			const data=await searchProfile();
@@ -38,6 +39,7 @@ const Profile = () => {
 			setProfilesData(data);
             //console.log(profilesData)
 		} catch (error) {
+            setErrMess(error.message)
 			//console.log(error);
 		}
 	};
@@ -49,6 +51,11 @@ const Profile = () => {
     return(
 
       <Container>
+            {errMess &&
+                <Alert variant="danger" style={{marginTop:50}}>
+                    Cannot load the data: {errMess}
+                </Alert>
+            }
           <Row style={{marginTop:50}}>
               <Col md={8} className="col">
 
