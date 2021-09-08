@@ -20,6 +20,7 @@ const ProfileHeader=({profilesData,id,setProfilesData})=>{
     const[username,setUsername]=useState()
     const[title,setTitle]=useState()
     const[area,setArea]=useState()
+    const[image,setImage]=useState()
     const[bio,setBio]=useState()
     
     let sendAndClose=''
@@ -29,7 +30,7 @@ const ProfileHeader=({profilesData,id,setProfilesData})=>{
         //console.log(thisProfile)
         //console.log(thisProfile.name)
             
-        const thisObj={name, surname, email, username, title, area, bio}
+        const thisObj={name, surname, email, username, title, area, image, bio}
         
         sendAndClose=(e)=>{
             sendProfileData(e)
@@ -136,6 +137,14 @@ const ProfileHeader=({profilesData,id,setProfilesData})=>{
                                 placeholder={thisProfile.area}
                                 value={area}
                                 onChange={(e)=>setArea(e.target.value)}
+                                />
+
+                                <Form.Label>image</Form.Label>
+                                <Form.Control 
+                                type="text" 
+                                placeholder={thisProfile.image}
+                                value={image}
+                                onChange={(e)=>setImage(e.target.value)}
                                 />
 
                             </Form.Group>
