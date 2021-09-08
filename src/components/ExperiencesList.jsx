@@ -2,21 +2,21 @@ import { Button, Container } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import SingleExperience from "./SingleExperience";
 import ExperienceModal from "./ExperienceModal";
-import fetchExp from "../utils/profiles";
+import fetchExps from "../utils/profiles";
 
 const ExperiencesList = ({ profilesData, id }) => {
-  let thisProfile = profilesData.filter((profile) => profile.user === id);
-  // console.log('Current User is ', thisProfile, id)
+  let thisProfile = profilesData.filter((profile) => profile._id === id);
+  // console.log('Current User is ', thisProfile)
   const [experiences, setExperiences] = useState([]);
 
-  const getExp = async () => {
-    const experiencesData = await fetchExp(id);
+  const getExps = async () => {
+    const experiencesData = await fetchExps(id);
     setExperiences(experiencesData);
     // console.log(experiencesData)
   };
 
   useEffect(() => {
-    getExp();
+    getExps();
   }, [id]);
 
   return (
@@ -42,6 +42,7 @@ const ExperiencesList = ({ profilesData, id }) => {
             </Container>
           ))}
         </div>
+
         {/* hard coded Marco's id, refactor needed */}
         {id === "61360d537be6c10015f9dbac" && <ExperienceModal id={id}/>}
       </Container>
