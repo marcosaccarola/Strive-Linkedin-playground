@@ -8,9 +8,6 @@ import {searchProfile}from '../utils/profiles'
 
 const ProfileHeader=({profilesData,id,setProfilesData})=>{
 
-
-
-
     const[showModal,setShowModal]=useState(false)
     const handleClose=()=>setShowModal(false);
     const handleShow=()=>setShowModal(true);

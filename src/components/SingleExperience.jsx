@@ -1,19 +1,27 @@
 import { Button } from "react-bootstrap";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import ExperienceModal from "./ExperienceModal";
 
 
-const SingleExperience = ({role, company, description, startDate, endDate, userId, expId}) => {
+const SingleExperience = (props) => {
+  const {role, description, company, startDate, endDate, area, user, _id} = props.exp
 
-  // const [exp, setExp] = useState({
-  //   role: '',
-  //   company: '',
-  //   description: '',
-  //   area: '',
-  //   startDate: '',
-  //   endDate: null
+  // const [singleExp, setSingleExp] = useState({
+  //   role: props.role,
+  //   company: props.company,
+  //   description: props.description,
+  //   area: props.area,
+  //   startDate: props.startDate,
+  //   endDate: props.endDate
   // })
+  
+const [exp, setEexperience] = useState({})
 
-  const PROFILES_URL = "https://striveschool-api.herokuapp.com/api/profile/";
+useEffect(()=>{
+  setEexperience(props.exp)
+}, [props.exp])
+
+  const PROFILES_URL = "https://striveschool-api.herokuapp.com/api/profile/"
   const getSingleExp = async (userId, expId) => {
     try {
         const response = await fetch(`${PROFILES_URL}${userId}/experiences/${expId}`, {
@@ -24,6 +32,7 @@ const SingleExperience = ({role, company, description, startDate, endDate, userI
         })
         if(response.ok){
           const data = await response.json()
+          // return data
           // console.log('Single Experience: ', data)
     
         } else {
@@ -31,27 +40,20 @@ const SingleExperience = ({role, company, description, startDate, endDate, userI
         }
       } catch (error) {
         throw error
+      }
     }
-  }
-
-    // useEffect((prevState) => {
-    //     getSingleExp(userId, expId)
-    // }, () => {
-    //   if(prevState !== exp)
-    // })
 
     const deleteExp = async (userId, expId) => {
       try {
           const response = await fetch(`${PROFILES_URL}${userId}/experiences/${expId}`, {
               method: 'DELETE',
               headers: {
-                  Authorization:
-                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo",
+                 Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo"
               }
           })
           if(response.ok){
-              const deletedData = await response.json()
-              alert(`Hasta la vista ${deletedData.role}`)
+              props.getExps()
+              // console.log(`Hasta la vista`)
           } 
       } catch (error) {
           throw error
@@ -60,16 +62,21 @@ const SingleExperience = ({role, company, description, startDate, endDate, userI
 
     // const editExp = async (userId, expId) => {
     //   try {
+    //     let singleExpData = await getSingleExp(userId, expId)
+    //     console.log(singleExpData)
     //     const response = await fetch(`${PROFILES_URL}${userId}/experiences/${expId}`, {
     //         method: 'PUT',
     //         headers: {
-    //             Authorization:
+    //           body: JSON.stringify(singleExpData),
+    //           Authorization:
     //               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo",
+    //           'Content-type': 'application/json'
     //         }
     //     })
     //     if(response.ok){
-    //         const deletedData = await response.json()
-    //         console.log(`Hasta la vista ${deletedData.role}`)
+    //         const editedData = await response.json()
+    //         setSingleExp(editedData)
+            
     //     } 
     //   } catch (error) {
     //     throw error
@@ -84,14 +91,17 @@ const SingleExperience = ({role, company, description, startDate, endDate, userI
         <p>{startDate}</p>
         { endDate && <p>{endDate}</p> }
 
-        {userId === "61360d537be6c10015f9dbac" && 
+        {user === "613884772068d2001522b4c6" || user === "613888102068d2001522b4d4" || user === "61360d537be6c10015f9dbac"  && 
             <>
-                <Button id="deleteExp-btn" variant="danger" onClick={()=>{deleteExp(userId, expId)}}>
-                  Trash icon
-                </Button>
-                <Button id="editExp-btn" variant="warning" >
-                  Edit
-                </Button>
+              <Button id="deleteExp-btn" variant="danger" onClick={()=>{deleteExp(user, _id)}}>
+                Trash icon
+              </Button>
+              
+              <Button id="editExp-btn" variant="warning" onClick={props.handleShow}>
+                Edit
+              </Button>
+              {/* expId={props._id} editExp={editExp} */}
+              <ExperienceModal show={props.show} handleClose={props.handleClose} experienceId={exp._id}  exp={exp} />
             </>
         }
       </>
@@ -99,3 +109,5 @@ const SingleExperience = ({role, company, description, startDate, endDate, userI
 }
 
 export default SingleExperience
+
+// id={_id} getExps={getExps} 
