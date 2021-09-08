@@ -23,7 +23,7 @@
     margin-top: 9px;
 }
 
-.userDropdown .dropIcon{
+.userDropdown .dropIcon{ /* last two icons*/
     height: 15px;
     width: 15px;
 }
@@ -32,20 +32,24 @@
     width:20px; 
     border-radius:20px;
 }
-.userDropdown .userDropdowne {
+.userDropdown .userDropdowne { /* last three buttons */
     margin-top: -8px;
     margin-left: 8px;
 }
-.iconsWrapper {
+.iconsWrapper { /* first fife buttons */
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
     margin-top: 6px;
 }
-.iconsWrapper .navlink {
+.iconsWrapper:hover {
+    text-decoration: underline;
+}
+.iconsWrapper .navlink { /* first fife labels */
     margin-top: -9px;
-    font-size: 10px;
+    font-size: 9px;
+    margin-bottom: -6px;
 }
 
 .iconsWrapper img {
