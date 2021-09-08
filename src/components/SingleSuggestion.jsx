@@ -33,10 +33,12 @@ const SingleSuggestion = ({ profilesData, setId }) => {
           onClick={(e) => setId(suggestion._id)}
         >
           <img src={suggestion.image} />
+
           <div className="infoSuggestions">
               <p className="name">{suggestion.name} {suggestion.surname}</p>
               <p className="title">{suggestion.title}</p>
           </div>
+
         </ListGroup.Item>
       )))
     }
