@@ -60,6 +60,8 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
             }
         };  
     }
+
+    const [validated, setValidated] = useState(false)
     
     return(profilesData!==undefined && (
         <Jumbotron fluid className="mt-5 jumbocontainer">
@@ -102,56 +104,56 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
                                 <Form.Label>name</Form.Label>
                                 <Form.Control 
                                 type="text" 
-                                placeholder={thisProfile.name} 
-                                value={name} 
+                                //placeholder={thisProfile.name} 
+                                defaultValue={thisProfile.name} 
                                 onChange={(e)=>setName(e.target.value)}
                                 />
                                 
                                 <Form.Label>surname</Form.Label>
                                 <Form.Control 
                                 type="text" 
-                                placeholder={thisProfile.surname}
-                                value={surname}  
+                                defaultValue={thisProfile.surname}
+                                //value={surname}  
                                 onChange={(e)=>setSurname(e.target.value)}
                                 />
 
                                 <Form.Label>email</Form.Label>
                                 <Form.Control 
                                 type="email" 
-                                placeholder={thisProfile.email}
-                                value={email} 
+                                defaultValue={thisProfile.email}
+                                //value={email} 
                                 onChange={(e)=>setEmail(e.target.value)}
                                 />
 
                                 <Form.Label>username</Form.Label>
                                 <Form.Control 
                                 type="text" 
-                                placeholder={thisProfile.username} 
-                                value={username}
+                                defaultValue={thisProfile.username} 
+                                //value={username}
                                 onChange={(e)=>setUsername(e.target.value)}
                                 />
 
                                 <Form.Label>title</Form.Label>
                                 <Form.Control 
                                 type="text" 
-                                placeholder={thisProfile.title} 
-                                value={title}
+                                defaultValue={thisProfile.title} 
+                                //value={title}
                                 onChange={(e)=>setTitle(e.target.value)}
                                 />
 
                                 <Form.Label>area</Form.Label>
                                 <Form.Control 
                                 type="text" 
-                                placeholder={thisProfile.area}
-                                value={area}
+                                defaultValue={thisProfile.area}
+                                //value={area}
                                 onChange={(e)=>setArea(e.target.value)}
                                 />
 
                                 <Form.Label>image</Form.Label>
                                 <Form.Control 
                                 type="text" 
-                                placeholder={thisProfile.image}
-                                value={image}
+                                defaultValue={thisProfile.image}
+                                //value={image}
                                 onChange={(e)=>setImage(e.target.value)}
                                 />
 
@@ -160,9 +162,9 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
                                 <Form.Label>bio</Form.Label>
                                 <Form.Control 
                                 as="textarea"
-                                placeholder={thisProfile.bio} 
+                                defaultValue={thisProfile.bio} 
                                 rows={3} 
-                                value={bio}
+                                //value={bio}
                                 onChange={(e)=>setBio(e.target.value)}
                                 />
                             </Form.Group>
