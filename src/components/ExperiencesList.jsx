@@ -5,7 +5,11 @@ import ExperienceModal from "./ExperienceModal";
 import fetchExps from "../utils/profiles";
 
 const ExperiencesList = ({ profilesData, id }) => {
-  let thisProfile = profilesData.filter((profile) => profile._id === id);
+
+  let thisProfile=[]
+  if(profilesData!==undefined){
+  let thisProfile = profilesData.filter((profile) => profile.user === id);
+  }
   // console.log('Current User is ', thisProfile)
   const [experiences, setExperiences] = useState([]);
 
@@ -20,6 +24,7 @@ const ExperiencesList = ({ profilesData, id }) => {
   }, [id]);
 
   return (
+    profilesData!==undefined && (
     <>
       <Container
         className="rounded mt-5"
@@ -47,7 +52,7 @@ const ExperiencesList = ({ profilesData, id }) => {
         {id === "61360d537be6c10015f9dbac" && <ExperienceModal id={id}/>}
       </Container>
     </>
-  );
+  ));
 };
 
 export default ExperiencesList;
