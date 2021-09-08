@@ -1,11 +1,15 @@
 import React,{useState} from 'react'
-import {Jumbotron,ListGroup,Button,Modal,Form} from 'react-bootstrap'
+import {Jumbotron, Container, Row, Col, ListGroup, Button, Modal, Form} from 'react-bootstrap'
 import img from '../assets/img.jpg'
 import {putIntoProfile}from '../utils/profilePut'
 import "./ProfileHeaderStyle.css"
 import {searchProfile}from '../utils/profiles'
 
+
 const ProfileHeader=({profilesData,id,setProfilesData})=>{
+
+
+
 
     const[showModal,setShowModal]=useState(false)
     const handleClose=()=>setShowModal(false);
@@ -75,6 +79,7 @@ const ProfileHeader=({profilesData,id,setProfilesData})=>{
                     >
                         <span>Pencil Icon</span>
                     </Button>
+
                 </div>
 
                 <Modal show={showModal} onHide={handleShow}>
@@ -154,7 +159,8 @@ const ProfileHeader=({profilesData,id,setProfilesData})=>{
                         Save Changes
                     </Button>
                     </Modal.Footer>
-                </Modal>            
+
+                </Modal>
 
         </Jumbotron>
     ))
