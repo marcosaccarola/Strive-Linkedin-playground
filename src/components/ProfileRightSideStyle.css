@@ -1,0 +1,13 @@
+.rounded {
+    background-color:rgb(253, 253, 253);
+    height:500;
+    width:"100%";
+    border-color: white;
+}
+.rounded .show {
+    text-align: center;
+}
+.rounded .show:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
