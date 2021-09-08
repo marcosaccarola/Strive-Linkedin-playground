@@ -1,15 +1,11 @@
 import React,{useState} from 'react'
-import {Jumbotron, Container, Row, Col, ListGroup, Button, Modal, Form} from 'react-bootstrap'
+import {Jumbotron, ListGroup, Button, Modal, Form} from 'react-bootstrap'
 import img from '../assets/img.jpg'
 import {putIntoProfile}from '../utils/profilePut'
 import "./ProfileHeaderStyle.css"
 import {searchProfile}from '../utils/profiles'
 
-
 const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=>{
-
-
-
 
     const[showModal,setShowModal]=useState(false)
     const handleClose=()=>setShowModal(false);
@@ -27,12 +23,9 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
     let thisProfile={}
     if(profilesData!==undefined){
         thisProfile=profilesData.find(profile=>profile._id===id)
-        //console.log(thisProfile)
-        //console.log(thisProfile.name)
             
         const thisObj={name, surname, email, username, title, area, image, bio}
-        
-        
+               
         sendAndClose=async(e)=>{
             e.preventDefault()
             const firstWaiter=await sendProfileData(e)
@@ -52,19 +45,15 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
             setIsLoading(true)
             try {
                 const data=await searchProfile();
-                // console.log(data)
                 setProfilesData(data);
                 setIsLoading(false)
-                //console.log(profilesData)
             } catch (error) {
                 setIsLoading(false)
-                //setErrMess(error.message)
-                //console.log(error);
             }
         };  
     }
     
-    const [validated, setValidated] = useState(false)
+    
     
     return(profilesData!==undefined && (
         <Jumbotron fluid className="mt-5 jumbocontainer">
@@ -102,73 +91,55 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
                     </Modal.Header>
                     <Modal.Body>
 
-                        <Form noValidate validated={validated}>
-                            <Form.Group className="mb-3"  controlId="validationCustom01">
+                        <Form>
+                            <Form.Group className="mb-3">
 
                                 <Form.Label>name</Form.Label>
-                                <Form.Control 
-                                required
-                                type="text" 
-                                //placeholder={thisProfile.name} 
+                                <Form.Control                                
+                                type="text"  
                                 defaultValue={thisProfile.name} 
                                 onChange={(e)=>setName(e.target.value)}
                                 />
-                                    <Form.Control.Feedback>Well done!</Form.Control.Feedback>
-                                    <Form.Control.Feedback type="invalid">
-                                        Please choose a name!
-                                    </Form.Control.Feedback>
                                 
                                 <Form.Label>surname</Form.Label>
-                                <Form.Control 
-                                
+                                <Form.Control                                
                                 type="text" 
-                                defaultValue={thisProfile.surname}
-                                //value={surname}  
+                                defaultValue={thisProfile.surname} 
                                 onChange={(e)=>setSurname(e.target.value)}
                                 />
 
                                 <Form.Label>email</Form.Label>
-                                <Form.Control 
-                                
+                                <Form.Control                                
                                 type="email" 
                                 defaultValue={thisProfile.email}
-                                //value={email} 
                                 onChange={(e)=>setEmail(e.target.value)}
                                 />
 
                                 <Form.Label>username</Form.Label>
-                                <Form.Control 
-                                
+                                <Form.Control                                
                                 type="text" 
                                 defaultValue={thisProfile.username} 
-                                //value={username}
                                 onChange={(e)=>setUsername(e.target.value)}
                                 />
 
                                 <Form.Label>title</Form.Label>
-                                <Form.Control 
-                                
+                                <Form.Control                                
                                 type="text" 
                                 defaultValue={thisProfile.title} 
-                                //value={title}
                                 onChange={(e)=>setTitle(e.target.value)}
                                 />
 
                                 <Form.Label>area</Form.Label>
-                                <Form.Control 
-                                
+                                <Form.Control                                
                                 type="text" 
                                 defaultValue={thisProfile.area}
-                                //value={area}
                                 onChange={(e)=>setArea(e.target.value)}
                                 />
 
                                 <Form.Label>image</Form.Label>
-                                <Form.Control 
-                                
+                                <Form.Control                                
                                 type="text" 
                                 defaultValue={thisProfile.image}
-                                //value={image}
                                 onChange={(e)=>setImage(e.target.value)}
                                 />
 
@@ -180,7 +151,6 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
                                 as="textarea"
                                 defaultValue={thisProfile.bio} 
                                 rows={3} 
-                                //value={bio}
                                 onChange={(e)=>setBio(e.target.value)}
                                 />
                             </Form.Group>
