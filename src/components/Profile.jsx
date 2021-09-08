@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Alert } from "react-bootstrap";
+import { Container, Row, Col, Alert, Spinner } from "react-bootstrap";
 import ProfileHeader from "./ProfileHeader";
 import ProfileCenter from "./ProfileCenter";
 import ProfileRightSide from "./ProfileRightSide";
@@ -32,14 +32,18 @@ const Profile = () => {
     const[id,setId] = useState('61360d537be6c10015f9dbac')
 
     const[errMess,setErrMess]=useState()
+    const[isLoading,setIsLoading]=useState(false)
     const fetchProfiles = async () => {
+        setIsLoading(true)
 		try {
 			const data=await searchProfile();
             // console.log(data)
 			setProfilesData(data);
             //console.log(profilesData)
+            setIsLoading(false)
 		} catch (error) {
             setErrMess(error.message)
+            setIsLoading(false)
 			//console.log(error);
 		}
 	};
@@ -56,10 +60,19 @@ const Profile = () => {
                     Cannot load the data: {errMess}
                 </Alert>
             }
+            {isLoading && (
+                <div className="ml-2">
+                    <Spinner animation="border" variant="success" size="lg" style={{marginTop:200}} />
+                </div>
+            )}
           <Row style={{marginTop:50}}>
               <Col md={8} className="col">
 
-                  <ProfileHeader profilesData={profilesData} id={id} setProfilesData={setProfilesData}/>               
+                  <ProfileHeader profilesData={profilesData} id={id} 
+                    setProfilesData={setProfilesData} 
+                    setErrMess={setErrMess}
+                    setIsLoading={setIsLoading}
+                    />               
                   <ProfileCenter profilesData={profilesData} id={id} />
                   <ExperiencesList profilesData={profilesData} id={id}/>
 

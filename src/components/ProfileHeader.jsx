@@ -6,7 +6,7 @@ import "./ProfileHeaderStyle.css"
 import {searchProfile}from '../utils/profiles'
 
 
-const ProfileHeader=({profilesData,id,setProfilesData})=>{
+const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=>{
 
 
 
@@ -39,15 +39,23 @@ const ProfileHeader=({profilesData,id,setProfilesData})=>{
         }        
         const sendProfileData=async(e)=>{
             e.preventDefault()
-            putIntoProfile({thisObj,id})
+            try {
+                putIntoProfile({thisObj,id})
+            } catch (error) {
+                setErrMess(error.message)
+            }
         }     
         const fetchProfiles=async()=>{
+            setIsLoading(true)
             try {
                 const data=await searchProfile();
                 // console.log(data)
                 setProfilesData(data);
+                setIsLoading(false)
                 //console.log(profilesData)
             } catch (error) {
+                setIsLoading(false)
+                //setErrMess(error.message)
                 //console.log(error);
             }
         };  

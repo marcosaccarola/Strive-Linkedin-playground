@@ -1,7 +1,7 @@
 const PROFILES_URL = "https://striveschool-api.herokuapp.com/api/profile/";
 let bearer="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo"
-
-//TO GET
+//
+//TO PUT
 export const putIntoProfile = async ({thisObj,id}) => {
     console.log(id);
     console.log(thisObj);
@@ -11,7 +11,6 @@ export const putIntoProfile = async ({thisObj,id}) => {
     if(id==='613888102068d2001522b4d4'){
       bearer="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM4ODgxMDIwNjhkMjAwMTUyMmI0ZDQiLCJpYXQiOjE2MzEwOTQ4MDAsImV4cCI6MTYzMjMwNDQwMH0.5U4TIdYxh2YFwTVkvYg4muu1_s4EW1EEsP_E0rZLESA"
     }
-
 
   try {
     const response = await fetch(`${PROFILES_URL}`, {
@@ -24,12 +23,13 @@ export const putIntoProfile = async ({thisObj,id}) => {
       },
     });
     console.log(PROFILES_URL+id)
-    console.log(response)
+    //console.log(response)
     if (response.ok) {
         alert('Form was sent!')
     } else {
-        console.log('error')
-        alert('something went wrong')
+        //console.log('error')
+        throw new Error("changes not posted");
+        //alert('something went wrong')
     }
   } catch (error) {
     throw error;
