@@ -6,7 +6,7 @@ import "./ProfileHeaderStyle.css"
 import {searchProfile}from '../utils/profiles'
 
 
-const ProfileHeader=({profilesData,id,setProfilesData})=>{
+const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=>{
 
 
 
@@ -20,6 +20,7 @@ const ProfileHeader=({profilesData,id,setProfilesData})=>{
     const[username,setUsername]=useState()
     const[title,setTitle]=useState()
     const[area,setArea]=useState()
+    const[image,setImage]=useState()
     const[bio,setBio]=useState()
     
     let sendAndClose=''
@@ -29,7 +30,7 @@ const ProfileHeader=({profilesData,id,setProfilesData})=>{
         //console.log(thisProfile)
         //console.log(thisProfile.name)
             
-        const thisObj={name, surname, email, username, title, area, bio}
+        const thisObj={name, surname, email, username, title, area, image, bio}
         
         sendAndClose=(e)=>{
             sendProfileData(e)
@@ -37,20 +38,34 @@ const ProfileHeader=({profilesData,id,setProfilesData})=>{
             fetchProfiles()
         }        
         const sendProfileData=async(e)=>{
-            e.preventDefault()
-            putIntoProfile({thisObj,id})
+            const form=e.currentTarget
+            if(form.checkValidity()===false){
+                e.preventDefault()
+                e.stopPropagation()
+            }
+            try {
+                putIntoProfile({thisObj,id})
+            } catch (error) {
+                setErrMess(error.message)
+            }
         }     
         const fetchProfiles=async()=>{
+            setIsLoading(true)
             try {
                 const data=await searchProfile();
                 // console.log(data)
                 setProfilesData(data);
+                setIsLoading(false)
                 //console.log(profilesData)
             } catch (error) {
+                setIsLoading(false)
+                //setErrMess(error.message)
                 //console.log(error);
             }
         };  
     }
+
+    const [validated, setValidated] = useState(false)
     
     return(profilesData!==undefined && (
         <Jumbotron fluid className="mt-5 jumbocontainer">
@@ -87,65 +102,81 @@ const ProfileHeader=({profilesData,id,setProfilesData})=>{
                     <Modal.Title>Change Introduction</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form>
-                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                        <Form noValidate validated={validated}>
+                            <Form.Group className="mb-3"  controlId="validationCustom01">
 
                                 <Form.Label>name</Form.Label>
                                 <Form.Control 
+                                required
                                 type="text" 
-                                placeholder={thisProfile.name} 
-                                value={name} 
+                                //placeholder={thisProfile.name} 
+                                defaultValue={thisProfile.name} 
                                 onChange={(e)=>setName(e.target.value)}
                                 />
                                 
                                 <Form.Label>surname</Form.Label>
                                 <Form.Control 
+                                required
                                 type="text" 
-                                placeholder={thisProfile.surname}
-                                value={surname}  
+                                defaultValue={thisProfile.surname}
+                                //value={surname}  
                                 onChange={(e)=>setSurname(e.target.value)}
                                 />
 
                                 <Form.Label>email</Form.Label>
                                 <Form.Control 
+                                required
                                 type="email" 
-                                placeholder={thisProfile.email}
-                                value={email} 
+                                defaultValue={thisProfile.email}
+                                //value={email} 
                                 onChange={(e)=>setEmail(e.target.value)}
                                 />
 
                                 <Form.Label>username</Form.Label>
                                 <Form.Control 
+                                required
                                 type="text" 
-                                placeholder={thisProfile.username} 
-                                value={username}
+                                defaultValue={thisProfile.username} 
+                                //value={username}
                                 onChange={(e)=>setUsername(e.target.value)}
                                 />
 
                                 <Form.Label>title</Form.Label>
                                 <Form.Control 
+                                required
                                 type="text" 
-                                placeholder={thisProfile.title} 
-                                value={title}
+                                defaultValue={thisProfile.title} 
+                                //value={title}
                                 onChange={(e)=>setTitle(e.target.value)}
                                 />
 
                                 <Form.Label>area</Form.Label>
                                 <Form.Control 
+                                required
                                 type="text" 
-                                placeholder={thisProfile.area}
-                                value={area}
+                                defaultValue={thisProfile.area}
+                                //value={area}
                                 onChange={(e)=>setArea(e.target.value)}
+                                />
+
+                                <Form.Label>image</Form.Label>
+                                <Form.Control 
+                                required
+                                type="text" 
+                                defaultValue={thisProfile.image}
+                                //value={image}
+                                onChange={(e)=>setImage(e.target.value)}
                                 />
 
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                 <Form.Label>bio</Form.Label>
                                 <Form.Control 
+                                required
                                 as="textarea"
-                                placeholder={thisProfile.bio} 
+                                defaultValue={thisProfile.bio} 
                                 rows={3} 
-                                value={bio}
+                                //value={bio}
                                 onChange={(e)=>setBio(e.target.value)}
                                 />
                             </Form.Group>
