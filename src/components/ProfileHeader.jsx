@@ -28,10 +28,22 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
                
         sendAndClose=async(e)=>{
             e.preventDefault()
-            const firstWaiter=await sendProfileData(e)
-            handleClose()
-            const secondWaiter=await fetchProfiles()
-
+                if( name.length>0 || undefined
+                    &&surname.length>0 || undefined
+                    &&email.length>0 || undefined
+                    &&username.length>0 || undefined
+                    &&title.length>0 || undefined
+                    &&area.length>0 || undefined
+                    &&image.length>0 || undefined
+                    )  
+                    {
+                    const firstWaiter=await sendProfileData(e)
+                    handleClose()
+                    const secondWaiter=await fetchProfiles()
+                    } else {
+                        handleClose()
+                        alert("at least one character for each field (CHANGES UNSENT)")
+                    }   
         }     
         const sendProfileData=(e)=>{
             e.preventDefault()
@@ -52,9 +64,8 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
             }
         };  
     }
-    
-    
-    
+
+
     return(profilesData!==undefined && (
         <Jumbotron fluid className="mt-5 jumbocontainer">
            
