@@ -26,7 +26,7 @@ const SingleSuggestion = ({ profilesData, setId }) => {
           </ListGroup.Item>
       ))}
       {profilesData!==undefined && (
-      profilesData.slice(0, 5).map((suggestion) => (
+      profilesData.slice(0, 7).map((suggestion) => (
         <ListGroup.Item
           key={suggestion._id}
           className="groupitem"
