@@ -8,7 +8,7 @@ const ExperiencesList = ({ profilesData, id }) => {
 
   let thisProfile=[]
   if(profilesData!==undefined){
-  let thisProfile = profilesData.filter((profile) => profile.user === id);
+  thisProfile = profilesData.filter((profile) => profile.user === id);
   }
   // console.log('Current User is ', thisProfile)
   const [experiences, setExperiences] = useState([]);
