@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import { Alert, Button, Form, Modal, Spinner } from "react-bootstrap";
 
 const ExperienceModal = ({ id, getExperiences }) => {
   const [show, setShow] = useState(false);
@@ -15,27 +15,45 @@ const ExperienceModal = ({ id, getExperiences }) => {
     endDate: null,
   };
 
-  const [newExperience, setNewExperience] = useState({defaultExperience});
+  const [newExperience, setNewExperience] = useState({ defaultExperience });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const PROFILES_URL = "https://striveschool-api.herokuapp.com/api/profile/";
+  let BEARER_TOKEN = ''
+  if( id === "613884772068d2001522b4c6"){
+    BEARER_TOKEN = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM4ODQ3NzIwNjhkMjAwMTUyMmI0YzYiLCJpYXQiOjE2MzEwOTM4ODAsImV4cCI6MTYzMjMwMzQ4MH0.Ckf38QVqF801iXzjIknOZtireFH6vgeoNw9nXSiH7cA"
+  } else if (id ==='613888102068d2001522b4d4'){
+    BEARER_TOKEN ="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM4ODgxMDIwNjhkMjAwMTUyMmI0ZDQiLCJpYXQiOjE2MzEwOTQ4MDAsImV4cCI6MTYzMjMwNDQwMH0.5U4TIdYxh2YFwTVkvYg4muu1_s4EW1EEsP_E0rZLESA"
+  } else if (id === "61360d537be6c10015f9dbac") {
+    BEARER_TOKEN = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo"
+  }
+  
   const postNewExperience = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const response = await fetch(`${PROFILES_URL}${id}/experiences`, {
         method: "POST",
         body: JSON.stringify(newExperience),
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo",
+          Authorization: BEARER_TOKEN,
           "Content-type": "application/json",
         },
       });
       if (response.ok) {
         getExperiences();
-        setNewExperience(defaultExperience)
-        alert("Experience added");
+        setNewExperience(defaultExperience);
+        // alert("Experience added");
+        setIsLoading(false);
+      } else {
+        setIsError(true);
+        setIsLoading(false);
+        throw new Error();
       }
     } catch (error) {
+      setIsError(true);
+      setIsLoading(false);
       throw error;
     }
   };
@@ -46,6 +64,14 @@ const ExperienceModal = ({ id, getExperiences }) => {
 
   return (
     <>
+      {isLoading && (
+        <>
+          <Spinner animation="border" variant="primary" />
+          <Alert variant="success"> Completed! </Alert>
+        </>
+      )}
+
+      {isError && <Alert variant="danger"> Something went wrong </Alert>}
       <Button id="addExp-btn" variant="primary" onClick={handleShow}>
         Add experience +
       </Button>

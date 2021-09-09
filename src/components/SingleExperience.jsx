@@ -1,4 +1,5 @@
-import { Button } from "react-bootstrap";
+import { Alert, Button, Spinner } from "react-bootstrap";
+import { useEffect, useState } from "react";
 import EditExperienceModal from "./EditExperienceModal";
 // import { useEffect } from "react";
 
@@ -12,34 +13,54 @@ const SingleExperience = ({
   experienceId,
   getExperiences
 }) => {
- 
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
-  
   const PROFILES_URL = "https://striveschool-api.herokuapp.com/api/profile/";
+  let BEARER_TOKEN = ''
+  if(userId === "613884772068d2001522b4c6"){
+    BEARER_TOKEN = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM4ODQ3NzIwNjhkMjAwMTUyMmI0YzYiLCJpYXQiOjE2MzEwOTM4ODAsImV4cCI6MTYzMjMwMzQ4MH0.Ckf38QVqF801iXzjIknOZtireFH6vgeoNw9nXSiH7cA"
+  } else if (userId ==='613888102068d2001522b4d4'){
+    BEARER_TOKEN ="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM4ODgxMDIwNjhkMjAwMTUyMmI0ZDQiLCJpYXQiOjE2MzEwOTQ4MDAsImV4cCI6MTYzMjMwNDQwMH0.5U4TIdYxh2YFwTVkvYg4muu1_s4EW1EEsP_E0rZLESA"
+  } else if (userId === "61360d537be6c10015f9dbac") {
+    BEARER_TOKEN = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo"
+  }
   const deleteExperience = async (userId, expId) => {
+    setIsLoading(true);
     try {
       const response = await fetch(
         `${PROFILES_URL}${userId}/experiences/${expId}`,
         {
           method: "DELETE",
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo",
+            Authorization: BEARER_TOKEN,
           },
         }
       );
       if (response.ok) {
-        // const deletedData = await response.json();
         getExperiences()
-        console.log("Hasta la vista");
+        setIsLoading(false);
+        // console.log("Hasta la vista");
+      } else {
+        setIsError(true);
+        setIsLoading(false);
+        throw new Error();
       }
     } catch (error) {
+      setIsError(true);
+      setIsLoading(false);
       throw error;
     }
   };
 
   return (
     <>
+      {isLoading && (
+        <>
+          <Spinner animation="border" variant="primary" />
+          <Alert variant="success"> Completed! </Alert>
+        </>
+      )}
       <p>{role}</p>
       <p>{company}</p>
       <p>{description}</p>
