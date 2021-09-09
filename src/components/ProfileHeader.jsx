@@ -90,9 +90,7 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
                     </Button>
 
                 {((id==='61360d537be6c10015f9dbac')||(id==='613888102068d2001522b4d4')||(id==='613884772068d2001522b4c6')) &&(
-
                     <Button variant="primary" id="edit-btn" className="mx-1 mt-2 mb-2 "
-
                     onClick={()=>setShowModal(!showModal)}
                     >
                         <span><GoPencil/></span>

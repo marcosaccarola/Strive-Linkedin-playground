@@ -23,13 +23,16 @@
 }
 .listgroup p:nth-child(1) {
   background-color: white;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 25px;
+  font-weight: 600;
+  /*font-weight: bold;*/
+  margin-bottom: 20px;
 }
 .listgroup p:nth-child(2) {
   background-color: white;
   font-size: 14px;
   margin-top: -20px;
+  margin-bottom: 40px;
 }
 .listgroup p:nth-child(3) {
   background-color: white;
@@ -73,5 +76,5 @@ button:hover {
   margin-bottom: 1%;
   position: absolute;
   top: 100px;
-  border: 4px white solid;
+  border: 5px white solid;
 }
