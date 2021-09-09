@@ -105,7 +105,7 @@ const ExperienceModal = ({
       // console.log("you made it until here!");
     }
     handleClose();
-    console.log("you made it until here!");
+    // console.log("you made it until here!");
     getExperiences();
   };
 
@@ -114,12 +114,12 @@ const ExperienceModal = ({
       {/* {console.log("in the model", {
         experienceId,
         userId,
-        exp,
-        getExps,
+        experience,
+        getExperiences,
         show,
         handleClose,
       })}
-      {console.log("in the model state", newExp)} */}
+      {console.log("in the model state", newExperience)} */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add New Experience</Modal.Title>

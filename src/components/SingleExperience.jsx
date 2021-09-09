@@ -5,7 +5,7 @@ import ExperienceModal from "./ExperienceModal";
 const SingleExperience = (props) => {
   const { role, description, company, startDate, endDate, area, user, _id } =
     props.experience;
-  // const [singleExp, setSingleExp] = useState({
+  // const [singleExperience, setSingleExperience] = useState({
   //   role: props.role,
   //   company: props.company,
   //   description: props.description,
@@ -42,7 +42,7 @@ const SingleExperience = (props) => {
   //     throw error;
   //   }
   // };
-  
+
   const PROFILES_URL = "https://striveschool-api.herokuapp.com/api/profile/";
   const deleteExperience = async (userId, expId) => {
     try {
