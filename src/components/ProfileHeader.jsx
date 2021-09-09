@@ -73,7 +73,7 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
                 <div className="backgroundImg">
                     <img src={img} className="rounded-top"/>
                 </div>
-              
+                <img src={thisProfile.image} className="img-profile" />
                             <ListGroup className="listgroup">
                                 <p className="text-left">{thisProfile.name} {thisProfile.surname} </p>
                                 <p className="text-left"> {thisProfile.title}</p>
