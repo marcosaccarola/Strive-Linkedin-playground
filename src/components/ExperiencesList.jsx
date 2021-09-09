@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import SingleExperience from "./SingleExperience";
 import ExperienceModal from "./ExperienceModal";
 import fetchExps from "../utils/profiles";
+import "./ExperiencesList.css"
 
 const ExperiencesList = ({id}) => {
   const [show, setShow] = useState(false);
@@ -30,10 +31,7 @@ const ExperiencesList = ({id}) => {
 
   return (
     <>
-    <Container
-      className="rounded mt-5"
-      style={{ backgroundColor: "yellow", height: 300, width: "100%" }}
-    >
+    <Container className="rounded mt-5 jumbocontainer" >
            {id === "613884772068d2001522b4c6" ||
         id === "613888102068d2001522b4d4" ||
         id === "61360d537be6c10015f9dbac" && (
@@ -50,7 +48,7 @@ const ExperiencesList = ({id}) => {
           </>
         )}
       <div>
-        <h5>Experiences</h5>
+        <h5 className="text-left">Experiences</h5>
         {/* <Button id="addExp-btn" variant="primary" onClick={handleShow}>
           Add / Edit Experience
         </Button> */}

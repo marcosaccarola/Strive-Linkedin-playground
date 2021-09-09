@@ -1,0 +1,8 @@
+.jumbocontainer {
+  background-color: rgb(255, 255, 255);
+  padding: 0px 0px 0px 0px;
+  border-radius: 5px;
+  border: 1px solid;
+  border-color: rgba(146, 142, 142, 0.157);
+  min-height: 100px;
+}
