@@ -1,8 +1,11 @@
-import { Button, Container } from "react-bootstrap";
+import { Button, Container, ListGroup } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import SingleExperience from "./SingleExperience";
 import ExperienceModal from "./ExperienceModal";
 import fetchExps from "../utils/profiles";
+import "./ExperiencesListStyle.css"
+import {GoPencil} from 'react-icons/go'
+import {BiPlus} from 'react-icons/bi'
 
 const ExperiencesList = ({id}) => {
   const [show, setShow] = useState(false);
@@ -30,10 +33,7 @@ const ExperiencesList = ({id}) => {
 
   return (
     <>
-    <Container
-      className="rounded mt-5"
-      style={{ backgroundColor: "yellow", height: 300, width: "100%" }}
-    >
+    <Container className="rounded mt-5 jumbocontainer" >
            {id === "613884772068d2001522b4c6" ||
         id === "613888102068d2001522b4d4" ||
         id === "61360d537be6c10015f9dbac" && (
@@ -44,18 +44,26 @@ const ExperiencesList = ({id}) => {
               show={show}
               handleClose={handleClose}
             />
-            <Button id="addExp-btn" variant="primary" onClick={()=>handleShow("add")}>
-              Add 
+            <Button 
+            id="addExp-btn" 
+            variant="light" 
+            onClick={()=>handleShow("add")}
+            className="mt-4 ml-auto mr-3 border-0"
+            style={{color:"rgba(0, 0, 0, 0.733)",backgroundColor:"white",marginBottom:5}}
+            >
+
+            <BiPlus size={40} /> 
+
             </Button>
           </>
         )}
       <div>
-        <h5>Experiences</h5>
+          <p className="experiences">Experiences</p>
         {/* <Button id="addExp-btn" variant="primary" onClick={handleShow}>
           Add / Edit Experience
         </Button> */}
         {experiences.map((exp) => (
-       
+          
           <Container className="d-flex justify-content-between">
             {/* {  console.log({exp})} */}
             <SingleExperience
@@ -74,7 +82,7 @@ const ExperiencesList = ({id}) => {
               handleClose={handleClose}
               handleShow={handleShow}
               getExps={getExps}
-            />
+              />
           </Container>
         ))}
       </div>
