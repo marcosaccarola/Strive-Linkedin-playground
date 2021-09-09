@@ -17,7 +17,7 @@ export const putIntoPost = async (thisNewPost) => {
           `${bearer}`,
       },
     });
-    console.log(POST_URL)
+
     console.log(response)
     if (response.ok) {
         alert('NEW POST CREATE')

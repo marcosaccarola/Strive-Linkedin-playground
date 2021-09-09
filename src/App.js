@@ -9,7 +9,6 @@ function App() {
     <div className="App">
 
         <Router>
-
           <Route exact path="/profilePage" component={ProfilePage} />
 
           <Route exact path="/" component={HomePage} />
