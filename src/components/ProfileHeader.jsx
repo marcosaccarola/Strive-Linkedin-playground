@@ -4,6 +4,7 @@ import img from '../assets/img.jpg'
 import {putIntoProfile}from '../utils/profilePut'
 import "./ProfileHeaderStyle.css"
 import {searchProfile}from '../utils/profiles'
+import {GoPencil} from 'react-icons/go'
 
 
 const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=>{
@@ -92,7 +93,7 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
 
                     onClick={()=>setShowModal(!showModal)}
                     >
-                        <span>Pencil Icon</span>
+                        <span><GoPencil/></span>
                     </Button>
 
                 </div>
