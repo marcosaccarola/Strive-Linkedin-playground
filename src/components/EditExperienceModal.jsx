@@ -48,10 +48,11 @@ const EditExperienceModal = ({ userId, experienceId, getExperiences }) => {
         `${PROFILES_URL}${userId}/experiences/${expId}`,
         {
           method: "PUT",
+          body: JSON.stringify(thisExperience),
           headers: {
-            body: JSON.stringify(thisExperience),
             Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo",
+              'Content-Type': 'application/json'
           },
         }
       );
@@ -60,7 +61,7 @@ const EditExperienceModal = ({ userId, experienceId, getExperiences }) => {
         setThisExperience(editedData);
         alert("Experience edited")
         // console.log(editedData)
-        // getExperiences();
+        getExperiences();
       }
     } catch (error) {
       throw error;
@@ -76,7 +77,8 @@ const EditExperienceModal = ({ userId, experienceId, getExperiences }) => {
     setThisExperience({ ...thisExperience, [e.target.id]: e.target.value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+      e.preventDefault()
       editExperience(userId, experienceId)
       handleClose()
   }
