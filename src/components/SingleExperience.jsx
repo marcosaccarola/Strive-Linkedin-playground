@@ -77,18 +77,23 @@ const SingleExperience = (props) => {
 
         {user === "613884772068d2001522b4c6" || user === "613888102068d2001522b4d4" || user === "61360d537be6c10015f9dbac"  && 
             <>
-              <Button id="deleteExp-btn" variant="danger" onClick={()=>{deleteExp(user, _id)}}>
-                <ImBin/>
+              <Button id="deleteExp-btn"
+              variant="danger"
+              onClick={()=>{deleteExp(user, _id)}}
+              style={{color:"white",marginBottom:5}}
+              className="mx-1 border-0"                           
+              >
+                <ImBin  size={15}/>
               </Button>
               
               <Button
               id="editExp-btn" 
               variant="warning" 
               onClick={()=>{props.handleShow("edit")}}
-              style={{color:"rgba(0, 0, 0, 0.733)",marginBottom:5}}
+              style={{color:"white",marginBottom:5}}
               className="border-0"
               >
-                <GoPencil size={25}/>
+                <GoPencil size={16}/>
               </Button>
               {/* expId={props._id} editExp={editExp} */}
               <ExperienceModal
