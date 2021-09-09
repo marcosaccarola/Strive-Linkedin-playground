@@ -13,7 +13,7 @@ const Post = ({ postData }) => {
 
 
   const[text, setText]=useState("")
-//    const[thisNewPost, setThisNewPost]=useState([])
+    const[thisNewPost, setThisNewPost]=useState([])
 
   const sendAndClose=(e)=>{
     sendProfileData(e)
@@ -22,9 +22,9 @@ const Post = ({ postData }) => {
 }
 const sendProfileData=async(e)=>{
     e.preventDefault()
-
-    await putIntoPost({text})
-     console.log("nuovo post", text)
+    setText({thisNewPost})
+    await putIntoPost({thisNewPost})
+     console.log("nuovo post",thisNewPost)
 } 
 
   return (
@@ -38,7 +38,7 @@ const sendProfileData=async(e)=>{
         <span>New Post</span>
       </Button>
   
-  <NewPost text={text} />
+  <NewPost text={thisNewPost} />
 
 
       <Modal show={showModal} onHide={handleShow}>
@@ -49,7 +49,7 @@ const sendProfileData=async(e)=>{
                         <Form>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
 
-                                <Form.Label>text</Form.Label>
+                                <Form.Label>What do you have in mind?</Form.Label>
                                 <Form.Control 
                                 type="text" 
                                 placeholder=""
