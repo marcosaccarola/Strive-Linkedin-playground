@@ -20,13 +20,13 @@ const ExperiencesList = ({id}) => {
   const getExps = async () => {
     const experiencesData = await fetchExps(id);
     setExperiences(experiencesData);
-    console.log('experiences data ', experiencesData)
+    // console.log('experiences data ', experiencesData)
   };
 
   useEffect(() => {
     //console.log('Current User is ', {profilesData}, {id})
     getExps();
-  }, [id,]);
+  }, [id]);
 
   return (
     <>
@@ -57,7 +57,7 @@ const ExperiencesList = ({id}) => {
         {experiences.map((exp) => (
        
           <Container className="d-flex justify-content-between">
-            {  console.log({exp})}
+            {/* {  console.log({exp})} */}
             <SingleExperience
               // role={exp.role}
               // company={exp.company}
