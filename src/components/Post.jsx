@@ -12,7 +12,7 @@ const Post = ({ postData }) => {
   const handleShow=()=>setShowModal(true);
 
   const[text, setText]=useState("")
-   const[thisNewPost, setThisNewPost]=useState([])
+//    const[thisNewPost, setThisNewPost]=useState([])
  
 
   const sendAndClose=(e)=>{
@@ -22,8 +22,8 @@ const Post = ({ postData }) => {
 }
 const sendProfileData=async(e)=>{
     e.preventDefault()
-     putIntoPost({thisNewPost})
-     console.log("nuovo post",thisNewPost)
+    await putIntoPost({text})
+     console.log("nuovo post", text)
 } 
 
   return (
@@ -36,8 +36,8 @@ const sendProfileData=async(e)=>{
       >
         <span>New Post</span>
       </Button>
-
-  <NewPost setThisNewPost= {thisNewPost} />
+  
+  <NewPost text={text} />
 
 
       <Modal show={showModal} onHide={handleShow}>
@@ -72,8 +72,8 @@ const sendProfileData=async(e)=>{
 
       {postData.slice(0, 7).map((post) => (
         <div>
-          <Row>
-            <Col sm={6} className="m-auto my-5">
+          <Row className="m-auto">
+            <Col md={{ span: 6, offset: 3 }} className="m-auto my-5">
               <Card style={{ width: "18rem" }} className="mb-5">
                 <Card.Img variant="top" src={post.user.image} alt="userImg" />
                 <Card.Body>

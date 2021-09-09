@@ -1,6 +1,6 @@
-const NewPost = ({thisNewPost}) => {
+const NewPost = ({text}) => {
     return (
-<div>{thisNewPost}</div>
+<div>{text}</div>
     )
 }
 export default NewPost

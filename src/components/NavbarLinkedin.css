@@ -9,6 +9,7 @@
     width: 100vw;
     z-index: 100;
     justify-content: center !important;
+    flex-direction: row;
 }
 .navbar svg {
     margin-top: -2px;
