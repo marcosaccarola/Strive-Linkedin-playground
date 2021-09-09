@@ -12,6 +12,7 @@
     flex-direction: row;
     padding-left: 150px;
 }
+
 .navbar svg {
     margin-top: -2px;
     margin-left: 260px;
@@ -86,8 +87,13 @@ a::after{
     background-color: #EEF3F8;
     margin-top: -2px;
     text-align:left;
-   
 }
+@media only screen and (max-width: 1500px) {
+    .searchBar {
+      background-color: rgb(20, 106, 134);
+    
+    }
+  }
 .collapsed{
     height: 30px;
     width: 30px;

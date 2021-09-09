@@ -1,6 +1,10 @@
-const NewPost = ({text}) => {
+const NewPost = (thisNewPost) => {
     return (
-<div>{text}</div>
+<div>
+<p>{thisNewPost.message}</p>
+<p>{thisNewPost.name}</p>
+</div>
+
     )
 }
 export default NewPost

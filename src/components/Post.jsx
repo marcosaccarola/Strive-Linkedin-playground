@@ -5,16 +5,16 @@ import { getPosts } from "../utils/Post";
 import NewPost from "./NewPost";
 
 const Post = ({ postData }) => {
-  console.log("this is postdata", postData);
+  // console.log("this is postdata", postData);
 
   const[showModal,setShowModal]=useState(false)
   const handleClose=()=>setShowModal(false);
   const handleShow=()=>setShowModal(true);
 
 
-  const[text, setText]=useState("")
-    const[thisNewPost, setThisNewPost]=useState([])
-
+  const[message, setMessage]=useState("")
+    const[name, setName]=useState("")
+ const thisNewPost = {message, name}
   const sendAndClose=(e)=>{
     sendProfileData(e)
     handleClose()
@@ -22,8 +22,9 @@ const Post = ({ postData }) => {
 }
 const sendProfileData=async(e)=>{
     e.preventDefault()
-    setText({thisNewPost})
-    await putIntoPost({thisNewPost})
+    setMessage({thisNewPost})
+    setName({thisNewPost})
+     await putIntoPost(thisNewPost)
      console.log("nuovo post",thisNewPost)
 } 
 
@@ -38,7 +39,7 @@ const sendProfileData=async(e)=>{
         <span>New Post</span>
       </Button>
   
-  <NewPost text={thisNewPost} />
+  <NewPost thisNewPost={thisNewPost} />
 
 
       <Modal show={showModal} onHide={handleShow}>
@@ -51,10 +52,16 @@ const sendProfileData=async(e)=>{
 
                                 <Form.Label>What do you have in mind?</Form.Label>
                                 <Form.Control 
-                                type="text" 
+                                type="required" 
                                 placeholder=""
-                                value={text}
-                                 onChange={(e)=>setText(e.target.value)}
+                                value={message}
+                                 onChange={(e)=>setMessage(e.target.value)}
+                                />
+                                 <Form.Control 
+                                type="required" 
+                                placeholder=""
+                                value={name}
+                                 onChange={(e)=>setName(e.target.value)}
                                 />
                     
                     </Form.Group>
