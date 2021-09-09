@@ -180,7 +180,7 @@ const Post = ({ postData }) => {
 
                 </Modal>
 
-      {postData.slice(0, 7).map((post) => (
+      {postData.slice(0, 7).reverse().map((post) => (
         <div>
           <Row className="m-auto">
             <Col md={{ span: 6, offset: 3 }} className="m-auto my-5">
