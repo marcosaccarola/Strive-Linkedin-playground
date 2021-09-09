@@ -43,10 +43,12 @@ const ExperiencesList = ({id}) => {
               show={show}
               handleClose={handleClose}
             />
-            <Button id="addExp-btn" 
+            <Button 
+            id="addExp-btn" 
             variant="light" 
             onClick={()=>handleShow("add")}
-            style={{color:"rgba(0, 0, 0, 0.733)",backgroundColor:"white",marginLeft:"auto",marginTop:10,border:0}}
+            className="mt-4 ml-auto mr-3 border-0"
+            style={{color:"rgba(0, 0, 0, 0.733)",backgroundColor:"white"}}
             >
 
             <GoPencil size={30}/> 
