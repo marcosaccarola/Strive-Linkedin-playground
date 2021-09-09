@@ -1,6 +1,8 @@
 import { Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import ExperienceModal from "./ExperienceModal";
+import {GoPencil} from 'react-icons/go'
+import {ImBin} from 'react-icons/im'
 
 
 const SingleExperience = (props) => {
@@ -76,15 +78,17 @@ const SingleExperience = (props) => {
         {user === "613884772068d2001522b4c6" || user === "613888102068d2001522b4d4" || user === "61360d537be6c10015f9dbac"  && 
             <>
               <Button id="deleteExp-btn" variant="danger" onClick={()=>{deleteExp(user, _id)}}>
-                Trash icon
+                <ImBin/>
               </Button>
               
               <Button
-              
-              id="editExp-btn" variant="warning" onClick={()=>{
-                props.handleShow("edit")
-              }}>
-                Edit
+              id="editExp-btn" 
+              variant="warning" 
+              onClick={()=>{props.handleShow("edit")}}
+              style={{color:"rgba(0, 0, 0, 0.733)",marginBottom:5}}
+              className="border-0"
+              >
+                <GoPencil size={25}/>
               </Button>
               {/* expId={props._id} editExp={editExp} */}
               <ExperienceModal

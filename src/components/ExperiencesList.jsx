@@ -5,6 +5,7 @@ import ExperienceModal from "./ExperienceModal";
 import fetchExps from "../utils/profiles";
 import "./ExperiencesListStyle.css"
 import {GoPencil} from 'react-icons/go'
+import {BiPlus} from 'react-icons/bi'
 
 const ExperiencesList = ({id}) => {
   const [show, setShow] = useState(false);
@@ -48,10 +49,10 @@ const ExperiencesList = ({id}) => {
             variant="light" 
             onClick={()=>handleShow("add")}
             className="mt-4 ml-auto mr-3 border-0"
-            style={{color:"rgba(0, 0, 0, 0.733)",backgroundColor:"white"}}
+            style={{color:"rgba(0, 0, 0, 0.733)",backgroundColor:"white",marginBottom:5}}
             >
 
-            <GoPencil size={30}/> 
+            <BiPlus size={40} /> 
 
             </Button>
           </>
