@@ -4,13 +4,14 @@ import { Button, Form, Modal } from "react-bootstrap";
 const ExperienceModal = ({
   experienceId,
   userId,
-  exp,
-  getExps,
+  experience,
+  getExperiences,
   show,
   handleClose,
   modalMode = "edit",
 }) => {
-  const defaultExp = useMemo(
+
+  const defaultExperience = useMemo(
     () => ({
       role: "",
       company: "",
@@ -22,27 +23,22 @@ const ExperienceModal = ({
     []
   );
 
-  const [newExp, setNewExp] = useState(defaultExp);
+  const [newExperience, setNewExperience] = useState(defaultExperience);
   useEffect(() => {
     if (experienceId && modalMode === "edit") {
       // if modalMode is "edit", set experience
-      setNewExp(exp);
+      setNewExperience(experience);
     } else {
-      setNewExp(defaultExp); // if modal mode changes to "add" set experience to default
+      setNewExperience(defaultExperience); // if modal mode changes to "add" set experience to default
     }
-  }, [experienceId, userId, show, exp, defaultExp, modalMode]);
+  }, [experienceId, userId, show, experience, defaultExperience, modalMode]);
 
-  // useEffect(() => {
-  //   if (experienceId) {
-  //     setNewExp(exp);
-  //   }
-  // }, []);
   const PROFILES_URL = "https://striveschool-api.herokuapp.com/api/profile/";
-  const postNewExp = async () => {
+  const postNewExperience = async () => {
     try {
       const response = await fetch(`${PROFILES_URL}${userId}/experiences`, {
         method: "POST",
-        body: JSON.stringify(newExp),
+        body: JSON.stringify(newExperience),
         headers: {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo",
@@ -50,8 +46,8 @@ const ExperienceModal = ({
         },
       });
       if (response.ok) {
-        getExps();
-        setNewExp({
+        getExperiences();
+        setNewExperience({
           role: "",
           company: "",
           description: "",
@@ -66,11 +62,11 @@ const ExperienceModal = ({
     }
   };
 
-  const updateExp = () => {
+  const updateExperience = () => {
     alert("put");
   };
 
-  //   const updateExp = async (userId, expId) => {
+  //   const updateExperience = async (userId, expId) => {
   //     try {
   //     //   let singleExpData = await getSingleExp(userId, expId);
   //     //   console.log(singleExpData);
@@ -88,7 +84,7 @@ const ExperienceModal = ({
   //       );
   //       if (response.ok) {
   //         const editedData = await response.json();
-  // 		setNewExp(editedData)
+  // 		setNewExperience(editedData)
   //         // setSingleExp(editedData);
   //       }
   //     } catch (error) {
@@ -97,19 +93,20 @@ const ExperienceModal = ({
   //   };
 
   const handleInput = (e) => {
-    setNewExp({ ...newExp, [e.target.id]: e.target.value });
+    setNewExperience({ ...newExperience, [e.target.id]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (userId) {
-      postNewExp();
+      postNewExperience();
     } else {
-      updateExp();
-	  console.log('you made it until here!')
+      updateExperience();
+      // console.log("you made it until here!");
     }
     handleClose();
-    getExps();
+    console.log("you made it until here!");
+    getExperiences();
   };
 
   return (
@@ -128,11 +125,11 @@ const ExperienceModal = ({
           <Modal.Title>Add New Experience</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={postNewExp}>
+          <Form onSubmit={postNewExperience}>
             <Form.Group className="mb-3" id="role" controlId="role">
               <Form.Label>Role</Form.Label>
               <Form.Control
-                value={newExp.role}
+                value={newExperience.role}
                 onChange={(e) => handleInput(e)}
                 type="text"
                 placeholder="Your role"
@@ -142,7 +139,7 @@ const ExperienceModal = ({
             <Form.Group className="mb-3" id="company" controlId="company">
               <Form.Label>Company</Form.Label>
               <Form.Control
-                value={newExp.company}
+                value={newExperience.company}
                 onChange={(e) => handleInput(e)}
                 type="text"
                 placeholder="Company name"
@@ -152,7 +149,7 @@ const ExperienceModal = ({
             <Form.Group className="mb-3" id="area" controlId="area">
               <Form.Label>Area</Form.Label>
               <Form.Control
-                value={newExp.area}
+                value={newExperience.area}
                 onChange={(e) => handleInput(e)}
                 type="text"
                 placeholder="Area"
@@ -166,7 +163,7 @@ const ExperienceModal = ({
             >
               <Form.Label>Description</Form.Label>
               <Form.Control
-                value={newExp.description}
+                value={newExperience.description}
                 onChange={(e) => handleInput(e)}
                 as="textarea"
                 rows={3}
@@ -176,18 +173,18 @@ const ExperienceModal = ({
             <Form.Group className="mb-3" id="startDate" controlId="startDate">
               <Form.Label>From</Form.Label>
               <Form.Control
-                value={newExp.startDate}
+                value={newExperience.startDate}
                 onChange={(e) => handleInput(e)}
-                type="number"
+                type="text"
               />
             </Form.Group>
 
             <Form.Group className="mb-3" id="endDate" controlId="endDate">
               <Form.Label>To</Form.Label>
               <Form.Control
-                value={newExp.endDate}
+                value={newExperience.endDate}
                 onChange={(e) => handleInput(e)}
-                type="number"
+                type="text"
               />
             </Form.Group>
           </Form>

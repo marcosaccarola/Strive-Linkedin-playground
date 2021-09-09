@@ -28,7 +28,7 @@ export const searchProfile = async () => {
 ////////////////////////////////////////////////////////////////////////////////
 
 // TO GET EXPs
-const fetchExps = async (query) => {
+const fetchExperiences = async (query) => {
   try {
     const response = await fetch(`${PROFILES_URL}${query}/experiences`, {
       headers: {
@@ -50,7 +50,7 @@ const fetchExps = async (query) => {
   }
 }
 
-export default fetchExps
+export default fetchExperiences
 
 
 // TO POST AN EXP
