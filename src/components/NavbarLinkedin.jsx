@@ -16,12 +16,13 @@ import bell from "../assets/bell.jpg";
 import square from "../assets/square.jpg";
 import post from "../assets/post.png";
 import "./NavbarLinkedin.css";
+import { Link } from "react-router-dom";
 
 const NavbarLinkedin = () => {
   return (
     <div>
       <Navbar expand="lg" className="navbar">
-     
+      <Link to={"/"} > 
         <svg
           height="31"
           width="30"
@@ -39,6 +40,7 @@ const NavbarLinkedin = () => {
             />
           </g>
         </svg>
+        </Link>
         <Form className="d-flex">
           <FormControl
             style={{ height: 30 }}
@@ -56,11 +58,12 @@ const NavbarLinkedin = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
+            <Link to={"/"} > 
              <div className="iconsWrapper mx-2">
               <img src={home} alt="user" />
             <Nav.Link href="#action1" className="navlink">Home</Nav.Link>
             </div> 
-
+          </Link>
             <div className="iconsWrapper mx-2">
               <img src={users} alt="user" />
             <Nav.Link href="#action1" className="navlink">My Network</Nav.Link>
@@ -79,7 +82,7 @@ const NavbarLinkedin = () => {
             <Nav.Link href="#action1" className="navlink">Notifications</Nav.Link>
             </div> 
           
-
+            <Link to={"/profilePage"} >  
             <div className="userDropdown">
               <img src={user} className="userImg" alt="user" />
               <NavDropdown
@@ -87,15 +90,16 @@ const NavbarLinkedin = () => {
                 id="navbarScrollingDropdown"
                 className="userDropdowne"
               >
+           
                 <NavDropdown.Item href="#action4">
-                  Another action
+                  Go to Profile Page
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action5">
-                  Something else here
+                  Go to Profile Page
                 </NavDropdown.Item>
               </NavDropdown>
-            </div>
+            </div>   </Link>
 
             <div className="userDropdown ">
               <img src={square} className="dropIcon" alt="work" />

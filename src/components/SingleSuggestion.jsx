@@ -5,9 +5,9 @@ import "./SingleSuggestionStyle.css";
 const SingleSuggestion = ({ profilesData, setId }) => {
     const teamArr=[]
     if(profilesData!==undefined){
-    teamArr.push(profilesData.find(profile=>profile.surname==='Saccarola'))
-    teamArr.push(profilesData.find(profile=>profile.surname==='Maccapani'))
-    //teamArr.push(profilesData.find(profile=>profile.surname==='Tumaite'))
+      teamArr.push(profilesData.find(profile=>profile._id==='613884772068d2001522b4c6')) //Dovile
+      teamArr.push(profilesData.find(profile=>profile._id==='613888102068d2001522b4d4')) //Lia
+      teamArr.push(profilesData.find(profile=>profile._id==='61360d537be6c10015f9dbac')) //Marco
     //console.log(teamArr)
     }
   return (
