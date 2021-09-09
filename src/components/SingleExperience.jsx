@@ -1,4 +1,5 @@
 import { Button } from "react-bootstrap";
+import EditExperienceModal from "./EditExperienceModal";
 // import { useEffect } from "react";
 
 const SingleExperience = ({
@@ -13,29 +14,8 @@ const SingleExperience = ({
 }) => {
  
 
+  
   const PROFILES_URL = "https://striveschool-api.herokuapp.com/api/profile/";
-  const getSingleExperience = async (userId, expId) => {
-    try {
-      const response = await fetch(
-        `${PROFILES_URL}${userId}/experiences/${expId}`,
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo",
-          },
-        }
-      );
-      if (response.ok) {
-        const data = await response.json();
-        // console.log('Single Experience: ', data)
-      } else {
-        throw new Error();
-      }
-    } catch (error) {
-      throw error;
-    }
-  };
-
   const deleteExperience = async (userId, expId) => {
     try {
       const response = await fetch(
@@ -58,24 +38,6 @@ const SingleExperience = ({
     }
   };
 
-  // const editExp = async (userId, expId) => {
-  //   try {
-  //     const response = await fetch(`${PROFILES_URL}${userId}/experiences/${expId}`, {
-  //         method: 'PUT',
-  //         headers: {
-  //             Authorization:
-  //               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo",
-  //         }
-  //     })
-  //     if(response.ok){
-  //         const deletedData = await response.json()
-  //         console.log(`Hasta la vista ${deletedData.role}`)
-  //     }
-  //   } catch (error) {
-  //     throw error
-  //   }
-  // }
-
   return (
     <>
       <p>{role}</p>
@@ -95,9 +57,7 @@ const SingleExperience = ({
           >
             Trash icon
           </Button>
-          <Button id="editExp-btn" variant="warning">
-            Edit
-          </Button>
+          <EditExperienceModal experienceId={experienceId} userId={userId} getExperiences={getExperiences}/>
         </>
       }
     </>

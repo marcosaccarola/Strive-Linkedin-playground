@@ -10,7 +10,7 @@ const ExperiencesList = ({id}) => {
   const getExperiences = async () => {
     const experiencesData = await fetchExperiences(id);
     setExperiences(experiencesData);
-    console.log(experiencesData, id)
+    // console.log(experiencesData, id)
   };
 
   useEffect(() => {
