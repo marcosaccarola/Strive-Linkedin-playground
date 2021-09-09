@@ -11,9 +11,9 @@ const Post = ({ postData }) => {
   const handleClose=()=>setShowModal(false);
   const handleShow=()=>setShowModal(true);
 
+
   const[text, setText]=useState("")
 //    const[thisNewPost, setThisNewPost]=useState([])
- 
 
   const sendAndClose=(e)=>{
     sendProfileData(e)
@@ -22,6 +22,7 @@ const Post = ({ postData }) => {
 }
 const sendProfileData=async(e)=>{
     e.preventDefault()
+
     await putIntoPost({text})
      console.log("nuovo post", text)
 } 

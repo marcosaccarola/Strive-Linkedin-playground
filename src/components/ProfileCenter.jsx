@@ -13,7 +13,7 @@ const ProfileCenter=({profilesData,id})=>{
                 {
                 profilesData!==undefined && (
                     thisProfile.map(profile=>(
-                    <div>
+                    <div key={profile._id} >
                         <h5>About</h5>
                         {profile.bio}
                     </div>

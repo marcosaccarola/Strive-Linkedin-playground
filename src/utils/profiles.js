@@ -9,20 +9,23 @@ export const searchProfile = async () => {
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo",
+          //
       },
     });
 
     if (response.ok) {
-      console.log(response)
+      //console.log(response)
       const result = await response.json();
       return result;
     } else {
-      throw new Error("ERR FETCHING:");
+      throw new Error("please try refreshing the page or selecting another link.");
     }
   } catch (error) {
     throw error;
   }
 };
+
+////////////////////////////////////////////////////////////////////////////////
 
 // TO GET EXPs
 const fetchExps = async (query) => {
@@ -35,12 +38,14 @@ const fetchExps = async (query) => {
     })
     if(response.ok){
       const data = await response.json()
+      console.log({data})
       return data
 
     } else {
       throw new Error 
     }
   } catch (error) {
+    console.log(error)
     throw error
   }
 }
