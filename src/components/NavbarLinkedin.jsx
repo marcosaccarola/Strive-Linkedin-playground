@@ -64,23 +64,34 @@ const NavbarLinkedin = () => {
             <Nav.Link href="#action1" className="navlink">Home</Nav.Link>
             </div> 
           </Link>
+
+          <Link to={""} > 
             <div className="iconsWrapper mx-2">
               <img src={users} alt="user" />
             <Nav.Link href="#action1" className="navlink">My Network</Nav.Link>
             </div> 
+            </Link>
 
+            <Link to={""} > 
             <div className="iconsWrapper mx-2">
               <img src={bag} alt="user" />
             <Nav.Link href="#action1" className="navlink">Jobs</Nav.Link>
             </div> 
+            </Link>
+            
+            <Link to={""} >    
             <div className="iconsWrapper mx-2">
               <img src={messages} alt="user" />
             <Nav.Link href="#action1" className="navlink">Messaging</Nav.Link>
             </div> 
+            </Link>
+
+            <Link to={""} > 
             <div className="iconsWrapper mx-2">
               <img src={bell} alt="user" />
             <Nav.Link href="#action1" className="navlink">Notifications</Nav.Link>
             </div> 
+            </Link>
           
             <Link to={"/profilePage"} >  
             <div className="userDropdown">
@@ -95,11 +106,9 @@ const NavbarLinkedin = () => {
                   Go to Profile Page
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Go to Profile Page
-                </NavDropdown.Item>
               </NavDropdown>
-            </div>   </Link>
+            </div>   
+           </Link>
 
             <div className="userDropdown ">
               <img src={square} className="dropIcon" alt="work" />

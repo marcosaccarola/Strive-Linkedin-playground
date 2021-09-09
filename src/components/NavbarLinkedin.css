@@ -1,14 +1,14 @@
 
 .navbar {
-    background-color: rgb(251, 251, 251);
-    display: flex !important;
-    align-items: center !important;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
     height: 40px;
     position: fixed;
     top:0;
     width: 100vw;
     z-index: 100;
-    justify-content: center !important;
+    justify-content: center;
     flex-direction: row;
 }
 .navbar svg {
@@ -42,7 +42,7 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    margin-top: 6px;
+    margin-top: 12px;
 }
 .iconsWrapper:hover {
     text-decoration: underline;
