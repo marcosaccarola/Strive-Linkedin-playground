@@ -40,7 +40,7 @@ const Post = ({ postData }) => {
 
      try {
       // console.log("inside putIntoPost and before fetch",post)
-      const response = await fetch(`${POST_URL}`  , {
+      const response = await fetch(`${POST_URL}` , {
         method: "POST",
         body: JSON.stringify(post),
         headers: {
@@ -149,20 +149,20 @@ const Post = ({ postData }) => {
                                 <Form.Control 
                                 type="text" 
                                 placeholder=""
-                                defaultValue = {post.message}
+                                value = {post.message}
                                  onChange = {(e)=> handleInput( "message", e.target.value)}
                                 />
                                 {/* { handleInput(e, 'text/name/...')} */}
                                  <Form.Control 
                                 type="text" 
                                 placeholder=""
-                                defaultValue = {text.message}
+                                value = {post.text}
                                  onChange = {(e)=> handleInput( "text", e.target.value)}
                                 />
                                  <Form.Control 
                                 type="text" 
                                 placeholder=""
-                                defaultValue = {name.message}
+                                value = {post.name}
                                  onChange = {(e)=> handleInput( "name", e.target.value)}
                                 />
                     
@@ -170,10 +170,10 @@ const Post = ({ postData }) => {
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>
-                    <Button variant="secondary" type="submit" >
+                    <Button variant="secondary" onClick={sendAndClose} >
                         Close
                     </Button>
-                    <Button variant="primary" onClick={sendAndClose}>
+                    <Button variant="primary" type="submit" onClick={sendAndClose} >
                         Pubblish
                     </Button>
                     </Modal.Footer>
