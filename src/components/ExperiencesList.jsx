@@ -4,6 +4,7 @@ import SingleExperience from "./SingleExperience";
 import ExperienceModal from "./ExperienceModal";
 import fetchExps from "../utils/profiles";
 import "./ExperiencesListStyle.css"
+import {GoPencil} from 'react-icons/go'
 
 const ExperiencesList = ({id}) => {
   const [show, setShow] = useState(false);
@@ -42,8 +43,14 @@ const ExperiencesList = ({id}) => {
               show={show}
               handleClose={handleClose}
             />
-            <Button id="addExp-btn" variant="primary" onClick={()=>handleShow("add")}>
-              Add 
+            <Button id="addExp-btn" 
+            variant="light" 
+            onClick={()=>handleShow("add")}
+            style={{color:"rgba(0, 0, 0, 0.733)",backgroundColor:"white",marginLeft:"auto",marginTop:10,border:0}}
+            >
+
+            <GoPencil size={30}/> 
+
             </Button>
           </>
         )}
