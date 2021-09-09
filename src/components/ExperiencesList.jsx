@@ -1,9 +1,9 @@
-import { Button, Container } from "react-bootstrap";
+import { Button, Container, ListGroup } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import SingleExperience from "./SingleExperience";
 import ExperienceModal from "./ExperienceModal";
 import fetchExps from "../utils/profiles";
-import "./ExperiencesList.css"
+import "./ExperiencesListStyle.css"
 
 const ExperiencesList = ({id}) => {
   const [show, setShow] = useState(false);
@@ -48,12 +48,12 @@ const ExperiencesList = ({id}) => {
           </>
         )}
       <div>
-        <h5 className="text-left">Experiences</h5>
+          <p className="experiences">Experiences</p>
         {/* <Button id="addExp-btn" variant="primary" onClick={handleShow}>
           Add / Edit Experience
         </Button> */}
         {experiences.map((exp) => (
-       
+          
           <Container className="d-flex justify-content-between">
             {/* {  console.log({exp})} */}
             <SingleExperience
@@ -72,7 +72,7 @@ const ExperiencesList = ({id}) => {
               handleClose={handleClose}
               handleShow={handleShow}
               getExps={getExps}
-            />
+              />
           </Container>
         ))}
       </div>
