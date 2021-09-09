@@ -4,7 +4,7 @@ import SingleExperience from "./SingleExperience";
 import ExperienceModal from "./ExperienceModal";
 import fetchExperiences from "../utils/profiles";
 
-const ExperiencesList = ({ id }) => {
+const ExperiencesList = ({id}) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
 
@@ -34,15 +34,16 @@ const ExperiencesList = ({ id }) => {
         className="rounded mt-5"
         style={{ backgroundColor: "yellow", height: 300, width: "100%" }}
       >
-        {id === "613884772068d2001522b4c6" ||
+        {(id === "613884772068d2001522b4c6" ||
           id === "613888102068d2001522b4d4" ||
-          (id === "61360d537be6c10015f9dbac" && (
+          id === "61360d537be6c10015f9dbac") && 
             <>
               <ExperienceModal
                 userId={id}
                 getExperiences={getExperiences}
                 show={show}
                 handleClose={handleClose}
+                modalMode={modalMode}
               />
               <Button
                 id="addExp-btn"
@@ -52,7 +53,7 @@ const ExperiencesList = ({ id }) => {
                 Add
               </Button>
             </>
-          ))}
+          }
         <div>
           <h5>Experiences</h5>
           {experiences.map((experience) => (

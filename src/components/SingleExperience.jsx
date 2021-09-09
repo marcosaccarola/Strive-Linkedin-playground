@@ -73,9 +73,9 @@ const SingleExperience = (props) => {
       <p>{startDate}</p>
       {endDate && <p>{endDate}</p>}
 
-      {user === "613884772068d2001522b4c6" ||
+      {(user === "613884772068d2001522b4c6" ||
         user === "613888102068d2001522b4d4" ||
-        (user === "61360d537be6c10015f9dbac" && (
+        user === "61360d537be6c10015f9dbac") && 
           <>
             <Button
               id="deleteExp-btn"
@@ -96,20 +96,18 @@ const SingleExperience = (props) => {
             >
               Edit
             </Button>
-            {/* expId={props._id} editExp={editExp} */}
             <ExperienceModal
               modalMode={props.modalMode} // we are passing modalMode down to experience modal
               show={props.show}
               handleClose={props.handleClose}
+              getExperiences={props.getExperiences}
               experienceId={experience._id}
-              experience={experience}
+              experience={props.experience}
             />
           </>
-        ))}
+      }
     </>
   );
 };
 
 export default SingleExperience;
-
-// id={_id} getExps={getExps}

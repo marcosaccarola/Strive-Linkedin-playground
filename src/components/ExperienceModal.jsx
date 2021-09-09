@@ -2,9 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 
 const ExperienceModal = ({
-  experienceId,
-  userId,
-  experience,
+  experienceId, // exp id from single exp
+  userId, //id from explist
+  experience, //whole single exp object
   getExperiences,
   show,
   handleClose,
@@ -34,7 +34,7 @@ const ExperienceModal = ({
   }, [experienceId, userId, show, experience, defaultExperience, modalMode]);
 
   const PROFILES_URL = "https://striveschool-api.herokuapp.com/api/profile/";
-  const postNewExperience = async () => {
+  const postNewExperience = async (userId) => {
     try {
       const response = await fetch(`${PROFILES_URL}${userId}/experiences`, {
         method: "POST",
@@ -55,42 +55,43 @@ const ExperienceModal = ({
           startDate: "",
           endDate: null,
         });
-        alert("Experience added");
+        alert("Experience added", userId);
       }
     } catch (error) {
       throw error;
     }
   };
 
-  const updateExperience = () => {
-    alert("put");
-  };
+  // const updateExperience = (userId, experienceId) => {
+  //   alert("put", userId, experienceId);
+  // };
 
-  //   const updateExperience = async (userId, expId) => {
-  //     try {
-  //     //   let singleExpData = await getSingleExp(userId, expId);
-  //     //   console.log(singleExpData);
-  //       const response = await fetch(
-  //         `${PROFILES_URL}${userId}/experiences/${expId}`,
-  //         {
-  //           method: "PUT",
-  //           headers: {
-  //             body: JSON.stringify(exp),
-  //             Authorization:
-  //               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo",
-  //             "Content-type": "application/json",
-  //           },
-  //         }
-  //       );
-  //       if (response.ok) {
-  //         const editedData = await response.json();
-  // 		setNewExperience(editedData)
-  //         // setSingleExp(editedData);
-  //       }
-  //     } catch (error) {
-  //       throw error;
-  //     }
-  //   };
+  const updateExperience = async (userId, experienceId) => {
+    try {
+    //   let singleExpData = await getSingleExp(userId, expId);
+    //   console.log(singleExpData);
+      const response = await fetch(
+        `${PROFILES_URL}${userId}/experiences/${experienceId}`,
+        {
+          method: "PUT",
+          headers: {
+            body: JSON.stringify(newExperience),
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo",
+            "Content-type": "application/json",
+          },
+        }
+      );
+      if (response.ok) {
+        const editedData = await response.json();
+        setNewExperience(editedData)
+        alert('Experience edited')
+        // setSingleExp(editedData);
+      }
+    } catch (error) {
+      throw error;
+    }
+  };
 
   const handleInput = (e) => {
     setNewExperience({ ...newExperience, [e.target.id]: e.target.value });
@@ -98,10 +99,10 @@ const ExperienceModal = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (userId) {
-      postNewExperience();
+    if (modalMode==='add') {
+      postNewExperience(userId);
     } else {
-      updateExperience();
+      updateExperience(userId, experienceId);
       // console.log("you made it until here!");
     }
     handleClose();
