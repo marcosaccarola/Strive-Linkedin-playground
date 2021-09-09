@@ -5,6 +5,7 @@ import {putIntoProfile}from '../utils/profilePut'
 import "./ProfileHeaderStyle.css"
 import {searchProfile}from '../utils/profiles'
 
+
 const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=>{
 
     const[showModal,setShowModal]=useState(false)

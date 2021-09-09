@@ -78,7 +78,7 @@ const Profile = () => {
 
               </Col>
               <Col md={4} className="col">
-                    <ProfileRightSide profilesData={profilesData} setId={setId} />                 
+                  <ProfileRightSide profilesData={profilesData} setId={setId} />                 
               </Col>
           </Row>
       </Container>
