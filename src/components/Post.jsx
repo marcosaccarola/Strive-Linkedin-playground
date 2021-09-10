@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import NewPost from "./NewPost";
 
+
 const Post = ({ postData }) => {
   // console.log("this is postdata", postData);
 
@@ -128,7 +129,7 @@ const Post = ({ postData }) => {
    {/* <NewPost thisNewPost={thisNewPost} />  */}
 
        {/* <> */}
-      { newPost && <NewPost post={post}/>}
+      {/* { newPost && <NewPost post={post}/>} */}
         {/* <p>{post.message}</p>
          <p>{post.name}</p>
          <p>{post.text}</p> */}
@@ -146,12 +147,12 @@ const Post = ({ postData }) => {
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
 
                                 <Form.Label>What do you have in mind?</Form.Label>
-                                <Form.Control 
+                                {/* <Form.Control 
                                 type="text" 
                                 placeholder=""
                                 value = {post.message}
                                  onChange = {(e)=> handleInput( "message", e.target.value)}
-                                />
+                                /> */}
                                 {/* { handleInput(e, 'text/name/...')} */}
                                  <Form.Control 
                                 type="text" 
@@ -159,12 +160,12 @@ const Post = ({ postData }) => {
                                 value = {post.text}
                                  onChange = {(e)=> handleInput( "text", e.target.value)}
                                 />
-                                 <Form.Control 
+                                 {/* <Form.Control 
                                 type="text" 
                                 placeholder=""
                                 value = {post.name}
                                  onChange = {(e)=> handleInput( "name", e.target.value)}
-                                />
+                                /> */}
                     
                     </Form.Group>
                         </Form>
@@ -179,7 +180,7 @@ const Post = ({ postData }) => {
                     </Modal.Footer>
 
                 </Modal>
-
+  
       {postData.slice(0, 7).reverse().map((post) => (
         <div>
           <Row className="m-auto">
@@ -192,7 +193,7 @@ const Post = ({ postData }) => {
                   <Card.Text>{post.user.bio}</Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                  <ListGroupItem>{post.text}</ListGroupItem>
+                  {newPost && <ListGroupItem>{post.text}</ListGroupItem> }
                   <ListGroupItem>{post.user.area}</ListGroupItem>
                   <ListGroupItem>{post.user.id}</ListGroupItem>
                 </ListGroup>
