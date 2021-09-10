@@ -22,9 +22,6 @@ const Post = ( {postsData,setPostsData} ) => {
 
 
 
-  const [showModal, setShowModal] = useState(false);
-  const handleClose = () => setShowModal(false);
-  const handleShow = () => setShowModal(true);
 
 
 
@@ -62,13 +59,13 @@ const Post = ( {postsData,setPostsData} ) => {
          alert("NEW POST CREATE");
       } else {
         alert("oi oi");
- 
+      }
     } catch (error) {
       throw error;
     }
 
   }
-   }
+   
 
 // {SEND DATA & CLOSE MODAL}
   const sendAndClose= async (e) => {
@@ -129,15 +126,6 @@ const[posts,setPosts]=useState({postsData})
         </div>
       </div>
 
-
-
-
-
-
-
-
-
-  
   {/* MODAL WITH FORM   */}
       <Modal show={showModal} onHide={handleShow}>
           <Modal.Header closeButton>
@@ -169,8 +157,8 @@ const[posts,setPosts]=useState({postsData})
       </Modal>
 
   {/* DISPLAYS GET DATA */}
-      {postData
-        .slice(Math.max(postData.length - 10, 0))
+      {postsData
+        .slice(Math.max(postsData.length - 10, 0))
         .reverse()
         .map((post) => (
           <div>
