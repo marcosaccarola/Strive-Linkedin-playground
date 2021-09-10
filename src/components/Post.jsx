@@ -1,21 +1,8 @@
 import { Row, Card, Col, ListGroup, ListGroupItem, Modal, Form, Button } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import  { getPosts }  from "../utils/Post"
-//import NewPost from "./NewPost";
 
 const Post = ( {postsData,setPostsData} ) => {
-
-
-
-/*
-    const[posts, setPosts] = useState({
-      message:"",
-      name:"",
-      text:"",
-    })
-*/
-
-    //setPosts({postData})
       
     const [newPost, setNewPost] = useState(true)
     const handleInput = (key, value) => {
@@ -40,21 +27,9 @@ const Post = ( {postsData,setPostsData} ) => {
           Authorization: `${bearer}`,
         },
       });
-      //console.log(newPost)
-      //console.log(response)
-      //console.log("this should be the response after the fetch", response)
       if (response.ok) {
-       // const postData = await response.json()
          alert("NEW POST CREATE");
-        //console.log("my postData", postData);
-        //setNewPost(true)
-        /* setPost({
-        message:"",
-        name:"",
-        text:"",
-       })*/
       } else {
-        //console.log("error");
         alert("oi oi");
       }
     } catch (error) {
@@ -67,10 +42,7 @@ const Post = ( {postsData,setPostsData} ) => {
     e.preventDefault()
     const firstWaiter=await sendPost(e)
     const secondWaiter=await anotherGetPosts()
-    //setPostsData(postsData)
     handleClose()
-    //handleInput(e)
-    //console.log("this is the last creation", post)
 }
 const anotherGetPosts=async()=>{
   const data=await getPosts()
@@ -110,8 +82,8 @@ const[posts,setPosts]=useState({postsData})
                       <Form.Label>What do you have in mind?</Form.Label>
                         <Form.Control 
                       type="text" 
-                      placeholder=""
-                      value = {newPost.text}
+                      //placeholder=""
+                      //value = {newPost.text}
                         onChange = {(e)=> handleInput( "text", e.target.value)}
                       />
                 </Form.Group>
