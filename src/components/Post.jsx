@@ -129,7 +129,7 @@ const Post = ({ postData }) => {
       <div className="postContainer">
         <div className="generateNewPostContainer">
           <div className="picAndButton">
-            <img src={user} alt="profile picture" />
+          <img src={user} alt="profile picture" />
             <Button
               variant="primary"
               id="edit-btn"
