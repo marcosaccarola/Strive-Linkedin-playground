@@ -5,14 +5,14 @@ import Post from "./Post.jsx"
 
 const Posts = () => {
 
-    const [postData, setPosts]= useState([])
+    const [postsData, setPostsData]= useState([])
     // const[id,setId] = useState()
   
     const fetchPosts = async () =>{
         try {
-            const post = await getPosts();
-             console.log(post)
-            setPosts(post);
+            const data = await getPosts();
+             //console.log(post)
+            setPostsData(data);
             //console.log(profilesData)
         } catch (error) {
             //console.log(error);
@@ -28,7 +28,7 @@ const Posts = () => {
               <Col md={6} className="col">
 
                           
-                  <Post postData={postData} />
+                  <Post postsData={postsData} setPostsData={setPostsData} />
 
 
               </Col>

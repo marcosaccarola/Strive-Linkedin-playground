@@ -3,14 +3,19 @@ import { useEffect, useState } from "react";
 import  { getPosts }  from "../utils/Post"
 //import NewPost from "./NewPost";
 
-const Post = ( {postData} ) => {
+const Post = ( {postsData,setPostsData} ) => {
 
-  //console.log('HELLO FRIEND'+postData)
-    const[post, setPost] = useState({
+
+
+/*
+    const[posts, setPosts] = useState({
       message:"",
       name:"",
       text:"",
     })
+*/
+
+    //setPosts({postData})
       
     const [newPost, setNewPost] = useState(true)
     const handleInput = (key, value) => {
@@ -35,8 +40,8 @@ const Post = ( {postData} ) => {
           Authorization: `${bearer}`,
         },
       });
-      console.log(newPost)
-      console.log(response)
+      //console.log(newPost)
+      //console.log(response)
       //console.log("this should be the response after the fetch", response)
       if (response.ok) {
        // const postData = await response.json()
@@ -61,20 +66,26 @@ const Post = ( {postData} ) => {
   const sendAndClose= async (e) => {
     e.preventDefault()
     const firstWaiter=await sendPost(e)
+    const secondWaiter=await anotherGetPosts()
+    //setPostsData(postsData)
     handleClose()
-    const secondWaiter=await getPosts()
     //handleInput(e)
     //console.log("this is the last creation", post)
 }
+const anotherGetPosts=async()=>{
+  const data=await getPosts()
+  setPostsData(data)
+}
+const[posts,setPosts]=useState({postsData})
 
 // {SHOW/HIDE MODAL}
     const[showModal,setShowModal]=useState(false)
-    const handleClose=()=>setShowModal(false);
+    const handleClose=()=>{setShowModal(false);}
     const handleShow=()=>setShowModal(true);
 
 
 // {RENDER}
-  return (
+  return (postsData!==undefined && (
     <div>
 
   {/* BUTTON "NEW POST" */}
@@ -118,7 +129,7 @@ const Post = ( {postData} ) => {
       </Modal>
   
   {/* DISPLAYS GET DATA */}
-      {postData.slice(Math.max(postData.length -8, 0)).reverse().map((post) => (
+      {postsData.slice(Math.max(postsData.length -8, 0)).reverse().map((post) => (
         <div>
           <Row className="m-auto">
             <Col md={{ span: 6, offset: 3 }} className="m-auto my-5">
@@ -142,6 +153,6 @@ const Post = ( {postData} ) => {
 
 
     </div>
-  );
+  ));
 };
 export default Post;
