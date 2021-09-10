@@ -7,13 +7,11 @@ import HomePage from "./components/pages/HomePage";
 function App() {
   return (
     <div className="App">
+      <Router>
+        <Route exact path="/profilePage" component={ProfilePage} />
 
-        <Router>
-          <Route exact path="/profilePage" component={ProfilePage} />
-
-          <Route exact path="/" component={HomePage} />
-        </Router>
-     
+        <Route exact path="/" component={HomePage} />
+      </Router>
     </div>
   );
 }
