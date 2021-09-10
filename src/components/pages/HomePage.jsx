@@ -3,21 +3,22 @@ import Directory from "../Directory";
 import NavbarLinkedin from "../NavbarLinkedin";
 import Posts from "../Posts";
 import ProfileRightSide from "../ProfileRightSide";
-import {Row,Col}from 'react-bootstrap'
 
-const HomePage = () => {
+
+
+const HomePage = ({profilesData,setId}) => {
     
     return (
         <div>
         <NavbarLinkedin/> 
-        <Row>
-         <Col>
+        
+        
         <Posts/>
-         </Col>
-         <Col>
-        <ProfileRightSide />
-        </Col>
-        </Row>
+        
+         
+        <ProfileRightSide data={profilesData,setId}/>
+     
+       
         <Directory/> 
         <CustomFooter />
         </div>

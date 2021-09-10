@@ -1,209 +1,191 @@
-import { Row, Card, Col, ListGroup, ListGroupItem, Modal, Form, Button } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import {
+  Row,
+  Card,
+  Col,
+  ListGroup,
+  ListGroupItem,
+  Modal,
+  Form,
+  Button,
+} from "react-bootstrap";
+import { useState } from "react";
+import  { getPosts }  from "../utils/Post"
 
-import NewPost from "./NewPost";
+import "./Post.css";
+import user from "../assets/user.jpeg";
+import pic from "../assets/pic.png";
+import video from "../assets/video.png";
+import event from "../assets/event.png";
+import article from "../assets/article.png";
+
+const Post = ( {postsData,setPostsData} ) => {
 
 
-const Post = ({ postData }) => {
-  // console.log("this is postdata", postData);
-
-  const[showModal,setShowModal]=useState(false)
-  const handleClose=()=>setShowModal(false);
-  const handleShow=()=>setShowModal(true);
 
 
-    // const[message, setMessage]=useState("")
-    // const[name, setName]=useState("")
-    // const[text, setText]=useState("")
- 
-    const[post, setPost] = useState({
-      message:"",
-      name:"",
-      text:"",
-    })
-      
-    const [newPost, setNewPost] = useState(true)
-    // const thisNewPost = {message, name, text}
+
+
+  const [post, setPost] = useState({
+    message: "",
+    name: "",
+    text: "",
+  });
+
+      const [newPost, setNewPost] = useState(true)
     const handleInput = (key, value) => {
-      setPost({
-      ...post, [key] : value
+      setNewPost({
+      ...newPost, [key] : value
     })
     }
-    
-    // const id = "_id"
-    const POST_URL = "https://striveschool-api.herokuapp.com/api/posts/";
-    let bearer =
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo";
-    
+  
+  const POST_URL = "https://striveschool-api.herokuapp.com/api/posts/";
+  let bearer =
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo";
 
-   const handleSubmit = async (e) => {
+// {FETCH POST}
+   const sendPost=async(e)=>{
      e.preventDefault()
-
      try {
-      // console.log("inside putIntoPost and before fetch",post)
       const response = await fetch(`${POST_URL}` , {
+
         method: "POST",
-        body: JSON.stringify(post),
+        body: JSON.stringify(newPost),
         headers: {
           "Content-Type": "application/json",
           Authorization: `${bearer}`,
         },
       });
-      console.log("this should be the response after the fetch", response)
       if (response.ok) {
-        const postData = await response.json()
          alert("NEW POST CREATE");
-        console.log("my postData", postData);
-        setNewPost(true)
-         setPost({
-        message:"",
-        name:"",
-        text:"",
-       })
-    
       } else {
-        console.log("error");
         alert("oi oi");
       }
     } catch (error) {
       throw error;
     }
-   }
-  //    console.log("the new post:", post)
-     
-  //    let response = await putIntoPost()
-  //    if (response.ok) {
-  //      setPost({
-  //       message:"",
-  //       name:"",
-  //       text:"",
-  //      })
-  //       console.log("the new post:", post)
-  //    } else {
-  //      console.log("something wrong in this post")
-  //    }
-  //    } catch (error) {
-  //      console.log(error)
-  //    }
-  //  }
 
-  // useEffect((prevPost, newPost ) => {
-  //      if ( prevPost!=== newPost) {
-  //         setPost(post)
-  //      }
-  // },[])
+  }
+   
 
-  const sendAndClose=(e)=>{
-    // sendPostData(e)
+// {SEND DATA & CLOSE MODAL}
+  const sendAndClose= async (e) => {
+    e.preventDefault()
+    const firstWaiter=await sendPost(e)
+    const secondWaiter=await anotherGetPosts()
     handleClose()
-    handleInput(e)
-    handleSubmit(e)
-    console.log("this is the last creation", post)
-    // getPosts()
 }
+const anotherGetPosts=async()=>{
+  const data=await getPosts()
+  setPostsData(data)
+}
+const[posts,setPosts]=useState({postsData})
 
-//   const sendPostData = async (e) => {
-//     console.log(thisNewPost ,'testttttttt')
-//     e.preventDefault()
-//     setMessage(thisNewPost)
-//     setName(thisNewPost)
-//     setText(thisNewPost)
-//     await putIntoPost(thisNewPost)
-  
-//     console.log("new post", thisNewPost)
-// } 
-
+// {SHOW/HIDE MODAL}
+    const[showModal,setShowModal]=useState(false)
+    const handleClose=()=>{setShowModal(false);}
+    const handleShow=()=>setShowModal(true);
 
 
-  return (
+
+// {RENDER}
+  return (postsData!==undefined && (
     <div>
-      <Button
-        variant="primary"
-        id="edit-btn"
-        className="mx-1 mt-2 mb-2 "
-        onClick={() => setShowModal(!showModal)}
-      >
-        <span>New Post</span>
-      </Button>
-  
-   {/* <NewPost thisNewPost={thisNewPost} />  */}
 
-       {/* <> */}
-      {/* { newPost && <NewPost post={post}/>} */}
-        {/* <p>{post.message}</p>
-         <p>{post.name}</p>
-         <p>{post.text}</p> */}
-        
-     {/* ) }
-       </>  */}
-
-
-      <Modal show={showModal} onHide={handleShow}>
-                    <Modal.Header closeButton>
-                    <Modal.Title>Create a new post!</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Form onSubmit={handleSubmit}>
-                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-
-                                <Form.Label>What do you have in mind?</Form.Label>
-                                {/* <Form.Control 
-                                type="text" 
-                                placeholder=""
-                                value = {post.message}
-                                 onChange = {(e)=> handleInput( "message", e.target.value)}
-                                /> */}
-                                {/* { handleInput(e, 'text/name/...')} */}
-                                 <Form.Control 
-                                type="text" 
-                                placeholder=""
-                                value = {post.text}
-                                 onChange = {(e)=> handleInput( "text", e.target.value)}
-                                />
-                                 {/* <Form.Control 
-                                type="text" 
-                                placeholder=""
-                                value = {post.name}
-                                 onChange = {(e)=> handleInput( "name", e.target.value)}
-                                /> */}
-                    
-                    </Form.Group>
-                        </Form>
-                    </Modal.Body>
-                    <Modal.Footer>
-                    <Button variant="secondary" onClick={sendAndClose} >
-                        Close
-                    </Button>
-                    <Button variant="primary" type="submit" onClick={sendAndClose} >
-                        Pubblish
-                    </Button>
-                    </Modal.Footer>
-
-                </Modal>
-  
-      {postData.slice(0, 7).reverse().map((post) => (
-        <div>
-          <Row className="m-auto">
-            <Col md={{ span: 6, offset: 3 }} className="m-auto my-5">
-              <Card style={{ width: "18rem" }} className="mb-5">
-                <Card.Img variant="top" src={post.user.image} alt="userImg" />
-                <Card.Body>
-                  <Card.Title>{post.user.name}</Card.Title>
-                  <h5>{post.username} </h5>
-                  <Card.Text>{post.user.bio}</Card.Text>
-                </Card.Body>
-                <ListGroup className="list-group-flush">
-                  {newPost && <ListGroupItem>{post.text}</ListGroupItem> }
-                  <ListGroupItem>{post.user.area}</ListGroupItem>
-                  <ListGroupItem>{post.user.id}</ListGroupItem>
-                </ListGroup>
-              </Card>
-            </Col>
-          </Row>
+      {/* BUTTON "NEW POST" */}
+      <div className="postContainer">
+        <div className="generateNewPostContainer">
+          <div className="picAndButton">
+          <img src={user} alt="profile picture" />
+            <Button
+              variant="primary"
+              id="edit-btn"
+              className="mx-1 mt-2 mb-2 newPost"
+              onClick={() => setShowModal(!showModal)}
+            >
+              <span>Start a post</span>
+            </Button>
+          </div>
+          <div className="buttonsGroup">
+            <div className="button">
+            <img src={pic} />
+              <p>Photo</p>
+            </div>
+            <div className="button">
+            <img src={video} />
+              <p>Video</p>
+            </div>
+            <div className="button">
+            <img src={event}/>
+              <p>Event</p>
+            </div>
+            <div className="button">
+            <img src={article} />
+              <p>Write article</p>
+            </div>
+          </div>
         </div>
-      ))}
+      </div>
+
+  {/* MODAL WITH FORM   */}
+      <Modal show={showModal} onHide={handleShow}>
+          <Modal.Header closeButton>
+          <Modal.Title>Create a new post!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+
+              <Form>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                      <Form.Label>What do you have in mind?</Form.Label>
+                        <Form.Control 
+                      type="text" 
+                      //placeholder=""
+                      //value = {newPost.text}
+                        onChange = {(e)=> handleInput( "text", e.target.value)}
+                      />
+                </Form.Group>
+              </Form>
+
+          </Modal.Body>
+          <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose} >
+              Close
+          </Button>
+          <Button variant="primary" onClick={sendAndClose} >
+              Pubblish
+          </Button>
+          </Modal.Footer>
+      </Modal>
+
+  {/* DISPLAYS GET DATA */}
+      {postsData
+        .slice(Math.max(postsData.length - 10, 0))
+        .reverse()
+        .map((post) => (
+          <div>
+            
+                <div className="cardBody">
+                  <div className="infoContainer">
+                    <p className="name">{post.user.name}</p>
+                     <p className="info" > {post.username}</p>
+                      <p className="info">{post.user.area}</p>
+                      <p className="info">{post.user.bio}</p>
+                     </div>
+                      <p className="post">{post.text}</p>
+                  <img src={post.user.image} alt="userImg" />
+  
+                </div>
+              
+            
+          </div>
+        ))}
+  
+
+
+
+
+
 
     </div>
-  );
+  ));
 };
 export default Post;
