@@ -1,25 +1,17 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
-import NavbarLinkedin from "./components/NavbarLinkedin";
-import Directory from "./components/Directory";
-import CustomFooter from "./components/CustomFooter";
-import Profile from "./components/Profile";
+import ProfilePage from "./components/pages/ProfilePage";
+import HomePage from "./components/pages/HomePage";
 
 function App() {
   return (
     <div className="App">
-      <header>
-        <Router>
-          <NavbarLinkedin />
-          <Route>
-            <Profile />
-          </Route>
-          <Directory />
-          <CustomFooter />
-        </Router>
-      </header>
+      <Router>
+        <Route exact path="/profilePage" component={ProfilePage} />
+
+        <Route exact path="/" component={HomePage} />
+      </Router>
     </div>
   );
 }

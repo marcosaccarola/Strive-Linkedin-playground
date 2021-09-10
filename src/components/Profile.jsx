@@ -1,15 +1,17 @@
-
-import "./ProfileStyle.css"
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Alert, Spinner } from "react-bootstrap";
 import ProfileHeader from "./ProfileHeader";
 import ProfileCenter from "./ProfileCenter";
 import ProfileRightSide from "./ProfileRightSide";
+import ExperiencesList from './ExperiencesList';
 import {searchProfile}from '../utils/profiles'
+import "./ProfileStyle.css"
 
 const Profile = () => {
-
-    const[profilesData,setProfilesData]=useState([
+    
+    const[profilesData,setProfilesData]=useState(
+        /*
+        [
         {
             "_id": "61360d537be6c10015f9dbac",
             "name": "Marco",
@@ -23,18 +25,26 @@ const Profile = () => {
             "createdAt": "2021-09-06T12:45:07.983Z",
             "updatedAt": "2021-09-06T22:45:17.877Z",
             "__v": 0
-        }
-    ])
+        }    
+    ]
+    */
+    )
     const[id,setId] = useState('61360d537be6c10015f9dbac')
 
+    const[errMess,setErrMess]=useState()
+    const[isLoading,setIsLoading]=useState(false)
     const fetchProfiles = async () => {
+        setIsLoading(true)
 		try {
 			const data=await searchProfile();
-            //console.log(data)
+            // console.log(data)
 			setProfilesData(data);
             //console.log(profilesData)
+            setIsLoading(false)
 		} catch (error) {
-			console.log(error);
+            setErrMess(error.message)
+            setIsLoading(false)
+			//console.log(error);
 		}
 	};
 
@@ -42,36 +52,37 @@ const Profile = () => {
         fetchProfiles()
     },[])
 
-    
     return(
-       <div>
-            <Container className="profileBody">
-            <Row>
-                <Col md={8}
-                className="mt-5 col"
-                >
-                    <ProfileHeader/>
-                    <ProfileCenter/>
-                </Col>
-                <Col md={4}
-                 className="mt-5 col"
-                >
-                    <ProfileRightSide />
-                </Col>
-            </Row>
-        </Container>
+
       <Container>
+            {errMess &&
+                <Alert variant="danger" style={{marginTop:50}}>
+                    Cannot load the data: {errMess}
+                </Alert>
+            }
+            {isLoading && (
+                <div className="ml-2">
+                    <Spinner animation="border" variant="success" size="lg" style={{marginTop:200}} />
+                </div>
+            )}
           <Row style={{marginTop:50}}>
-              <Col md={8} style={{backgroundColor:"red",minHeight:1000}}>
-                  <ProfileHeader profilesData={profilesData} id={id}/>
+              <Col md={8} className="col">
+
+                  <ProfileHeader profilesData={profilesData} id={id} 
+                    setProfilesData={setProfilesData} 
+                    setErrMess={setErrMess}
+                    setIsLoading={setIsLoading}
+                    />               
                   <ProfileCenter profilesData={profilesData} id={id} />
+                  <ExperiencesList profilesData={profilesData} id={id}/>
+
               </Col>
-              <Col md={4} style={{backgroundColor:"blue",minHeight:1000}}>
-                  <ProfileRightSide profilesData={profilesData} setId={setId} />
+              <Col md={4} className="col">
+                  <ProfileRightSide profilesData={profilesData} setId={setId} />                 
               </Col>
           </Row>
       </Container>
-       </div>
+
     )
 }
 

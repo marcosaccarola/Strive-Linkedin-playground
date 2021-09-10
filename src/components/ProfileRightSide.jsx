@@ -1,13 +1,16 @@
 import React from 'react'
-import {Container} from 'react-bootstrap'
 import SingleSuggestion from './SingleSuggestion'
+import "./ProfileRightSideStyle.css"
 
 const ProfileRightSide=({profilesData,setId})=>{
 
     return(
-        <Container className="rounded mt-5" style={{backgroundColor:"yellow",height:500,width:"100%"}}>
+        profilesData!==undefined && (
+        <div className="rounded my-5">
             <SingleSuggestion profilesData={profilesData} setId={setId}/>
-        </Container>
+            <div className="show">Show more</div>
+        </div>
+        )
     )
 }
 export default ProfileRightSide
