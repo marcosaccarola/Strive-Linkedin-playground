@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { Alert, Button, Form, Modal, Spinner } from "react-bootstrap";
 import {BiPlus} from 'react-icons/bi';
+import addNewExperience from '../utils/profiles';
 
 const ExperienceModal = ({ id, getExperiences }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // const [selectedFile, setSelectedFile] = useState(null);
-	// const [isFilePicked, setIsFilePicked] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+	const [isFilePicked, setIsFilePicked] = useState(false);
 
   const defaultExperience = {
     role: "",
@@ -17,7 +18,6 @@ const ExperienceModal = ({ id, getExperiences }) => {
     area: "",
     startDate: "",
     endDate: null,
-    // selectedFile: null,
   };
 
   const [newExperience, setNewExperience] = useState({ defaultExperience });
@@ -63,12 +63,10 @@ const ExperienceModal = ({ id, getExperiences }) => {
     }
   };
 
-  const handleInput = (e, propertyId) => {
-    // setNewExperience({...newExperience, [propertyId]: propertyId === "picture" ?
-    //   e.target.files[0] : e.target.value })
-    //   setSelectedFile(true)
+  const handleInput = (e) => {
     setNewExperience({ ...newExperience, [e.target.id]: e.target.value });
   };
+
 
   return (
     <div className="experiences-container">
@@ -154,14 +152,14 @@ const ExperienceModal = ({ id, getExperiences }) => {
               />
             </Form.Group>
 
-            {/* <Form.Group className="mb-3" id="picture" controlId="endDate">
-              <Form.Label>To</Form.Label>
+            <Form.Group className="mb-3" id="picture" controlId="endDate">
+              <Form.Label>Upload File</Form.Label>
               <Form.Control
                 // value={newExperience.endDate}
                 onChange={(e) => handleInput(e)}
                 type="file"
               />
-            </Form.Group> */}
+            </Form.Group>
 
             <Button variant="primary" type="submit" onClick={handleClose}>
               POST

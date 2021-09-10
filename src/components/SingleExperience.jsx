@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import EditExperienceModal from "./EditExperienceModal";
 import {GoPencil} from 'react-icons/go'
 import {ImBin} from 'react-icons/im'
+import { format, parseISO } from 'date-fns'
 
 const SingleExperience = ({
   company,
