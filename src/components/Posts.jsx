@@ -5,17 +5,12 @@ import Post from "./Post.jsx"
 
 const Posts = () => {
 
-    const [postData, setPosts]= useState([])
-    // const[id,setId] = useState()
-  
+    const [postsData, setPostsData]= useState([])
     const fetchPosts = async () =>{
         try {
-            const post = await getPosts();
-             console.log(post)
-            setPosts(post);
-            //console.log(profilesData)
+            const data = await getPosts();
+            setPostsData(data);
         } catch (error) {
-            //console.log(error);
         }
     }
     useEffect(()=>{
@@ -26,13 +21,10 @@ const Posts = () => {
         <Container>
           <Row style={{marginTop:50}}>
               <Col md={6} className="col">
+                       
+                  <Post postsData={postsData} setPostsData={setPostsData} />
 
-                          
-                  <Post postData={postData} />
-
-
-              </Col>
-             
+              </Col>            
           </Row>
       </Container>
     )
