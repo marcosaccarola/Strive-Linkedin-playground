@@ -64,8 +64,24 @@ const Post = ( {postsData,setPostsData} ) => {
       throw error;
     }
   }
+   
+
+// {SEND DATA & CLOSE MODAL}
+  const sendAndClose= async (e) => {
+    e.preventDefault()
+    const firstWaiter=await sendPost(e)
+    const secondWaiter=await anotherGetPosts()
+    handleClose()
+}
+const anotherGetPosts=async()=>{
+  const data=await getPosts()
+  setPostsData(data)
+}
+const[posts,setPosts]=useState({postsData})
+
   /////////////////////////////////////////////////////////////////////////////////
   // {FETCH PUT PUT PUT PUT PUT PUT PUT}
+  /*
   const changePost=async(e)=>{
     e.preventDefault()
     try {
@@ -87,20 +103,8 @@ const Post = ( {postsData,setPostsData} ) => {
      throw error;
    }
  }
-   
+ */
 
-// {SEND DATA & CLOSE MODAL}
-  const sendAndClose= async (e) => {
-    e.preventDefault()
-    const firstWaiter=await sendPost(e)
-    const secondWaiter=await anotherGetPosts()
-    handleClose()
-}
-const anotherGetPosts=async()=>{
-  const data=await getPosts()
-  setPostsData(data)
-}
-const[posts,setPosts]=useState({postsData})
 
 // {SHOW/HIDE MODAL}
     const[showModal,setShowModal]=useState(false)
@@ -183,7 +187,7 @@ const[posts,setPosts]=useState({postsData})
         .slice(Math.max(postsData.length - 10, 0))
         .reverse()
         .map((post) => (
-          <div>
+          <div key={post._id}>
             
                 <div className="cardBody">
                   <div className="infoContainer">
