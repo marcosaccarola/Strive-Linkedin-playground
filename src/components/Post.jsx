@@ -1,7 +1,7 @@
 import { Row, Card, Col, ListGroup, ListGroupItem, Modal, Form, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import  { getPosts }  from "../utils/Post"
-import NewPost from "./NewPost";
+import "./Post.css";
 
 
 const Post = ({ postData }) => {
@@ -116,16 +116,18 @@ const Post = ({ postData }) => {
 
 
   return (
-    <div>
+    <div className = "postContainer">
+
+      <div className = "generateNewPostContainer">
       <Button
         variant="primary"
         id="edit-btn"
-        className="mx-1 mt-2 mb-2 "
+        className="mx-1 mt-2 mb-2 newPost"
         onClick={() => setShowModal(!showModal)}
       >
-        <span>New Post</span>
+        <span>Start a post</span>
       </Button>
-  
+      </div>
    {/* <NewPost thisNewPost={thisNewPost} />  */}
 
        {/* <> */}

@@ -1,0 +1,24 @@
+.postContainer {
+display: flex;
+flex-direction: column;
+}
+.newPost {
+    background-color:#dde7f1e8 ;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    border-radius: 20px;
+    color: black;
+}
+.generateNewPostContainer {
+height: 80px;
+width: 180px;
+margin: 10px;
+display:flex;
+justify-content: center;
+border: 1px solid rgba(0, 0, 0, 0.253);
+border-radius: 4px;
+background-color: white;
+}
