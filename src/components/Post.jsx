@@ -98,7 +98,7 @@ const[posts,setPosts]=useState({postsData})
      if (response.ok) {
         alert("POST DELETED");
      } else {
-       alert("SOMETHING WENT WRONG");
+       alert("ARE YOU SURE? CLICK ANOTHER TIME DELETE");
      }
    } catch (error) {
      throw error;
