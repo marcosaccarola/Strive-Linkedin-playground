@@ -12,9 +12,9 @@ export const getPosts = async () => {
     });
 
     if (response.ok) {
-      console.log(response)
+      //console.log(response)
       const data = await response.json();
-      
+      console.log(data)
       return data;
     } else {
       throw new Error("error:");

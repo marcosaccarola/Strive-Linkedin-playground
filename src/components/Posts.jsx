@@ -6,17 +6,12 @@ import ProfileRightSide from "./ProfileRightSide";
 
 const Posts = () => {
 
-    const [postData, setPosts]= useState([])
-    // const[id,setId] = useState()
-  
+    const [postsData, setPostsData]= useState([])
     const fetchPosts = async () =>{
         try {
-            const post = await getPosts();
-             console.log(post)
-            setPosts(post);
-            //console.log(profilesData)
+            const data = await getPosts();
+            setPostsData(data);
         } catch (error) {
-            //console.log(error);
         }
     }
     useEffect(()=>{
@@ -25,18 +20,20 @@ const Posts = () => {
 
     return (
         <Container>
+
         <Row style={{marginTop:50}}>
         <Col xs={0} md={3}>
 
         </Col>
             <Col xs={12} md={6} className="col">          
-                <Post postData={postData} />
+                <Post postsData={postsData} setPostsData={setPostsData} />
             </Col>
             <Col xs={0} md={3}>
                  <ProfileRightSide/>
             </Col>
         </Row>
     </Container>
+
     )
 }
 export default Posts
