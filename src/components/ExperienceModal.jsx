@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Alert, Button, Form, Modal, Spinner } from "react-bootstrap";
+import {BiPlus} from 'react-icons/bi';
 
 const ExperienceModal = ({ id, getExperiences }) => {
   const [show, setShow] = useState(false);
@@ -72,8 +73,11 @@ const ExperienceModal = ({ id, getExperiences }) => {
       )}
 
       {isError && <Alert variant="danger"> Something went wrong </Alert>}
-      <Button id="addExp-btn" variant="primary" onClick={handleShow}>
-        Add experience +
+      <Button variant="light" className="mt-4 ml-auto mr-3 border-0"
+        style={{color:"rgba(0, 0, 0, 0.733)",backgroundColor:"white",marginBottom:5}} 
+        onClick={handleShow}
+      >
+         <BiPlus size={40} /> 
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

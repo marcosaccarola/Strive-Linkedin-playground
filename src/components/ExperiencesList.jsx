@@ -21,9 +21,9 @@ const ExperiencesList = ({id}) => {
 
   return (
     <>
-      <Container className="rounded mt-5 jumbocontainer">
+      <Container className="rounded my-5 jumbocontainer">
         <div>
-          <p className="experiences">Experiences</p>
+          <p className="experiences pt-2">Experiences</p>
           {experiences.map((experience) => (
             <Container className="d-flex justify-content-between">
               <SingleExperience

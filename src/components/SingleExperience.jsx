@@ -68,22 +68,21 @@ const SingleExperience = ({
       <p>{startDate}</p>
       {endDate && <p>{endDate}</p>}
        
-      {(userId === "613884772068d2001522b4c6" || userId === "613888102068d2001522b4d4" || userId === "61360d537be6c10015f9dbac") && 
-        <>
-          <Button
-            id="deleteExp-btn"
-            variant="danger"
-            onClick={() => {
-              deleteExperience(userId, experienceId);
-            style={{color:"white",marginBottom:5}}
-            className="mx-1 border-0"
-            }}
-           >
-            <ImBin  size={15}/>
-          </Button>
-          <EditExperienceModal experienceId={experienceId} userId={userId} getExperiences={getExperiences}/>
-        </>
-      }
+      {((userId === "613884772068d2001522b4c6") || (userId === "613888102068d2001522b4d4") || (userId === "61360d537be6c10015f9dbac")) && (
+          <>
+            <Button
+              id="deleteExp-btn"
+              variant="danger"
+              onClick={() => {
+                deleteExperience(userId, experienceId)}}
+              style={{color:"white",marginBottom:5}}
+              className="mx-1 border-0"
+             >
+              <ImBin  size={15}/>
+            </Button>
+            <EditExperienceModal experienceId={experienceId} userId={userId} getExperiences={getExperiences}/>
+          </>   
+      )}
     </>
   );
 };

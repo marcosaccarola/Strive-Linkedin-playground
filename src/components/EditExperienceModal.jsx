@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Alert, Button, Form, Modal, Spinner } from "react-bootstrap";
+import {GoPencil} from 'react-icons/go';
 
 const EditExperienceModal = ({ userId, experienceId, getExperiences }) => {
   const [show, setShow] = useState(false);
@@ -116,8 +117,10 @@ const EditExperienceModal = ({ userId, experienceId, getExperiences }) => {
       )}
 
       {isError && <Alert variant="danger"> Something went wrong </Alert>}
-      <Button id="editExp-btn" variant="warning" onClick={handleShow}>
-        Edit
+      <Button variant="warning" onClick={handleShow} style={{color:"white",marginBottom:5}}
+        className="border-0"
+      >
+        <GoPencil size={16}/>
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
