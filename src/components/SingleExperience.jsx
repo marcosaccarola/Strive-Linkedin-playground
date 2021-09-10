@@ -1,110 +1,91 @@
-import { Button } from "react-bootstrap";
+import { Alert, Button, Spinner } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import ExperienceModal from "./ExperienceModal";
+import EditExperienceModal from "./EditExperienceModal";
 import {GoPencil} from 'react-icons/go'
 import {ImBin} from 'react-icons/im'
 
-
-const SingleExperience = (props) => {
-  const {role, description, company, startDate, endDate, area, user, _id} = props.exp
-  // const [singleExp, setSingleExp] = useState({
-  //   role: props.role,
-  //   company: props.company,
-  //   description: props.description,
-  //   area: props.area,
-  //   startDate: props.startDate,
-  //   endDate: props.endDate
-  // })
-
-  const [exp, setEexperience] = useState({});
-
-  useEffect(() => {
-    setEexperience(props.exp);
-  }, [props.exp]);
+const SingleExperience = ({
+  company,
+  description,
+  endDate,
+  experienceId,
+  getExperiences,
+  role,
+  startDate,
+  userId 
+}) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const PROFILES_URL = "https://striveschool-api.herokuapp.com/api/profile/";
-  const getSingleExp = async (userId, expId) => {
-    try {
-      const response = await fetch(
-        `${PROFILES_URL}${userId}/experiences/${expId}`,
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo",
-          },
-        }
-      );
-      if (response.ok) {
-        const data = await response.json();
-        // return data
-        // console.log('Single Experience: ', data)
-      } else {
-        throw new Error();
-      }
-    } catch (error) {
-      throw error;
-    }
-  };
-
-  const deleteExp = async (userId, expId) => {
+  let BEARER_TOKEN = ''
+  if(userId === "613884772068d2001522b4c6"){
+    BEARER_TOKEN = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM4ODQ3NzIwNjhkMjAwMTUyMmI0YzYiLCJpYXQiOjE2MzEwOTM4ODAsImV4cCI6MTYzMjMwMzQ4MH0.Ckf38QVqF801iXzjIknOZtireFH6vgeoNw9nXSiH7cA"
+  } else if (userId ==='613888102068d2001522b4d4'){
+    BEARER_TOKEN ="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM4ODgxMDIwNjhkMjAwMTUyMmI0ZDQiLCJpYXQiOjE2MzEwOTQ4MDAsImV4cCI6MTYzMjMwNDQwMH0.5U4TIdYxh2YFwTVkvYg4muu1_s4EW1EEsP_E0rZLESA"
+  } else if (userId === "61360d537be6c10015f9dbac") {
+    BEARER_TOKEN = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo"
+  }
+  const deleteExperience = async (userId, expId) => {
+    setIsLoading(true);
     try {
       const response = await fetch(
         `${PROFILES_URL}${userId}/experiences/${expId}`,
         {
           method: "DELETE",
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo",
+            Authorization: BEARER_TOKEN,
           },
         }
       );
       if (response.ok) {
-        props.getExps();
-        // console.log(`Hasta la vista`)
+        getExperiences()
+        setIsLoading(false);
+        // console.log("Hasta la vista");
+      } else {
+        setIsError(true);
+        setIsLoading(false);
+        throw new Error();
       }
     } catch (error) {
+      setIsError(true);
+      setIsLoading(false);
       throw error;
     }
   };
 
   return (
     <>
-        <p>{role}</p>
-        <p>{company}</p>
-        <p>{description}</p>
-        <p>{startDate}</p>
-        { endDate && <p>{endDate}</p> }
-
-        {user === "613884772068d2001522b4c6" || user === "613888102068d2001522b4d4" || user === "61360d537be6c10015f9dbac"  && 
-            <>
-              <Button id="deleteExp-btn"
-              variant="danger"
-              onClick={()=>{deleteExp(user, _id)}}
-              style={{color:"white",marginBottom:5}}
-              className="mx-1 border-0"                           
-              >
-                <ImBin  size={15}/>
-              </Button>
-              
-              <Button
-              id="editExp-btn" 
-              variant="warning" 
-              onClick={()=>{props.handleShow("edit")}}
-              style={{color:"white",marginBottom:5}}
-              className="border-0"
-              >
-                <GoPencil size={16}/>
-              </Button>
-              {/* expId={props._id} editExp={editExp} */}
-              <ExperienceModal
-              modalMode={props.modalMode} // we are passing modalMode down to experience modal
-              show={props.show} handleClose={props.handleClose} experienceId={exp._id}  exp={exp} />
-            </>
-        }
-      </>
+      {isLoading && (
+        <>
+          <Spinner animation="border" variant="primary" />
+          <Alert variant="success"> Completed! </Alert>
+        </>
+      )}
+      <p>{role}</p>
+      <p>{company}</p>
+      <p>{description}</p>
+      <p>{startDate}</p>
+      {endDate && <p>{endDate}</p>}
+       
+      {(userId === "613884772068d2001522b4c6" || userId === "613888102068d2001522b4d4" || userId === "61360d537be6c10015f9dbac") && 
+        <>
+          <Button
+            id="deleteExp-btn"
+            variant="danger"
+            onClick={() => {
+              deleteExperience(userId, experienceId);
+            style={{color:"white",marginBottom:5}}
+            className="mx-1 border-0"
+            }}
+           >
+            <ImBin  size={15}/>
+          </Button>
+          <EditExperienceModal experienceId={experienceId} userId={userId} getExperiences={getExperiences}/>
+        </>
+      }
+    </>
   );
 };
 
 export default SingleExperience;
-
-// id={_id} getExps={getExps}
