@@ -4,6 +4,7 @@ import SingleExperience from "./SingleExperience";
 import ExperienceModal from "./ExperienceModal";
 import fetchExperiences from "../utils/profiles";
 import "./ExperiencesListStyle.css"
+import { format, parseISO } from 'date-fns'
 
 
 const ExperiencesList = ({id}) => {
@@ -31,12 +32,12 @@ const ExperiencesList = ({id}) => {
                 role={experience.role}
                 company={experience.company}
                 description={experience.description}
-                startDate={experience.startDate}
-                endDate={experience.endDate}
                 userId={experience.user}
                 experienceId={experience._id}
                 key={experience._id}
                 getExperiences={getExperiences}
+                startDate={experience.startDate && format(parseISO(experience.startDate), "yyyy MMMM") }
+                endDate={experience.endDate && format(parseISO(experience.endDate), "yyyy MMMM") } 
               />
             </Container>
           ))}
