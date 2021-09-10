@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import  { getPosts }  from "../utils/Post"
 import NewPost from "./NewPost";
 
-const Post = ({ postData }) => {
- 
+const Post = ( {postData} ) => {
+
+  console.log('HELLO FRIEND'+postData)
     const[post, setPost] = useState({
       message:"",
       name:"",
@@ -91,7 +92,7 @@ const Post = ({ postData }) => {
           </Modal.Header>
           <Modal.Body>
 
-              <Form onSubmit={handleSubmit}>
+              <Form>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                       <Form.Label>What do you have in mind?</Form.Label>
                         <Form.Control 
@@ -105,17 +106,17 @@ const Post = ({ postData }) => {
 
           </Modal.Body>
           <Modal.Footer>
-          <Button variant="secondary" onClick={sendAndClose} >
+          <Button variant="secondary" onClick={handleClose} >
               Close
           </Button>
-          <Button variant="primary" type="submit" onClick={sendAndClose} >
+          <Button variant="primary" onClick={sendAndClose} >
               Pubblish
           </Button>
           </Modal.Footer>
       </Modal>
   
   {/* DISPLAYS GET DATA */}
-      {postData.slice(Math.max(postData.length -5, 0)).reverse().map((post) => (
+      {postData.slice(Math.max(postData.length -8, 0)).reverse().map((post) => (
         <div>
           <Row className="m-auto">
             <Col md={{ span: 6, offset: 3 }} className="m-auto my-5">
@@ -129,7 +130,7 @@ const Post = ({ postData }) => {
                 <ListGroup className="list-group-flush">
                    <ListGroupItem>{post.text}</ListGroupItem> 
                   <ListGroupItem>{post.user.area}</ListGroupItem>
-                  <ListGroupItem>{post.user.id}</ListGroupItem>
+                  <ListGroupItem>{post.user._id}</ListGroupItem>
                 </ListGroup>
               </Card>
             </Col>
