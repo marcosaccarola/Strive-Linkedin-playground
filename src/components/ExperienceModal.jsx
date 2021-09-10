@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import { Alert, Button, Form, Modal, Spinner } from "react-bootstrap";
 import {BiPlus} from 'react-icons/bi';
+import addNewExperience from '../utils/profiles';
 
 const ExperienceModal = ({ id, getExperiences }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [selectedFile, setSelectedFile] = useState(null);
+	const [isFilePicked, setIsFilePicked] = useState(false);
 
   const defaultExperience = {
     role: "",
@@ -63,8 +67,9 @@ const ExperienceModal = ({ id, getExperiences }) => {
     setNewExperience({ ...newExperience, [e.target.id]: e.target.value });
   };
 
+
   return (
-    <>
+    <div className="experiences-container">
       {isLoading && (
         <>
           <Spinner animation="border" variant="primary" />
@@ -73,7 +78,7 @@ const ExperienceModal = ({ id, getExperiences }) => {
       )}
 
       {isError && <Alert variant="danger"> Something went wrong </Alert>}
-      <Button variant="light" className="mt-4 ml-auto mr-3 border-0"
+      <Button id="add-btn" variant="light" className="mt-4 mr-3 ml-auto px-0 py-0 border-0"
         style={{color:"rgba(0, 0, 0, 0.733)",backgroundColor:"white",marginBottom:5}} 
         onClick={handleShow}
       >
@@ -134,7 +139,7 @@ const ExperienceModal = ({ id, getExperiences }) => {
               <Form.Control
                 value={newExperience.startDate}
                 onChange={(e) => handleInput(e)}
-                type="text"
+                type="month"
               />
             </Form.Group>
 
@@ -143,7 +148,16 @@ const ExperienceModal = ({ id, getExperiences }) => {
               <Form.Control
                 value={newExperience.endDate}
                 onChange={(e) => handleInput(e)}
-                type="text"
+                type="month"
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" id="picture" controlId="endDate">
+              <Form.Label>Upload File</Form.Label>
+              <Form.Control
+                // value={newExperience.endDate}
+                onChange={(e) => handleInput(e)}
+                type="file"
               />
             </Form.Group>
 
@@ -158,7 +172,7 @@ const ExperienceModal = ({ id, getExperiences }) => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
+    </div>
   );
 };
 

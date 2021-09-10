@@ -42,7 +42,7 @@ const Post = ( {postsData,setPostsData} ) => {
   let bearer =
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo";
 
-// {FETCH POST}
+// {FETCH POST POST POST POST POST POST}
    const sendPost=async(e)=>{
      e.preventDefault()
      try {
@@ -63,7 +63,6 @@ const Post = ( {postsData,setPostsData} ) => {
     } catch (error) {
       throw error;
     }
-
   }
    
 
@@ -79,6 +78,46 @@ const anotherGetPosts=async()=>{
   setPostsData(data)
 }
 const[posts,setPosts]=useState({postsData})
+
+
+  /////////////////////////////////////////////////////////////////////////////////
+  // {FETCH DELETE DELETE DELETE DELETE}
+  
+  const deletePost=async(e)=>{
+    e.preventDefault()
+    try {
+     const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}` , {
+
+       method: "DELETE",
+       //body: JSON.stringify(postChanges),
+       headers: {
+         //"Content-Type": "application/json",
+         Authorization: `${bearer}`,
+       },
+     });
+     if (response.ok) {
+        alert("POST DELETED");
+     } else {
+       alert("ARE YOU SURE? CLICK ANOTHER TIME DELETE");
+     }
+   } catch (error) {
+     throw error;
+   }
+ }
+ // {DELETE & REFRESH}
+ const deleteTHISPost= async (e) => {
+  e.preventDefault()
+  const firstWaiter=await deletePost(e)
+  const secondWaiter=await anotherGetPosts2()
+  //handleClose()
+}
+const anotherGetPosts2=async()=>{
+const data=await getPosts()
+setPostsData(data)
+}
+ 
+const[postId,setPostId]=useState('')
+
 
 // {SHOW/HIDE MODAL}
     const[showModal,setShowModal]=useState(false)
@@ -161,7 +200,7 @@ const[posts,setPosts]=useState({postsData})
         .slice(Math.max(postsData.length - 10, 0))
         .reverse()
         .map((post) => (
-          <div>
+          <div key={post._id} onClick={(e) => setPostId(post._id)}>
             
                 <div className="cardBody">
                   <div className="infoContainer">
@@ -172,7 +211,9 @@ const[posts,setPosts]=useState({postsData})
                      </div>
                       <p className="post">{post.text}</p>
                   <img src={post.user.image} alt="userImg" />
-  
+                  {((post.user._id==='61360d537be6c10015f9dbac')||(post.user._id==='613888102068d2001522b4d4')||(post.user._id==='613884772068d2001522b4c6')) &&(
+                  <Button variant="danger" onClick={deleteTHISPost}>PLEASE DELETE ME</Button>
+                  )}
                 </div>
               
             

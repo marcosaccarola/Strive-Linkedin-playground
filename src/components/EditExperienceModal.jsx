@@ -177,7 +177,7 @@ const EditExperienceModal = ({ userId, experienceId, getExperiences }) => {
               <Form.Control
                 value={thisExperience.startDate}
                 onChange={(e) => handleInput(e)}
-                type="text"
+                type="month"
               />
             </Form.Group>
 
@@ -186,7 +186,7 @@ const EditExperienceModal = ({ userId, experienceId, getExperiences }) => {
               <Form.Control
                 value={thisExperience.endDate}
                 onChange={(e) => handleInput(e)}
-                type="text"
+                type="month"
               />
             </Form.Group>
 
