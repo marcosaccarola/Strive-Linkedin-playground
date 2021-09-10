@@ -1,8 +1,10 @@
-import { Button, Container } from "react-bootstrap";
+import { Container, ListGroup } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import SingleExperience from "./SingleExperience";
 import ExperienceModal from "./ExperienceModal";
 import fetchExperiences from "../utils/profiles";
+import "./ExperiencesListStyle.css"
+
 
 const ExperiencesList = ({id}) => {
   const [experiences, setExperiences] = useState([]);
@@ -19,11 +21,9 @@ const ExperiencesList = ({id}) => {
 
   return (
     <>
-      <Container
-        className="rounded mt-5"
-        style={{ backgroundColor: "yellow", width: "100%" }}
-      >
+      <Container className="rounded mt-5 jumbocontainer">
         <div>
+          <p className="experiences">Experiences</p>
           {experiences.map((experience) => (
             <Container className="d-flex justify-content-between">
               <SingleExperience
@@ -41,7 +41,6 @@ const ExperiencesList = ({id}) => {
             </Container>
           ))}
         </div>
-
         {(id === "613884772068d2001522b4c6" || id === "613888102068d2001522b4d4" || id === "61360d537be6c10015f9dbac")  
           && <ExperienceModal id={id} getExperiences={getExperiences}/>}
       </Container>

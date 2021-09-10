@@ -4,6 +4,7 @@ import img from '../assets/img.jpg'
 import {putIntoProfile}from '../utils/profilePut'
 import "./ProfileHeaderStyle.css"
 import {searchProfile}from '../utils/profiles'
+import {GoPencil} from 'react-icons/go'
 
 
 const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=>{
@@ -73,27 +74,35 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
                 <div className="backgroundImg">
                     <img src={img} className="rounded-top"/>
                 </div>
-              
+                <img src={thisProfile.image} className="img-profile" />
                             <ListGroup className="listgroup">
                                 <p className="text-left">{thisProfile.name} {thisProfile.surname} </p>
                                 <p className="text-left"> {thisProfile.title}</p>
                                 <p className="text-left">{thisProfile.area}</p>
                             </ListGroup>
                    
-                <div className="d-flex">
-                    <Button variant="primary" className="mx-1 mt-2 mb-2 ">
+                <div className="d-flex mt-3 mb-2">
+                    <Button variant="primary" className="ml-3">
                         Connect
                     </Button>
-                    <Button variant="primary" className="mx-1 mt-2 mb-2 ">
+                    <Button variant="primary" className="mx-2">
                         Other
                     </Button>
 
-                    <Button variant="primary" id="edit-btn" className="mx-1 mt-2 mb-2 "
-
+                {((id==='61360d537be6c10015f9dbac')||(id==='613888102068d2001522b4d4')||(id==='613884772068d2001522b4c6')) &&(
+                    <Button 
+                    variant="light" 
+                    id="edit-btn" 
+                    className="ml-auto mr-3 mt-2 mb-3 border-0"
                     onClick={()=>setShowModal(!showModal)}
+                    style={{color:"rgba(0, 0, 0, 0.733)",backgroundColor:"white",marginLeft:"auto",marginTop:10}}
                     >
-                        <span>Pencil Icon</span>
+                        <GoPencil size={30}/>
                     </Button>
+                )}
+
+                
+
 
                 </div>
 

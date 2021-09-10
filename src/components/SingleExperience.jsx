@@ -1,17 +1,18 @@
 import { Alert, Button, Spinner } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import EditExperienceModal from "./EditExperienceModal";
-// import { useEffect } from "react";
+import {GoPencil} from 'react-icons/go'
+import {ImBin} from 'react-icons/im'
 
 const SingleExperience = ({
-  role,
   company,
   description,
-  startDate,
   endDate,
-  userId,
   experienceId,
-  getExperiences
+  getExperiences,
+  role,
+  startDate,
+  userId 
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -66,7 +67,7 @@ const SingleExperience = ({
       <p>{description}</p>
       <p>{startDate}</p>
       {endDate && <p>{endDate}</p>}
-
+       
       {(userId === "613884772068d2001522b4c6" || userId === "613888102068d2001522b4d4" || userId === "61360d537be6c10015f9dbac") && 
         <>
           <Button
@@ -74,9 +75,11 @@ const SingleExperience = ({
             variant="danger"
             onClick={() => {
               deleteExperience(userId, experienceId);
+            style={{color:"white",marginBottom:5}}
+            className="mx-1 border-0"
             }}
-          >
-            Trash icon
+           >
+            <ImBin  size={15}/>
           </Button>
           <EditExperienceModal experienceId={experienceId} userId={userId} getExperiences={getExperiences}/>
         </>
