@@ -105,6 +105,9 @@
     font-size: 12px;
     font-weight:300;
 }
+.infoContainer div {
+    min-height: 30px;
+}
 .cardBody .post {
     margin: 0 20px 10px 20px
 }

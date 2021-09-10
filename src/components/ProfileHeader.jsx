@@ -5,6 +5,8 @@ import {putIntoProfile}from '../utils/profilePut'
 import "./ProfileHeaderStyle.css"
 import {searchProfile}from '../utils/profiles'
 import {GoPencil} from 'react-icons/go'
+// import {useHistory, useParams } from 'react-router-dom'
+// import { useCallback } from 'react'
 
 
 const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=>{
@@ -20,7 +22,9 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
     const[area,setArea]=useState()
     const[image,setImage]=useState()
     const[bio,setBio]=useState()
-    
+
+    // const params = useParams()
+    // const history = useHistory()
     let sendAndClose=''
     let thisProfile={}
     if(profilesData!==undefined){
@@ -54,20 +58,24 @@ const ProfileHeader=({profilesData,id,setProfilesData,setErrMess,setIsLoading})=
             } catch (error) {
                 setErrMess(error.message)
             }
-        }     
-        const fetchProfiles=async()=>{
+        }  
+        
+        // const addData = []
+        const fetchProfiles= async()=>{
             setIsLoading(true)
             try {
                 const data=await searchProfile();
                 setProfilesData(data);
                 setIsLoading(false)
+                // if(stateApp!== undefined){addData.push(stateApp)}
+                // setStateApp(data)
             } catch (error) {
                 setIsLoading(false)
             }
-        };  
+        }
     }
-
-
+   
+    
     return(profilesData!==undefined && (
         <Jumbotron fluid className="mt-5 jumbocontainer">
            

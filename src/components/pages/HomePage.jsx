@@ -6,7 +6,7 @@ import ProfileRightSide from "../ProfileRightSide";
 
 
 
-const HomePage = ({profilesData,setId}) => {
+const HomePage = ({profilesData}) => {
     
     return (
         <div>
@@ -16,7 +16,7 @@ const HomePage = ({profilesData,setId}) => {
         <Posts/>
         
          
-        <ProfileRightSide data={profilesData,setId}/>
+        <ProfileRightSide profilesData={profilesData}/>
      
        
         <Directory/> 

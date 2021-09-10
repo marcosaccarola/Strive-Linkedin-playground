@@ -220,9 +220,9 @@ const Post = ({ postData }) => {
                 <div className="cardBody">
                   <div className="infoContainer">
                     <p className="name">{post.user.name}</p>
-                     <p className="info" > {post.username}</p>
+                     <p className="info"> {post.username}</p>
                       <p className="info">{post.user.area}</p>
-                      <p className="info">{post.user.bio}</p>
+                      <div className="info">{post.user.bio}</div>
                      </div>
                       <p className="post">{post.text}</p>
                   <img src={post.user.image} alt="userImg" />
