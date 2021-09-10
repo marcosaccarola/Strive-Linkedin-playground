@@ -1,6 +1,6 @@
 import { Row, Card, Col, ListGroup, ListGroupItem, Modal, Form, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
-
+import  { getPosts }  from "../utils/Post"
 import NewPost from "./NewPost";
 
 
@@ -93,13 +93,13 @@ const Post = ({ postData }) => {
   //      }
   // },[])
 
-  const sendAndClose=(e)=>{
+  const sendAndClose= async (e) => {
     // sendPostData(e)
     handleClose()
     handleInput(e)
-    handleSubmit(e)
+    const awaiter = await handleSubmit(e)
     console.log("this is the last creation", post)
-    // getPosts()
+    getPosts()
 }
 
 //   const sendPostData = async (e) => {
@@ -137,6 +137,7 @@ const Post = ({ postData }) => {
      {/* ) }
        </>  */}
 
+      
 
       <Modal show={showModal} onHide={handleShow}>
                     <Modal.Header closeButton>
@@ -181,7 +182,7 @@ const Post = ({ postData }) => {
 
                 </Modal>
   
-      {postData.slice(0, 7).reverse().map((post) => (
+      {postData.slice(Math.max(postData.length -5, 0)).reverse().map((post) => (
         <div>
           <Row className="m-auto">
             <Col md={{ span: 6, offset: 3 }} className="m-auto my-5">
@@ -193,7 +194,7 @@ const Post = ({ postData }) => {
                   <Card.Text>{post.user.bio}</Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                  {newPost && <ListGroupItem>{post.text}</ListGroupItem> }
+                   <ListGroupItem>{post.text}</ListGroupItem> 
                   <ListGroupItem>{post.user.area}</ListGroupItem>
                   <ListGroupItem>{post.user.id}</ListGroupItem>
                 </ListGroup>
