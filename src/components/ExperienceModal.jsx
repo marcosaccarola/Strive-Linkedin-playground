@@ -7,6 +7,9 @@ const ExperienceModal = ({ id, getExperiences }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // const [selectedFile, setSelectedFile] = useState(null);
+	// const [isFilePicked, setIsFilePicked] = useState(false);
+
   const defaultExperience = {
     role: "",
     company: "",
@@ -14,6 +17,7 @@ const ExperienceModal = ({ id, getExperiences }) => {
     area: "",
     startDate: "",
     endDate: null,
+    // selectedFile: null,
   };
 
   const [newExperience, setNewExperience] = useState({ defaultExperience });
@@ -59,7 +63,10 @@ const ExperienceModal = ({ id, getExperiences }) => {
     }
   };
 
-  const handleInput = (e) => {
+  const handleInput = (e, propertyId) => {
+    // setNewExperience({...newExperience, [propertyId]: propertyId === "picture" ?
+    //   e.target.files[0] : e.target.value })
+    //   setSelectedFile(true)
     setNewExperience({ ...newExperience, [e.target.id]: e.target.value });
   };
 
@@ -146,6 +153,15 @@ const ExperienceModal = ({ id, getExperiences }) => {
                 type="month"
               />
             </Form.Group>
+
+            {/* <Form.Group className="mb-3" id="picture" controlId="endDate">
+              <Form.Label>To</Form.Label>
+              <Form.Control
+                // value={newExperience.endDate}
+                onChange={(e) => handleInput(e)}
+                type="file"
+              />
+            </Form.Group> */}
 
             <Button variant="primary" type="submit" onClick={handleClose}>
               POST
