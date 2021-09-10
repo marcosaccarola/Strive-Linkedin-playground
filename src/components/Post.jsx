@@ -1,11 +1,11 @@
 import { Row, Card, Col, ListGroup, ListGroupItem, Modal, Form, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import  { getPosts }  from "../utils/Post"
-import NewPost from "./NewPost";
+//import NewPost from "./NewPost";
 
 const Post = ( {postData} ) => {
 
-  console.log('HELLO FRIEND'+postData)
+  //console.log('HELLO FRIEND'+postData)
     const[post, setPost] = useState({
       message:"",
       name:"",
@@ -14,8 +14,8 @@ const Post = ( {postData} ) => {
       
     const [newPost, setNewPost] = useState(true)
     const handleInput = (key, value) => {
-      setPost({
-      ...post, [key] : value
+      setNewPost({
+      ...newPost, [key] : value
     })
     }
     
@@ -24,30 +24,32 @@ const Post = ( {postData} ) => {
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo";
 
 // {FETCH POST}
-   const handleSubmit = async (e) => {
+   const sendPost=async(e)=>{
      e.preventDefault()
      try {
       const response = await fetch(`${POST_URL}` , {
         method: "POST",
-        body: JSON.stringify(post),
+        body: JSON.stringify(newPost),
         headers: {
           "Content-Type": "application/json",
           Authorization: `${bearer}`,
         },
       });
-      console.log("this should be the response after the fetch", response)
+      console.log(newPost)
+      console.log(response)
+      //console.log("this should be the response after the fetch", response)
       if (response.ok) {
-        const postData = await response.json()
+       // const postData = await response.json()
          alert("NEW POST CREATE");
-        console.log("my postData", postData);
-        setNewPost(true)
-         setPost({
+        //console.log("my postData", postData);
+        //setNewPost(true)
+        /* setPost({
         message:"",
         name:"",
         text:"",
-       })
+       })*/
       } else {
-        console.log("error");
+        //console.log("error");
         alert("oi oi");
       }
     } catch (error) {
@@ -57,12 +59,12 @@ const Post = ( {postData} ) => {
 
 // {SEND DATA & CLOSE MODAL}
   const sendAndClose= async (e) => {
-    // sendPostData(e)
+    e.preventDefault()
+    const firstWaiter=await sendPost(e)
     handleClose()
-    handleInput(e)
-    const awaiter = await handleSubmit(e)
-    console.log("this is the last creation", post)
-    getPosts()
+    const secondWaiter=await getPosts()
+    //handleInput(e)
+    //console.log("this is the last creation", post)
 }
 
 // {SHOW/HIDE MODAL}
@@ -98,7 +100,7 @@ const Post = ( {postData} ) => {
                         <Form.Control 
                       type="text" 
                       placeholder=""
-                      value = {post.text}
+                      value = {newPost.text}
                         onChange = {(e)=> handleInput( "text", e.target.value)}
                       />
                 </Form.Group>
