@@ -8,8 +8,9 @@ import {
   Form,
   Button,
 } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import { getPosts } from "../utils/Post";
+import { useState } from "react";
+import  { getPosts }  from "../utils/Post"
+
 import "./Post.css";
 import user from "../assets/user.jpeg";
 import pic from "../assets/pic.png";
@@ -17,16 +18,15 @@ import video from "../assets/video.png";
 import event from "../assets/event.png";
 import article from "../assets/article.png";
 
-const Post = ({ postData }) => {
-  // console.log("this is postdata", postData);
+const Post = ( {postsData,setPostsData} ) => {
+
+
 
   const [showModal, setShowModal] = useState(false);
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
 
-  // const[message, setMessage]=useState("")
-  // const[name, setName]=useState("")
-  // const[text, setText]=useState("")
+
 
   const [post, setPost] = useState({
     message: "",
@@ -34,98 +34,67 @@ const Post = ({ postData }) => {
     text: "",
   });
 
-  const [newPost, setNewPost] = useState(true);
-  // const thisNewPost = {message, name, text}
-  const handleInput = (key, value) => {
-    setPost({
-      ...post,
-      [key]: value,
-    });
-  };
-
-  // const id = "_id"
+      const [newPost, setNewPost] = useState(true)
+    const handleInput = (key, value) => {
+      setNewPost({
+      ...newPost, [key] : value
+    })
+    }
+  
   const POST_URL = "https://striveschool-api.herokuapp.com/api/posts/";
   let bearer =
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo";
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+// {FETCH POST}
+   const sendPost=async(e)=>{
+     e.preventDefault()
+     try {
+      const response = await fetch(`${POST_URL}` , {
 
-    try {
-      // console.log("inside putIntoPost and before fetch",post)
-      const response = await fetch(`${POST_URL}`, {
         method: "POST",
-        body: JSON.stringify(post),
+        body: JSON.stringify(newPost),
         headers: {
           "Content-Type": "application/json",
           Authorization: `${bearer}`,
         },
       });
-      console.log("this should be the response after the fetch", response);
       if (response.ok) {
-        const postData = await response.json();
-        alert("NEW POST CREATE");
-        console.log("my postData", postData);
-        setNewPost(true);
-        setPost({
-          message: "",
-          name: "",
-          text: "",
-        });
+         alert("NEW POST CREATE");
       } else {
-        console.log("error");
         alert("oi oi");
-      }
+ 
     } catch (error) {
       throw error;
     }
-  };
-  //    console.log("the new post:", post)
 
-  //    let response = await putIntoPost()
-  //    if (response.ok) {
-  //      setPost({
-  //       message:"",
-  //       name:"",
-  //       text:"",
-  //      })
-  //       console.log("the new post:", post)
-  //    } else {
-  //      console.log("something wrong in this post")
-  //    }
-  //    } catch (error) {
-  //      console.log(error)
-  //    }
-  //  }
+  }
+   }
 
-  // useEffect((prevPost, newPost ) => {
-  //      if ( prevPost!=== newPost) {
-  //         setPost(post)
-  //      }
-  // },[])
+// {SEND DATA & CLOSE MODAL}
+  const sendAndClose= async (e) => {
+    e.preventDefault()
+    const firstWaiter=await sendPost(e)
+    const secondWaiter=await anotherGetPosts()
+    handleClose()
+}
+const anotherGetPosts=async()=>{
+  const data=await getPosts()
+  setPostsData(data)
+}
+const[posts,setPosts]=useState({postsData})
 
-  const sendAndClose = async (e) => {
-    // sendPostData(e)
-    handleClose();
-    handleInput(e);
-    const awaiter = await handleSubmit(e);
-    console.log("this is the last creation", post);
-    getPosts();
-  };
+// {SHOW/HIDE MODAL}
+    const[showModal,setShowModal]=useState(false)
+    const handleClose=()=>{setShowModal(false);}
+    const handleShow=()=>setShowModal(true);
 
-  //   const sendPostData = async (e) => {
-  //     console.log(thisNewPost ,'testttttttt')
-  //     e.preventDefault()
-  //     setMessage(thisNewPost)
-  //     setName(thisNewPost)
-  //     setText(thisNewPost)
-  //     await putIntoPost(thisNewPost)
 
-  //     console.log("new post", thisNewPost)
-  // }
 
-  return (
+// {RENDER}
+  return (postsData!==undefined && (
     <div>
+
+      {/* BUTTON "NEW POST" */}
       <div className="postContainer">
         <div className="generateNewPostContainer">
           <div className="picAndButton">
@@ -160,57 +129,46 @@ const Post = ({ postData }) => {
         </div>
       </div>
 
-      {/* <NewPost thisNewPost={thisNewPost} />  */}
 
-      {/* <> */}
-      {/* { newPost && <NewPost post={post}/>} */}
-      {/* <p>{post.message}</p>
-         <p>{post.name}</p>
-         <p>{post.text}</p> */}
 
-      {/* ) }
-       </>  */}
 
+
+
+
+
+
+  
+  {/* MODAL WITH FORM   */}
       <Modal show={showModal} onHide={handleShow}>
-        <Modal.Header closeButton>
+          <Modal.Header closeButton>
           <Modal.Title>Create a new post!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>What do you have in mind?</Form.Label>
-              {/* <Form.Control 
-                                type="text" 
-                                placeholder=""
-                                value = {post.message}
-                                 onChange = {(e)=> handleInput( "message", e.target.value)}
-                                /> */}
-              {/* { handleInput(e, 'text/name/...')} */}
-              <Form.Control
-                type="text"
-                placeholder=""
-                value={post.text}
-                onChange={(e) => handleInput("text", e.target.value)}
-              />
-              {/* <Form.Control 
-                                type="text" 
-                                placeholder=""
-                                value = {post.name}
-                                 onChange = {(e)=> handleInput( "name", e.target.value)}
-                                /> */}
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={sendAndClose}>
-            Close
+          </Modal.Header>
+          <Modal.Body>
+
+              <Form>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                      <Form.Label>What do you have in mind?</Form.Label>
+                        <Form.Control 
+                      type="text" 
+                      //placeholder=""
+                      //value = {newPost.text}
+                        onChange = {(e)=> handleInput( "text", e.target.value)}
+                      />
+                </Form.Group>
+              </Form>
+
+          </Modal.Body>
+          <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose} >
+              Close
           </Button>
-          <Button variant="primary" type="submit" onClick={sendAndClose}>
-            Pubblish
+          <Button variant="primary" onClick={sendAndClose} >
+              Pubblish
           </Button>
-        </Modal.Footer>
+          </Modal.Footer>
       </Modal>
 
+  {/* DISPLAYS GET DATA */}
       {postData
         .slice(Math.max(postData.length - 10, 0))
         .reverse()
@@ -232,7 +190,14 @@ const Post = ({ postData }) => {
             
           </div>
         ))}
+  
+
+
+
+
+
+
     </div>
-  );
+  ));
 };
 export default Post;
