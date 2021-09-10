@@ -42,7 +42,7 @@ const Post = ( {postsData,setPostsData} ) => {
   let bearer =
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo";
 
-// {FETCH POST}
+// {FETCH POST POST POST POST POST POST}
    const sendPost=async(e)=>{
      e.preventDefault()
      try {
@@ -63,8 +63,30 @@ const Post = ( {postsData,setPostsData} ) => {
     } catch (error) {
       throw error;
     }
-
   }
+  /////////////////////////////////////////////////////////////////////////////////
+  // {FETCH PUT PUT PUT PUT PUT PUT PUT}
+  const changePost=async(e)=>{
+    e.preventDefault()
+    try {
+     const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/{postId}` , {
+
+       method: "PUT",
+       body: JSON.stringify(postChanges),
+       headers: {
+         "Content-Type": "application/json",
+         Authorization: `${bearer}`,
+       },
+     });
+     if (response.ok) {
+        alert("POST CHANGED");
+     } else {
+       alert("SOMETHING WENT WRONG");
+     }
+   } catch (error) {
+     throw error;
+   }
+ }
    
 
 // {SEND DATA & CLOSE MODAL}
