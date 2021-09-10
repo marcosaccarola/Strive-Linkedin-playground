@@ -79,23 +79,24 @@ const anotherGetPosts=async()=>{
 }
 const[posts,setPosts]=useState({postsData})
 
+
   /////////////////////////////////////////////////////////////////////////////////
-  // {FETCH PUT PUT PUT PUT PUT PUT PUT}
-  /*
-  const changePost=async(e)=>{
+  // {FETCH DELETE DELETE DELETE DELETE}
+  
+  const deletePost=async(e)=>{
     e.preventDefault()
     try {
-     const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/{postId}` , {
+     const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}` , {
 
-       method: "PUT",
-       body: JSON.stringify(postChanges),
+       method: "DELETE",
+       //body: JSON.stringify(postChanges),
        headers: {
-         "Content-Type": "application/json",
+         //"Content-Type": "application/json",
          Authorization: `${bearer}`,
        },
      });
      if (response.ok) {
-        alert("POST CHANGED");
+        alert("POST DELETED");
      } else {
        alert("SOMETHING WENT WRONG");
      }
@@ -103,7 +104,19 @@ const[posts,setPosts]=useState({postsData})
      throw error;
    }
  }
- */
+ // {DELETE & REFRESH}
+ const deleteTHISPost= async (e) => {
+  e.preventDefault()
+  const firstWaiter=await deletePost(e)
+  const secondWaiter=await anotherGetPosts2()
+  //handleClose()
+}
+const anotherGetPosts2=async()=>{
+const data=await getPosts()
+setPostsData(data)
+}
+ 
+const[postId,setPostId]=useState('')
 
 
 // {SHOW/HIDE MODAL}
@@ -187,7 +200,7 @@ const[posts,setPosts]=useState({postsData})
         .slice(Math.max(postsData.length - 10, 0))
         .reverse()
         .map((post) => (
-          <div key={post._id}>
+          <div key={post._id} onClick={(e) => setPostId(post._id)}>
             
                 <div className="cardBody">
                   <div className="infoContainer">
@@ -198,7 +211,9 @@ const[posts,setPosts]=useState({postsData})
                      </div>
                       <p className="post">{post.text}</p>
                   <img src={post.user.image} alt="userImg" />
-  
+                  {((post.user._id==='61360d537be6c10015f9dbac')||(post.user._id==='613888102068d2001522b4d4')||(post.user._id==='613884772068d2001522b4c6')) &&(
+                  <Button variant="danger" onClick={deleteTHISPost}>PLEASE DELETE ME</Button>
+                  )}
                 </div>
               
             
