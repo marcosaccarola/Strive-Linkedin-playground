@@ -1,31 +1,119 @@
 import { Row, Card, Col, ListGroup, ListGroupItem, Modal, Form, Button } from "react-bootstrap";
-import { useState } from "react";
-import {putIntoPost}from '../utils/PostPut'
-import { getPosts } from "../utils/Post";
+import { useEffect, useState } from "react";
+
 import NewPost from "./NewPost";
 
+
 const Post = ({ postData }) => {
-  console.log("this is postdata", postData);
+  // console.log("this is postdata", postData);
 
   const[showModal,setShowModal]=useState(false)
   const handleClose=()=>setShowModal(false);
   const handleShow=()=>setShowModal(true);
 
 
-  const[text, setText]=useState("")
-//    const[thisNewPost, setThisNewPost]=useState([])
+    // const[message, setMessage]=useState("")
+    // const[name, setName]=useState("")
+    // const[text, setText]=useState("")
+ 
+    const[post, setPost] = useState({
+      message:"",
+      name:"",
+      text:"",
+    })
+      
+    const [newPost, setNewPost] = useState(true)
+    // const thisNewPost = {message, name, text}
+    const handleInput = (key, value) => {
+      setPost({
+      ...post, [key] : value
+    })
+    }
+    
+    // const id = "_id"
+    const POST_URL = "https://striveschool-api.herokuapp.com/api/posts/";
+    let bearer =
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2MGQ1MzdiZTZjMTAwMTVmOWRiYWMiLCJpYXQiOjE2MzA5MzIzMDgsImV4cCI6MTYzMjE0MTkwOH0.ccNFpfohtzhVZFHsX3mCcN4cwHuPiExPCIeBxs1nrTo";
+    
+
+   const handleSubmit = async (e) => {
+     e.preventDefault()
+
+     try {
+      // console.log("inside putIntoPost and before fetch",post)
+      const response = await fetch(`${POST_URL}` , {
+        method: "POST",
+        body: JSON.stringify(post),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${bearer}`,
+        },
+      });
+      console.log("this should be the response after the fetch", response)
+      if (response.ok) {
+        const postData = await response.json()
+         alert("NEW POST CREATE");
+        console.log("my postData", postData);
+        setNewPost(true)
+         setPost({
+        message:"",
+        name:"",
+        text:"",
+       })
+    
+      } else {
+        console.log("error");
+        alert("oi oi");
+      }
+    } catch (error) {
+      throw error;
+    }
+   }
+  //    console.log("the new post:", post)
+     
+  //    let response = await putIntoPost()
+  //    if (response.ok) {
+  //      setPost({
+  //       message:"",
+  //       name:"",
+  //       text:"",
+  //      })
+  //       console.log("the new post:", post)
+  //    } else {
+  //      console.log("something wrong in this post")
+  //    }
+  //    } catch (error) {
+  //      console.log(error)
+  //    }
+  //  }
+
+  // useEffect((prevPost, newPost ) => {
+  //      if ( prevPost!=== newPost) {
+  //         setPost(post)
+  //      }
+  // },[])
 
   const sendAndClose=(e)=>{
-    sendProfileData(e)
+    // sendPostData(e)
     handleClose()
-    getPosts()
+    handleInput(e)
+    handleSubmit(e)
+    console.log("this is the last creation", post)
+    // getPosts()
 }
-const sendProfileData=async(e)=>{
-    e.preventDefault()
 
-    await putIntoPost({text})
-     console.log("nuovo post", text)
-} 
+//   const sendPostData = async (e) => {
+//     console.log(thisNewPost ,'testttttttt')
+//     e.preventDefault()
+//     setMessage(thisNewPost)
+//     setName(thisNewPost)
+//     setText(thisNewPost)
+//     await putIntoPost(thisNewPost)
+  
+//     console.log("new post", thisNewPost)
+// } 
+
+
 
   return (
     <div>
@@ -38,7 +126,16 @@ const sendProfileData=async(e)=>{
         <span>New Post</span>
       </Button>
   
-  <NewPost text={text} />
+   {/* <NewPost thisNewPost={thisNewPost} />  */}
+
+       {/* <> */}
+      {/* { newPost && <NewPost post={post}/>} */}
+        {/* <p>{post.message}</p>
+         <p>{post.name}</p>
+         <p>{post.text}</p> */}
+        
+     {/* ) }
+       </>  */}
 
 
       <Modal show={showModal} onHide={handleShow}>
@@ -46,32 +143,45 @@ const sendProfileData=async(e)=>{
                     <Modal.Title>Create a new post!</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form>
+                        <Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
 
-                                <Form.Label>text</Form.Label>
-                                <Form.Control 
+                                <Form.Label>What do you have in mind?</Form.Label>
+                                {/* <Form.Control 
                                 type="text" 
                                 placeholder=""
-                                value={text}
-                                 onChange={(e)=>setText(e.target.value)}
+                                value = {post.message}
+                                 onChange = {(e)=> handleInput( "message", e.target.value)}
+                                /> */}
+                                {/* { handleInput(e, 'text/name/...')} */}
+                                 <Form.Control 
+                                type="text" 
+                                placeholder=""
+                                value = {post.text}
+                                 onChange = {(e)=> handleInput( "text", e.target.value)}
                                 />
+                                 {/* <Form.Control 
+                                type="text" 
+                                placeholder=""
+                                value = {post.name}
+                                 onChange = {(e)=> handleInput( "name", e.target.value)}
+                                /> */}
                     
                     </Form.Group>
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick={sendAndClose} >
                         Close
                     </Button>
-                    <Button variant="primary" onClick={sendAndClose}>
+                    <Button variant="primary" type="submit" onClick={sendAndClose} >
                         Pubblish
                     </Button>
                     </Modal.Footer>
 
                 </Modal>
-
-      {postData.slice(0, 7).map((post) => (
+  
+      {postData.slice(0, 7).reverse().map((post) => (
         <div>
           <Row className="m-auto">
             <Col md={{ span: 6, offset: 3 }} className="m-auto my-5">
@@ -83,7 +193,7 @@ const sendProfileData=async(e)=>{
                   <Card.Text>{post.user.bio}</Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                  <ListGroupItem>{post.text}</ListGroupItem>
+                  {newPost && <ListGroupItem>{post.text}</ListGroupItem> }
                   <ListGroupItem>{post.user.area}</ListGroupItem>
                   <ListGroupItem>{post.user.id}</ListGroupItem>
                 </ListGroup>

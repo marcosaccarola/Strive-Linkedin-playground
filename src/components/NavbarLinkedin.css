@@ -1,20 +1,35 @@
 
 .navbar {
-    background-color: rgb(251, 251, 251);
-    display: flex !important;
-    align-items: center !important;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
     height: 40px;
     position: fixed;
     top:0;
     width: 100vw;
     z-index: 100;
-    justify-content: center !important;
+    justify-content: center;
     flex-direction: row;
-}
-.navbar svg {
-    margin-top: -2px;
+    padding-left: 150px;
 }
 
+.navbar svg {
+    margin-top: -2px;
+    margin-left: 100px;
+}
+.navbar-collapse {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: -50px;
+}
+.navbar-nav-scroll {
+    max-height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+}
 .userDropdown {
     display: flex;
     flex-flow: column;
@@ -42,7 +57,7 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    margin-top: 6px;
+    margin-top: 12px;
 }
 .iconsWrapper:hover {
     text-decoration: underline;
@@ -73,6 +88,12 @@ a::after{
     margin-top: -2px;
     text-align:left;
 }
+/* @media only screen and (max-width: 1500px) {
+    .searchBar {
+      background-color: rgb(20, 106, 134);
+    
+    }
+  } */
 .collapsed{
     height: 30px;
     width: 30px;

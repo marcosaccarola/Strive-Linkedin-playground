@@ -1,6 +1,6 @@
 const POST_URL = "https://striveschool-api.herokuapp.com/api/posts/";
 
-// TO GET
+
 export const getPosts = async () => {
   try {
     const response = await fetch(`${POST_URL}`, {
