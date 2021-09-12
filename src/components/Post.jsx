@@ -190,7 +190,7 @@ const[postId,setPostId]=useState('')
               Close
           </Button>
           <Button variant="primary" onClick={sendAndClose} >
-              Pubblish
+              Publish
           </Button>
           </Modal.Footer>
       </Modal>
@@ -223,7 +223,7 @@ const[postId,setPostId]=useState('')
 
 
                   {((post.user._id==='61360d537be6c10015f9dbac')||(post.user._id==='613888102068d2001522b4d4')||(post.user._id==='613884772068d2001522b4c6')) &&(
-                  <Button variant="danger" onClick={deleteTHISPost}>PLEASE DELETE ME</Button>
+                  <Button variant="danger" className="rounded-pill ml-3 mb-3" onClick={deleteTHISPost}>Delete post</Button>
                   )}
                 </div>
               
