@@ -13,15 +13,12 @@ const HomePageLeftSide=({postsData})=>{
     return(
         <div>
             {userData && (
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={userData.user.image} />
+            <Card style={{ width: '18rem',marginTop:50 }}>
+                <Card.Img variant="top" src={userData.user.image} style={{height:80,width:80,borderRadius:40}} className="mx-auto mt-5" />
 
-                <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
-                    </Card.Text>
+                <Card.Body className="mx-auto">
+                    <Card.Title>{userData.user.name} {userData.user.surname}</Card.Title>
+                    <Card.Text>{userData.user.title}</Card.Text>                
                 </Card.Body>
 
                 <ListGroup className="list-group-flush">

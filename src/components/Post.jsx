@@ -205,10 +205,10 @@ const[postId,setPostId]=useState('')
 
                   <div className="infoContainer">
                     <Row>
-                      <Col>
+                      <Col md={2} className="mt-2">
                         <img src={post.user.image} alt="userImg" style={{height:50,width:50,borderRadius:25}} /> 
                       </Col>
-                      <Col>
+                      <Col style={{backgroundColor:"white"}}>
                         <p className="name">{post.user.name} {post.user.surname}</p>
                         <p className="info">{post.user.title}</p>
                         <p className="info">{post.updatedAt}</p>
