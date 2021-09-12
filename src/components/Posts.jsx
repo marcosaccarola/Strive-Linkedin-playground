@@ -24,15 +24,19 @@ const Posts = () => {
     return (
         <Container>
             <Row style={{marginTop:50}}>
+
                 <Col xs={0} md={3} style={{backgroundColor:"yellow"}}>
-                    <HomePageLeftSide />
+                    <HomePageLeftSide postsData={postsData} />
                 </Col>
+
                 <Col xs={12} md={6} className="col" style={{backgroundColor:"red"}}>          
                     <Post postsData={postsData} setPostsData={setPostsData} />
                 </Col>
+
                 <Col xs={0} md={3} style={{backgroundColor:"blue"}}>
                     {/* <ProfileRightSide/> */}
                 </Col>
+
             </Row>
         </Container>
 
