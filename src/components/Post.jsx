@@ -200,17 +200,28 @@ const[postId,setPostId]=useState('')
         .slice(Math.max(postsData.length - 10, 0))
         .reverse()
         .map((post) => (
-          <div key={post._id} onClick={(e) => setPostId(post._id)}>
-            
+          <div key={post._id} onClick={(e) => setPostId(post._id)}>    
                 <div className="cardBody">
+
                   <div className="infoContainer">
-                    <p className="name">{post.user.name}</p>
-                     <p className="info" > {post.username}</p>
-                      <p className="info">{post.user.area}</p>
-                      <p className="info">{post.user.bio}</p>
-                     </div>
-                      <p className="post">{post.text}</p>
-                  <img src={post.user.image} alt="userImg" />
+                    <Row>
+                      <Col>
+                        <img src={post.user.image} alt="userImg" style={{height:50,width:50,borderRadius:25}} /> 
+                      </Col>
+                      <Col>
+                        <p className="name">{post.user.name} {post.user.surname}</p>
+                        <p className="info">{post.user.title}</p>
+                        <p className="info">{post.updatedAt}</p>
+                      </Col>
+                    </Row>
+                    {/* <p className="info" > {post.username}</p>
+                    <p className="info">{post.user.area}</p>
+                    <p className="info">{post.user.bio}</p> */}
+                  </div>
+
+                  <p className="post">{post.text}</p>
+
+
                   {((post.user._id==='61360d537be6c10015f9dbac')||(post.user._id==='613888102068d2001522b4d4')||(post.user._id==='613884772068d2001522b4c6')) &&(
                   <Button variant="danger" onClick={deleteTHISPost}>PLEASE DELETE ME</Button>
                   )}
