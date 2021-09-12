@@ -4,22 +4,14 @@ import NavbarLinkedin from "../NavbarLinkedin";
 import Posts from "../Posts";
 import ProfileRightSide from "../ProfileRightSide";
 
-
-
 const HomePage = ({profilesData,setId}) => {
     
     return (
         <div>
         <NavbarLinkedin/> 
-        
-        
-        <Posts/>
-        
-         
-        <ProfileRightSide data={profilesData,setId}/>
-     
-       
-        <Directory/> 
+            <Posts/>
+            <ProfileRightSide data={profilesData,setId}/>
+            <Directory/> 
         <CustomFooter />
         </div>
     )

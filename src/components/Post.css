@@ -10,7 +10,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-weight:500;
+  font-weight: 500;
   font-size: 10px;
   border-radius: 20px;
   color: rgba(56, 54, 54, 0.849);
@@ -62,7 +62,7 @@
 .buttonsGroup .button p {
   color: rgba(56, 54, 54, 0.781);
   font-size: 10px;
-  font-weight:500;
+  font-weight: 500;
   margin-top: 7px;
 }
 .buttonsGroup .button img {
@@ -77,34 +77,37 @@
   cursor: pointer;
 }
 
- /* card style */
-.cardBody{
-    width: 85%;
-    margin: auto;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    border: 1px solid rgba(47, 46, 46, 0.253);
-    background-color: white;
+/* card style */
+.cardBody {
+  width: 85%;
+  /*margin: auto;*/
+  margin-left: 0;
+  margin-right: 0;
+  min-width: 100%;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid rgba(47, 46, 46, 0.253);
+  background-color: white;
 }
 .cardBody img {
-    height: 250px;
-    width: 100%;
+  height: 250px;
+  width: 100%;
 }
 .infoContainer {
-    width: 80%;
-    margin-left: 20px;
-    margin-top: 10px;
-    line-height: 1px;
+  width: 80%;
+  margin-left: 20px;
+  margin-top: 10px;
+  line-height: 1px;
 }
 .name {
-   font-size: 15px;
-   font-weight:500;
-   margin: 15px 0 20px 0;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 15px 0 20px 0;
 }
 .info {
-    font-size: 12px;
-    font-weight:300;
+  font-size: 12px;
+  font-weight: 300;
 }
 .cardBody .post {
-    margin: 0 20px 10px 20px
+  margin: 0 20px 10px 20px;
 }
